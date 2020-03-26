@@ -51,17 +51,17 @@
   function sendDataToExcel()
   {
     var subjectInfo = {
-      'Name' : '老王' ,
-      'Gender' : 'Gender' ,
-      'Age' : 'Age',
-      'Occupation' : 'Occupation' ,
-      'Phone' : 'Phone' ,
-      'Email' : 'Email' ,
-      'AbusedAndDomesticViolence' : 'AbusedAndDomesticViolence' ,
-      'DepressionHistory' : 'DepressionHistory' ,
-      'Suicide' : 'Suicide' ,
-      'Drugs' : 'Drugs' ,
-      'Prisoner' : 'Prisoner'
+      'Name' : document.getElementById("inputName").value ,
+      'Gender' : 'None' ,
+      'Age' : 'None' ,
+      'Occupation' : document.getElementById("inputOccup").value ,
+      'Phone' : 'None' ,
+      'Email' : 'None' ,
+      'AbusedAndDomesticViolence' : 'None' ,
+      'DepressionHistory' : 'None' ,
+      'Suicide' : 'None' ,
+      'Drugs' : 'None' ,
+      'Prisoner' : 'None' ,
     }
     $.ajax({
         type: "post",
@@ -145,46 +145,7 @@
 
           <form>
             <input type="text" class="form-control" id="inputName" placeholder="您的姓名"> </br>
-            <input list="genderSource" class="form-control" id="inputGender" placeholder="您的性別"> </br>
-            <datalist id="genderSource">
-              <option value="男">
-              <option value="女">
-            </datalist>
-            <input type="text" class="form-control" id="inputDate" placeholder="您的年齡"> </br>
             <input type="text" class="form-control" id="inputOccup" placeholder="您的職業"> </br>
-            <input type="text" class="form-control" id="inputEmail" placeholder="您的Email"> </br>
-			      <input type="text" class="form-control" id="inputPhone" placeholder="您的連絡電話"> </br>
-			      
-            <select class="form-control" id="selectAbusedAndDomesticViolence" >
-              <option value="default">是否曾有過受虐/家暴經驗 ?</option>
-              <option value="yes">有過受虐/家暴經驗</option>
-              <option value="no">無過受虐/家暴經驗</option>
-            </select></br>
-                          
-            <select class="form-control" id="selectDepressionHistory" >
-              <option value="default">是否曾有憂鬱症病史 ?</option>
-              <option value="yes">有憂鬱症病史</option>
-              <option value="no">無憂鬱症病史</option>
-            </select></br>
-                          
-            <select class="form-control" id="selectSuicide" >
-              <option value="default">是否曾有自殺經驗 ?</option>
-              <option value="yes">有自殺經驗</option>
-              <option value="no">無自殺經驗</option>
-            </select></br>
-                          
-            <select class="form-control" id="selectDrugs" >
-              <option value="default">過去是否曾有吸毒/販毒經驗 ?</option>
-              <option value="yes">有吸毒/販毒經驗</option>
-              <option value="no">無吸毒/販毒經驗</option>
-            </select></br>
-                          
-            <select class="form-control" id="selectPrisoner" >
-              <option value="default">過去是否有服刑 ?</option>
-              <option value="yes">有服過刑</option>
-              <option value="no">無服過刑</option>
-            </select></br>
-
             <input type="button" Onclick="sendDataToExcel()" class="btn btn-primary mx-auto"  value="開始測驗" />
           </form>
 
