@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>實驗二 - 流程模擬</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="css/grayscale.css" rel="stylesheet">
+  
+  <script type="text/javascript">
+  /* Func - Setting Cookie */
+	function SetCookie(cookieName,cookieValue,nDays) {
+		var expires = new Date();
+		expires.setTime(expires.getTime() + 86400000);//有效時間保存 1 天 1*24*60*60*1000
+		document.cookie = cookieName + "=" + escape(cookieValue) + ";expires=" + expires.toGMTString()
+	}
+  /* Func - Start Story Test */
+	function starttest(){
+		
+		var agreeStatus = document.getElementById("agreebox").checked;
+		if(agreeStatus) 
+		{ 
+			var userName = document.getElementById("inputName").value;
+			var userDate = document.getElementById("inputDate").value;
+			var userPhone = document.getElementById("inputPhone").value;
+			var userEmail = document.getElementById("inputEmail").value;
+			SetCookie("userName",userName,1)
+			SetCookie("userDate",userDate,1)
+			SetCookie("userPhone",userPhone,1)
+			SetCookie("userEmail",userEmail,1)
+			
+			document.location = "story_one.html"
+		}
+		else
+		{ 
+      /* 等待補充,提示未同意特效 */
+      console.log("No"); 
+    }
+	}
+
+
+  function sendDataToExcel()
+  {
+    var subjectInfo = {
+      'Name' : '老王' ,
+      'Gender' : 'Gender' ,
+      'Age' : 'Age',
+      'Occupation' : 'Occupation' ,
+      'Phone' : 'Phone' ,
+      'Email' : 'Email' ,
+      'AbusedAndDomesticViolence' : 'AbusedAndDomesticViolence' ,
+      'DepressionHistory' : 'DepressionHistory' ,
+      'Suicide' : 'Suicide' ,
+      'Drugs' : 'Drugs' ,
+      'Prisoner' : 'Prisoner'
+    }
+    $.ajax({
+        type: "post",
+        url: "https://script.google.com/macros/s/AKfycbxWOB548AGfz9OqUFSKRaBkkWXDpMpyxOr3ronUNJ5VyABRFm4/exec",
+        data: subjectInfo,
+        dataType: "JSON",
+        success: function (response) {
+          alert('感謝您的訂購！！');
+        }
+      });
+  }
+
+
+  </script>
+	
+	
+</head>
+
+<body id="page-top">
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger myforntformat" href="#page-top">實驗階段二</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger myforntformat" href="#about">同意書</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="masthead">
+    <div class="container d-flex h-100 align-items-center">
+      <div class="mx-auto text-center">
+        <h1 >您好 : </h1>
+		</br>
+        <h2 class="myforntformat myforntformatcolor">非常感謝您願意參與本研究的第二階段，本階段會請您在觀看故事文章後，以書寫的方式進行故事回憶，並完成後續的問卷填答。</h2>
+		</br>
+        <a href="#about" class="btn btn-primary js-scroll-trigger">Get Started</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- About Section -->
+  <section id="about" class="about-section text-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto h-100">
+          <h2 class="text-white mb-4 myforntformat">同意書</h2>
+          <p class="text-white-50" align=left>
+			○ 研究過程中皆不具危險性活動，且對於您的生理／心理健康無害。若過程中有使您感到任何生理／心理不適之處，您仍有權利隨時告知，並決定退出本研究。 </br></br>
+			○ 本研究所蒐集資料皆僅作為研究分析與結果報告使用，任何有關參與者的身分或相關辨識線索皆遵守保密原則，在未經您同意，不會作為其他用途，以維護您的個人資料與隱私。若您對本研究有任何疑問，可透過以下所附資料與研究者聯絡。若您已詳讀本同意書且願意繼續參與本研究，請您於下列欄位簽屬姓名。 </br></br>
+			○ 若您對本研究有任何疑問，可透過以下所附資料與研究者聯絡。若您已詳讀本同意書且願意繼續參與本研究，請您於下列欄位簽屬姓名。
+		  </p>
+		  <input type="checkbox" id="agreebox" name="agreebox" value="AgreeCheck">
+		  <label for="agreebox" class="text-white-50">我同意上述之內容</label> 
+		  
+		  </br>
+		  </br>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Signup Section -->
+  <section id="signup" class="signup-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-10 col-lg-8 mx-auto text-center">
+
+          <i class="far fa-paper-plane fa-2x mb-2 text-white"></i>
+          <h2 class="text-white mb-5"> 請幫我填入您的資料 : </h2>
+
+          <form>
+            <input type="text" class="form-control" id="inputName" placeholder="您的姓名"> </br>
+            <input list="genderSource" class="form-control" id="inputGender" placeholder="您的性別"> </br>
+            <datalist id="genderSource">
+              <option value="男">
+              <option value="女">
+            </datalist>
+            <input type="text" class="form-control" id="inputDate" placeholder="您的年齡"> </br>
+            <input type="text" class="form-control" id="inputOccup" placeholder="您的職業"> </br>
+            <input type="text" class="form-control" id="inputEmail" placeholder="您的Email"> </br>
+			      <input type="text" class="form-control" id="inputPhone" placeholder="您的連絡電話"> </br>
+			      
+            <select class="form-control" id="selectAbusedAndDomesticViolence" >
+              <option value="default">是否曾有過受虐/家暴經驗 ?</option>
+              <option value="yes">有過受虐/家暴經驗</option>
+              <option value="no">無過受虐/家暴經驗</option>
+            </select></br>
+                          
+            <select class="form-control" id="selectDepressionHistory" >
+              <option value="default">是否曾有憂鬱症病史 ?</option>
+              <option value="yes">有憂鬱症病史</option>
+              <option value="no">無憂鬱症病史</option>
+            </select></br>
+                          
+            <select class="form-control" id="selectSuicide" >
+              <option value="default">是否曾有自殺經驗 ?</option>
+              <option value="yes">有自殺經驗</option>
+              <option value="no">無自殺經驗</option>
+            </select></br>
+                          
+            <select class="form-control" id="selectDrugs" >
+              <option value="default">過去是否曾有吸毒/販毒經驗 ?</option>
+              <option value="yes">有吸毒/販毒經驗</option>
+              <option value="no">無吸毒/販毒經驗</option>
+            </select></br>
+                          
+            <select class="form-control" id="selectPrisoner" >
+              <option value="default">過去是否有服刑 ?</option>
+              <option value="yes">有服過刑</option>
+              <option value="no">無服過刑</option>
+            </select></br>
+
+            <input type="button" Onclick="sendDataToExcel()" class="btn btn-primary mx-auto"  value="開始測驗" />
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  
+  <!-- Contact Section -->
+  <section class="contact-section bg-black">
+    <div class="container">
+
+      <div class="row">
+
+        <div class="col-md-4 mb-3 mb-md-0">
+          <div class="card py-4 h-100">
+            <div class="card-body text-center">
+              <i class="fas fa-map-marked-alt text-primary mb-2"></i>
+              <h4 class="text-uppercase m-0">Name</h4>
+              <hr class="my-4">
+              <div class="small text-black-50" align="left">
+				中原大學心理學研究所指導教授：鄭谷苑　博士</br>
+				碩士班研究生：廖婉婷　敬啟</br>
+			  </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 mb-3 mb-md-0">
+          <div class="card py-4 h-100">
+            <div class="card-body text-center">
+              <i class="fas fa-envelope text-primary mb-2"></i>
+              <h4 class="text-uppercase m-0">Email</h4>
+              <hr class="my-4">
+              <div class="small text-black-50">
+                <a href="#">liao9909@Hotmail.com.tw</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 mb-3 mb-md-0">
+          <div class="card py-4 h-100">
+            <div class="card-body text-center">
+              <i class="fas fa-mobile-alt text-primary mb-2"></i>
+              <h4 class="text-uppercase m-0">Phone</h4>
+              <hr class="my-4">
+              <div class="small text-black-50">03-2653427</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="social d-flex justify-content-center">
+        <a href="#" class="mx-2">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="#" class="mx-2">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="#" class="mx-2">
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-black small text-center text-white-50">
+    <div class="container">
+      Chou4J &copy; 2020 - for 中原大學心理學研究所指碩士班研究生：廖婉婷
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="js/grayscale.min.js"></script>
+
+</body>
+
+</html>
