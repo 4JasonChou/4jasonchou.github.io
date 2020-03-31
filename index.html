@@ -15,8 +15,24 @@
 
   <!-- Custom styles for this template -->
   <link href="css/grayscale.css" rel="stylesheet">
-  
+  <script type="text/javascript" src="getUrlParam.js"></script>
+
+  <!-- Start JavaScript -->
   <script type="text/javascript">
+
+  var storyOne = '';
+  var storyTwo = '';
+  var storyThree = '';
+
+  function init() 
+  {  
+    storyOne = UrlParam.paramValues("StoryOne")[0];
+    storyTwo = UrlParam.paramValues("StoryTwo")[0];
+    storyThree = UrlParam.paramValues("StoryThree")[0];
+  }
+  init();
+
+
   /* Func - Setting Cookie */
 	function SetCookie(cookieName,cookieValue,nDays) {
 		var expires = new Date();
@@ -33,7 +49,8 @@
       document.getElementById("inputHint").style.visibility = "visible";
       return;
     }
-    document.location = "story_one.html"
+    var nextUrl = "story_one.html?" + "StoryOne=" + storyOne + "&StoryTwo=" + storyTwo + "&StoryThree=" + storyThree ;
+    document.location = nextUrl ;
   }
 
   function subjectInputInfoCheck()
@@ -91,8 +108,8 @@
 
 
   </script>
-	
-	
+  <!-- End JavaScript -->
+  
 </head>
 
 <body id="page-top">

@@ -432,20 +432,14 @@
   var situation_Two_Des_For_EditSub = "如：美美是個家暴的受害者...";
   
   function init() {
-
-    // Get Subject info from cookie
-    var userName = getCookie("userName");
-		var userDate = getCookie("userDate");
-		var userPhone = getCookie("userPhone");
-		var userEmail = getCookie("userEmail");
-
+    
     // Get Html Value to load story
     storyOne = UrlParam.paramValues("StoryOne")[0];
     storyTwo = UrlParam.paramValues("StoryTwo")[0];
     storyThree = UrlParam.paramValues("StoryThree")[0];
 
     // Select the Version
-    userSituation = getRandomOneOrTwo();
+    userSituation = UrlParam.paramValues("UserSituation")[0];
 
     // Handler Des of title.
     var desStr = "本階段會讓您閱讀幾則故事內容，這些故事分別是由不同基金會提供實際案例(已做化名處理，並消除任何可辨識個人訊息內容)，在閱讀故事時，請您在觀看時，";
@@ -462,7 +456,7 @@
     document.getElementById("descriptionOfTitle").innerHTML = desStr ;
 
     // Handler Story Info
-    getStoryInfo(storyOne);
+    getStoryInfo(storyThree);
 
 
   }
@@ -535,17 +529,9 @@
     document.getElementById("sectionForStoryAttitudeReply").style.display = "none";    
     document.getElementById("sectionForStoryDonate").style.display = "block";     
   }
-
-  function donateStoryYes(){ startNextStory(); }
+  
   
 
-  function donateStoryNo(){ startNextStory(); }
-  
-  function startNextStory()
-  {
-    var nextLocationUrl =  "story_two.html?" + "UserSituation=" + userSituation + "&StoryOne=" + storyOne + "&StoryTwo=" + storyTwo + "&StoryThree=" + storyThree ;
-    document.location =  nextLocationUrl ;
-  }
 
   function rAsubmit() {
       var obj=document.getElementsByName("q1_value");
