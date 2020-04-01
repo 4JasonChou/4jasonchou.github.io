@@ -82,7 +82,7 @@
                 <h4 class="text-white" id="descriptionOfEditTitle" >請您以”我”為主詞...</h4>
                 <p class="mb-0 text-white-50" id="descriptionOfEditSubTitle">如：美美...</p>
                 <hr class="d-none d-lg-block mb-0 mr-0"><br />
-                <textarea   class="mytextarea col-xl-12" rows="10" >輸入你想要寫的內容...</textarea>
+                <textarea   class="mytextarea col-xl-12" rows="10" id="subjectInputArt">輸入你想要寫的內容...</textarea>
                 <br/>
                 <input type="button" Onclick="startStoryMoodReply()" class="btn btn-primary col-xl-12"  id="storyReadFinish" value="Next" />
               </div>
@@ -163,7 +163,7 @@
                     <td><input type="radio" name="sad_value" value="9"> 9</td>
                   </fieldset></tr>
                   <tr height=50><fieldset>
-                    <td>同情(compassionate)</td>
+                    <td>同情</td>
                     <td><input type="radio" name="compassionate_value" value="1"> 1</td>
                     <td><input type="radio" name="compassionate_value" value="2"> 2</td>
                     <td><input type="radio" name="compassionate_value" value="3"> 3</td>
@@ -175,7 +175,7 @@
                     <td><input type="radio" name="compassionate_value" value="9"> 9</td>
                   </fieldset></tr>
                   <tr height=50><fieldset>
-                    <td>溫暖(warm)</td>
+                    <td>溫暖</td>
                     <td><input type="radio" name="warm_value" value="1"> 1</td>
                     <td><input type="radio" name="warm_value" value="2"> 2</td>
                     <td><input type="radio" name="warm_value" value="3"> 3</td>
@@ -187,7 +187,7 @@
                     <td><input type="radio" name="warm_value" value="9"> 9</td>
                   </fieldset></tr>
                   <tr height=50><fieldset>
-                    <td>同理(sympathetic)</td>
+                    <td>同理</td>
                     <td><input type="radio" name="sympathetic_value" value="1"> 1</td>
                     <td><input type="radio" name="sympathetic_value" value="2"> 2</td>
                     <td><input type="radio" name="sympathetic_value" value="3"> 3</td>
@@ -199,7 +199,7 @@
                     <td><input type="radio" name="sympathetic_value" value="9"> 9</td>
                   </fieldset></tr>
                   <tr height=50><fieldset>
-                    <td>溫柔(softhearted)</td>
+                    <td>溫柔</td>
                     <td><input type="radio" name="softhearted_value" value="1"> 1</td>
                     <td><input type="radio" name="softhearted_value" value="2"> 2</td>
                     <td><input type="radio" name="softhearted_value" value="3"> 3</td>
@@ -211,7 +211,7 @@
                     <td><input type="radio" name="softhearted_value" value="9"> 9</td>
                   </fieldset></tr>
                   <tr height=50><fieldset>
-                    <td>感動(moved)</td>
+                    <td>感動</td>
                     <td><input type="radio" name="moved_value" value="1"> 1</td>
                     <td><input type="radio" name="moved_value" value="2"> 2</td>
                     <td><input type="radio" name="moved_value" value="3"> 3</td>
@@ -247,7 +247,7 @@
                     <td><input type="radio" name="fear_value" value="9"> 9</td>
                   </fieldset></tr>
                   <tr height=50><fieldset>
-                    <td>平靜(tender)</td>
+                    <td>平靜</td>
                     <td><input type="radio" name="tender_value" value="1"> 1</td>
                     <td><input type="radio" name="tender_value" value="2"> 2</td>
                     <td><input type="radio" name="tender_value" value="3"> 3</td>
@@ -429,16 +429,10 @@
   var situation_Two_Des = "盡可能的保持客觀、理性的觀看主角遭遇的事件";
   var situation_One_Des_For_Edit = "請您以”我”為主詞，就剛才所閱讀到的故事進行書寫。請將剛才所閱讀到的感受、情境、事件，以”我”為主詞進行描述。";
   var situation_Two_Des_For_Edit = "請您以”他”為主詞，就剛才所閱讀到的故事進行書寫。請盡可能的以客觀、中立的角度去描述事件、情境。";
-  var situation_One_Des_For_EditSub = "如：我是美美，我是個家暴的受害者...";
-  var situation_Two_Des_For_EditSub = "如：美美是個家暴的受害者...";
+  var situation_One_Des_For_EditSub = "如：我是??，我是個??的受害者...";
+  var situation_Two_Des_For_EditSub = "如：??是個??的受害者...";
   
   function init() {
-
-    // Get Subject info from cookie
-    var userName = getCookie("userName");
-		var userDate = getCookie("userDate");
-		var userPhone = getCookie("userPhone");
-		var userEmail = getCookie("userEmail");
 
     // Get Html Value to load story
     storyOne = UrlParam.paramValues("StoryOne")[0];
@@ -448,51 +442,20 @@
     // Select the Version
     userSituation = getRandomOneOrTwo();
 
-    // Handler Des of title.
-    var desStr = "本階段會讓您閱讀幾則故事內容，這些故事分別是由不同基金會提供實際案例(已做化名處理，並消除任何可辨識個人訊息內容)，在閱讀故事時，請您在觀看時，";
-    if(userSituation==1) {
-      desStr = desStr + situation_One_Des + "。看完故事後，會請您書寫剛才所看見的故事內容。";
-      document.getElementById("descriptionOfEditTitle").innerHTML = situation_One_Des_For_Edit ;
-      document.getElementById("descriptionOfEditSubTitle").innerHTML = situation_One_Des_For_EditSub ;
-    }
-    else {
-      desStr = desStr + situation_Two_Des + "。看完故事後，會請您書寫剛才所看見的故事內容。";
-      document.getElementById("descriptionOfEditTitle").innerHTML = situation_Two_Des_For_Edit ;
-      document.getElementById("descriptionOfEditSubTitle").innerHTML = situation_Two_Des_For_EditSub ;
-    }
-    document.getElementById("descriptionOfTitle").innerHTML = desStr ;
-
     // Handler Story Info
     getStoryInfo(storyOne);
-
-
+    
   }
   
   init();
 
-  /* Unit Func - Html */
-  function getHtmlValue(varname)
-  {
-    var url = window.location.href;
-    var qparts = url.split("?");
-    if (qparts.length == 0){return "";}
-    var query = qparts[1];
-    var vars = query.split("&amp;");
-    var value = "";
-    for (i=0; i<vars.length; i++)
-    {
-      var parts = vars[i].split("=");
-      if (parts[0] == varname)
-      {
-        value = parts[1];
-        break;
-      }
-    }
-    value = unescape(value);
-    value.replace(/\+/g," ");
-    return value;
-  }
-  
+  /* Func - Setting Cookie */
+  function SetCookie(cookieName,cookieValue,nDays) {
+		var expires = new Date();
+		expires.setTime(expires.getTime() + 86400000);//有效時間保存 1 天 1*24*60*60*1000
+		document.cookie = cookieName + "=" + escape(cookieValue) + ";expires=" + expires.toGMTString()
+	}
+
 	/* Unit Func - Get Cookie */
 	function getCookie(name){
 		var arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
@@ -521,51 +484,113 @@
 
   function startStoryMoodReply()
   {
+    
+    var editBox = document.getElementById("subjectInputArt");
+    if ( editBox.textLength < 100 ) {
+      alert("請您再多書些一些內容喔！謝謝！");
+      return;
+    }
+
+    // Set to Cookie : 
+    SetCookie("one_subjectInputArt",editBox.value,1);
+
     document.getElementById("sectionForStoryReply").style.display = "none";    
     document.getElementById("sectionForStoryMoodReply").style.display = "block";    
   }
 
   function startStoryAttitudeReply()
   {
+    var v1 = getCheckBoxValue(document.getElementsByName("nausea_value"));
+    var v2 = getCheckBoxValue(document.getElementsByName("happy_value"));
+    var v3 = getCheckBoxValue(document.getElementsByName("sorrowful_value"));
+    var v4 = getCheckBoxValue(document.getElementsByName("rejoice_value"));
+    var v5 = getCheckBoxValue(document.getElementsByName("sad_value"));
+    var v6 = getCheckBoxValue(document.getElementsByName("compassionate_value"));
+    var v7 = getCheckBoxValue(document.getElementsByName("warm_value"));
+    var v8 = getCheckBoxValue(document.getElementsByName("sympathetic_value"));
+    var v9 = getCheckBoxValue(document.getElementsByName("softhearted_value"));
+    var v10 = getCheckBoxValue(document.getElementsByName("moved_value"));
+    var v11 = getCheckBoxValue(document.getElementsByName("tension_value"));
+    var v12 = getCheckBoxValue(document.getElementsByName("fear_value"));
+    var v13 = getCheckBoxValue(document.getElementsByName("tender_value"));
+
+    if ( v1 == "" || v2 == "" || v3 == "" || v4 == "" || v5 == "" || v6 == "" || v7 == "" || v8 == "" || v9 == "" || v10 == "" || v11 == "" || v12 == "" || v13 == ""  ) {
+      alert("尚有選項未填寫喔！謝謝！");
+      return;
+    }
+
+
+    // Set to Cookie : 
+    SetCookie("one_nausea_value", v1 ,1);
+    SetCookie("one_happy_value", v2 ,1);
+    SetCookie("one_sorrowful_value", v3,1);
+    SetCookie("one_rejoice_value", v4 ,1);
+    SetCookie("one_sad_value", v5,1);
+    SetCookie("one_compassionate_value", v6 ,1);
+    SetCookie("one_warm_value", v7,1);
+    SetCookie("one_sympathetic_value", v8 ,1);
+    SetCookie("one_softhearted_value", v9 ,1);
+    SetCookie("one_moved_value", v10 ,1);
+    SetCookie("one_tension_value", v11 ,1);
+    SetCookie("one_fear_value", v12 ,1);
+    SetCookie("one_tender_value", v13 ,1);
+
     document.getElementById("sectionForStoryMoodReply").style.display = "none";    
     document.getElementById("sectionForStoryAttitudeReply").style.display = "block";    
   }
 
   function startStoryDonate()
   {
+    var v1 = getCheckBoxValue(document.getElementsByName("q1_value"));
+    var v2 = getCheckBoxValue(document.getElementsByName("q2_value"));
+    var v3 = getCheckBoxValue(document.getElementsByName("q3_value"));
+    var v4 = getCheckBoxValue(document.getElementsByName("q4_value"));
+    var v5 = getCheckBoxValue(document.getElementsByName("q5_value"));
+    var v6 = getCheckBoxValue(document.getElementsByName("q6_value"));
+    var v7 = getCheckBoxValue(document.getElementsByName("q7_value"));
+
+    if ( v1 == "" || v2 == "" || v3 == "" || v4 == "" || v5 == "" || v6 == "" || v7 == ""  ) {
+      alert("尚有選項未填寫喔！謝謝！");
+      return;
+    }
+
+    // Set to Cookie : 
+    SetCookie("one_atv1", v1 ,1);
+    SetCookie("one_atv2", v2 ,1);
+    SetCookie("one_atv3", v3, 1);
+    SetCookie("one_atv4", v4 ,1);
+    SetCookie("one_atv5", v5, 1);
+    SetCookie("one_atv6", v6 ,1);
+    SetCookie("one_atv7", v7, 1);
+
     document.getElementById("sectionForStoryAttitudeReply").style.display = "none";    
     document.getElementById("sectionForStoryDonate").style.display = "block";     
   }
 
-  function donateStoryYes(){ startNextStory(); }
+  function donateStoryYes(){ startNextStory("Y"); }
   
 
-  function donateStoryNo(){ startNextStory(); }
+  function donateStoryNo(){ startNextStory("N"); }
   
-  function startNextStory()
+  function startNextStory(isDonate)
   {
+    SetCookie("StoryOneDonate", isDonate , 1);
     var nextLocationUrl =  "story_two.html?" + "UserSituation=" + userSituation + "&StoryOne=" + storyOne + "&StoryTwo=" + storyTwo + "&StoryThree=" + storyThree ;
     document.location =  nextLocationUrl ;
   }
 
-  function rAsubmit() {
-      var obj=document.getElementsByName("q1_value");
-			  var selected=[];
-			  for (var i=0; i<obj.length; i++) {
-				if (obj[i].checked) {
-				  selected.push(obj[i].value);
-				  }
-				}
-			console.log("您勾選的項目 : " + selected.join());
-      var obj=document.getElementsByName("q2_value");
-			  var selected=[];
-			  for (var i=0; i<obj.length; i++) {
-				if (obj[i].checked) {
-				  selected.push(obj[i].value);
-				  }
-				}
-			console.log("您勾選的項目 : " + selected.join());
-  };
+  function getCheckBoxValue(ele)
+  {
+    var selected=[];
+		for (var i=0; i<ele.length; i++) 
+    {
+			if (ele[i].checked) 
+      {
+			  selected.push(ele[i].value);
+			}
+    }
+    return selected.join();
+  }
 
   function getStoryInfo(storyType)
   {
@@ -588,6 +613,21 @@
           document.getElementById("attitudeQ6").innerHTML = data['Q6'] ;
           document.getElementById("attitudeQ7").innerHTML = data['Q7'] ;
           document.getElementById("storyTitle").innerHTML = data['StoryTitle'] ;
+          situation_One_Des_For_EditSub = data['StoryEx'] ;
+          situation_Two_Des_For_EditSub = data['StoryEx2'] ;
+          // Handler Des of title.
+          var desStr = "本階段會讓您閱讀幾則故事內容，這些故事分別是由不同基金會提供實際案例(已做化名處理，並消除任何可辨識個人訊息內容)，在閱讀故事時，請您在觀看時，";
+          if(userSituation==1) {
+            desStr = desStr + situation_One_Des + "。看完故事後，會請您書寫剛才所看見的故事內容。";
+            document.getElementById("descriptionOfEditTitle").innerHTML = situation_One_Des_For_Edit ;
+            document.getElementById("descriptionOfEditSubTitle").innerHTML = situation_One_Des_For_EditSub ;
+          }
+          else {
+            desStr = desStr + situation_Two_Des + "。看完故事後，會請您書寫剛才所看見的故事內容。";
+            document.getElementById("descriptionOfEditTitle").innerHTML = situation_Two_Des_For_Edit ;
+            document.getElementById("descriptionOfEditSubTitle").innerHTML = situation_Two_Des_For_EditSub ;
+          }
+          document.getElementById("descriptionOfTitle").innerHTML = desStr ;
         }
       });
   }

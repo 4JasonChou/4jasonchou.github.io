@@ -180,9 +180,23 @@
               <option value="Female">女</option>
               <option value="Male">男</option>
             </select></br>
-            <input type="text" class="form-control" id="inputAge" placeholder="您的年齡"> </br>
-            <input type="text" class="form-control" id="inputPhone" placeholder="您的手機"> </br>
-            <input type="text" class="form-control" id="inputEmail" placeholder="您的Email"> </br>
+            <select class="form-control" id="inputAge" >
+              <option value="default">您的年齡</option>
+              <option value="10to15">10~15歲</option>
+              <option value="16to20">16~20歲</option>
+              <option value="21to25">21~25歲</option>
+              <option value="26to30">26~30歲</option>
+              <option value="31to35">31~35歲</option>
+              <option value="36to40">36~40歲</option>
+              <option value="41to45">41~45歲</option>
+              <option value="46to50">46~50歲</option>
+              <option value="51to55">51~55歲</option>
+              <option value="56to60">56~60歲</option>
+              <option value="61to65">61~65歲</option>
+              <option value="66to70">66~70歲</option>
+            </select></br>
+            <input type="text" class="form-control" id="inputPhone" placeholder="您的手機 ( 做為核對您先前資訊之用途，並不會作其他用途使用 )"> </br>
+            <input type="text" class="form-control" id="inputEmail" placeholder="您的Email ( 做為核對您先前資訊之用途，並不會作其他用途使用 )"> </br>
             <input type="checkbox" id="agreebox" name="agreebox" value="AgreeCheck">
             <label for="agreebox" class="text-white">我同意同意書之內容，且已完成資料的填寫。</label> </br></br>
             <input type="button" Onclick="subjectInputInfoHandler()" class="btn btn-primary mx-auto"  value="開始測驗" />

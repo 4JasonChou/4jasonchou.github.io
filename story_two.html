@@ -442,50 +442,11 @@
     // Select the Version
     userSituation = UrlParam.paramValues("UserSituation")[0];
 
-    // Handler Des of title.
-    var desStr = "本階段會讓您閱讀幾則故事內容，這些故事分別是由不同基金會提供實際案例(已做化名處理，並消除任何可辨識個人訊息內容)，在閱讀故事時，請您在觀看時，";
-    if(userSituation==1) {
-      desStr = desStr + situation_One_Des + "。看完故事後，會請您書寫剛才所看見的故事內容。";
-      document.getElementById("descriptionOfEditTitle").innerHTML = situation_One_Des_For_Edit ;
-      document.getElementById("descriptionOfEditSubTitle").innerHTML = situation_One_Des_For_EditSub ;
-    }
-    else {
-      desStr = desStr + situation_Two_Des + "。看完故事後，會請您書寫剛才所看見的故事內容。";
-      document.getElementById("descriptionOfEditTitle").innerHTML = situation_Two_Des_For_Edit ;
-      document.getElementById("descriptionOfEditSubTitle").innerHTML = situation_Two_Des_For_EditSub ;
-    }
-    document.getElementById("descriptionOfTitle").innerHTML = desStr ;
-
     // Handler Story Info
     getStoryInfo(storyTwo);
-
-
   }
   
   init();
-
-  /* Unit Func - Html */
-  function getHtmlValue(varname)
-  {
-    var url = window.location.href;
-    var qparts = url.split("?");
-    if (qparts.length == 0){return "";}
-    var query = qparts[1];
-    var vars = query.split("&amp;");
-    var value = "";
-    for (i=0; i<vars.length; i++)
-    {
-      var parts = vars[i].split("=");
-      if (parts[0] == varname)
-      {
-        value = parts[1];
-        break;
-      }
-    }
-    value = unescape(value);
-    value.replace(/\+/g," ");
-    return value;
-  }
   
 	/* Unit Func - Get Cookie */
 	function getCookie(name){
@@ -582,6 +543,21 @@
           document.getElementById("attitudeQ6").innerHTML = data['Q6'] ;
           document.getElementById("attitudeQ7").innerHTML = data['Q7'] ;
           document.getElementById("storyTitle").innerHTML = data['StoryTitle'] ;
+          situation_One_Des_For_EditSub = data['StoryEx'] ;
+          situation_Two_Des_For_EditSub = data['StoryEx2'] ;
+          // Handler Des of title.
+          var desStr = "本階段會讓您閱讀幾則故事內容，這些故事分別是由不同基金會提供實際案例(已做化名處理，並消除任何可辨識個人訊息內容)，在閱讀故事時，請您在觀看時，";
+          if(userSituation==1) {
+            desStr = desStr + situation_One_Des + "。看完故事後，會請您書寫剛才所看見的故事內容。";
+            document.getElementById("descriptionOfEditTitle").innerHTML = situation_One_Des_For_Edit ;
+            document.getElementById("descriptionOfEditSubTitle").innerHTML = situation_One_Des_For_EditSub ;
+          }
+          else {
+            desStr = desStr + situation_Two_Des + "。看完故事後，會請您書寫剛才所看見的故事內容。";
+            document.getElementById("descriptionOfEditTitle").innerHTML = situation_Two_Des_For_Edit ;
+            document.getElementById("descriptionOfEditSubTitle").innerHTML = situation_Two_Des_For_EditSub ;
+          }
+          document.getElementById("descriptionOfTitle").innerHTML = desStr ;
         }
       });
   }
