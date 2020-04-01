@@ -62,7 +62,7 @@
           <div class="text-center h-100 project" style="background-color:#F0F0F0">
             <div class="d-flex h-100">
               <div class="project-text w-100 my-auto text-center text-lg-left">
-                <h4>第一則故事</h4><hr class="d-none d-lg-block mb-0 ml-0">
+                <h4 id='storyTitle'></h4><hr class="d-none d-lg-block mb-0 ml-0">
                 <p class="mb-0" id="storyArea"><br/></p>
 				        <br />
 				        <input type="button" Onclick="startStoryReply()" class="btn btn-primary col-xl-12"  id="storyReadFinish" value="Next" />
@@ -316,7 +316,7 @@
                     <td><input type="radio" name="q3_value" value="9"> 9</td>
                   </fieldset></tr>
                   <!--Question Ele-->
-                  <tr><td colspan="9" id='attitudeQ4' ></td></td></tr><tr height=50><td  colspan="4">強烈不同意</td><td colspan="5" style="text-align: right;">強烈同意</td></tr>
+                  <tr><td colspan="9" id='attitudeQ4' ></td></tr><tr height=50><td  colspan="4">強烈不同意</td><td colspan="5" style="text-align: right;">強烈同意</td></tr>
                   <tr height=50><fieldset>
                     <td><input type="radio" name="q4_value" value="1"> 1</td>
                     <td><input type="radio" name="q4_value" value="2"> 2</td>
@@ -329,7 +329,7 @@
                     <td><input type="radio" name="q4_value" value="9"> 9</td>
                   </fieldset></tr>
                   <!--Question Ele-->
-                  <tr><td colspan="9" id='attitudeQ5' ></td></td></tr><tr height=50><td  colspan="4">強烈不同意</td><td colspan="5" style="text-align: right;">強烈同意</td></tr>
+                  <tr><td colspan="9" id='attitudeQ5' ></td></tr><tr height=50><td  colspan="4">強烈不同意</td><td colspan="5" style="text-align: right;">強烈同意</td></tr>
                   <tr height=50><fieldset>
                     <td><input type="radio" name="q5_value" value="1"> 1</td>
                     <td><input type="radio" name="q5_value" value="2"> 2</td>
@@ -342,7 +342,7 @@
                     <td><input type="radio" name="q5_value" value="9"> 9</td>
                   </fieldset></tr>
                   <!--Question Ele-->
-                  <tr><td colspan="9" id='attitudeQ6' ></td></td></tr><tr height=50><td  colspan="4">強烈不同意</td><td colspan="5" style="text-align: right;">強烈同意</td></tr>
+                  <tr><td colspan="9" id='attitudeQ6' ></td></tr><tr height=50><td  colspan="4">強烈不同意</td><td colspan="5" style="text-align: right;">強烈同意</td></tr>
                   <tr height=50><fieldset>
                     <td><input type="radio" name="q6_value" value="1"> 1</td>
                     <td><input type="radio" name="q6_value" value="2"> 2</td>
@@ -355,7 +355,8 @@
                     <td><input type="radio" name="q6_value" value="9"> 9</td>
                   </fieldset></tr>
                   <!--Question Ele-->
-                  <tr><td colspan="9" id='attitudeQ7' ></td></td></tr><tr height=50><td  colspan="4">非常負向</td><td colspan="5" style="text-align: right;">非常正向</td></tr>
+                  <tr><td colspan="9" id='attitudeQ7'></td></tr>
+                  <tr height=50><td  colspan="4">非常負向</td><td colspan="5" style="text-align: right;">非常正向</td></tr>
                   <tr height=50><fieldset>
                     <td><input type="radio" name="q7_value" value="1"> 1</td>
                     <td><input type="radio" name="q7_value" value="2"> 2</td>
@@ -586,6 +587,7 @@
           document.getElementById("attitudeQ5").innerHTML = data['Q5'] ;
           document.getElementById("attitudeQ6").innerHTML = data['Q6'] ;
           document.getElementById("attitudeQ7").innerHTML = data['Q7'] ;
+          document.getElementById("storyTitle").innerHTML = data['StoryTitle'] ;
         }
       });
   }

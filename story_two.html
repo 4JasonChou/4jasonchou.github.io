@@ -62,7 +62,7 @@
           <div class="text-center h-100 project" style="background-color:#F0F0F0">
             <div class="d-flex h-100">
               <div class="project-text w-100 my-auto text-center text-lg-left">
-                <h4>第二則故事</h4><hr class="d-none d-lg-block mb-0 ml-0">
+                <h4 id='storyTitle'></h4><hr class="d-none d-lg-block mb-0 ml-0">
                 <p class="mb-0" id="storyArea"><br/></p>
 				        <br />
 				        <input type="button" Onclick="startStoryReply()" class="btn btn-primary col-xl-12"  id="storyReadFinish" value="Next" />
@@ -581,6 +581,7 @@
           document.getElementById("attitudeQ5").innerHTML = data['Q5'] ;
           document.getElementById("attitudeQ6").innerHTML = data['Q6'] ;
           document.getElementById("attitudeQ7").innerHTML = data['Q7'] ;
+          document.getElementById("storyTitle").innerHTML = data['StoryTitle'] ;
         }
       });
   }
