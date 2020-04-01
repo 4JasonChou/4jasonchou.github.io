@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>實驗二 - 流程模擬</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="css/grayscale.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger myforntformat" href="#page-top">實驗階段二</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <p class="nav-link js-scroll-trigger myforntformat" href="">剩於金幣袋數量 :</p>
+          </li>
+          <li class="nav-item">
+            <p class="nav-link js-scroll-trigger myforntformat" id="titleBarForMoneyBagCounter" href="">15 </p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 捐款 Section -->
+  <section id="projects" class="projects-section bg-light">
+    <div class="container">
+
+      <!-- Donate Intro Row -->
+      <div class="row align-items-center no-gutters mb-4 mb-lg-5">
+        <div class="col-xl-12 col-lg-12">
+          <div class="text-center text-lg-left myforntformat">
+            <h4>感謝您閱讀完所有故事</h4>
+            <p class="text-black-50 mb-0">您可以拖曳金幣至捐款箱表示您願意捐贈的量，不一定要將所有的代幣用完，但每個捐款箱至少要有一個。</p>
+            <p class="text-black-50 mb-0"> - 每一袋金幣表示會替您捐出100元 </p>
+            <p class="text-black-50 mb-0"> - 以下是您擁有的金幣袋數量 </p>
+            <table><tr><td><img src="money.png" alt=""></td><td class="myforntformat" style="font-size:  50px;" id="desForMoneyBagCounter">X 15</td></tr></table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Donate Box One Row -->
+      <div class="row justify-content-center no-gutters mb-5 mb-lg-0">
+        <div class="col-lg-6">
+          <img class="img-fluid" src="donateBox01.png" alt="">
+        </div>
+        <div class="col-lg-6">
+          <div class="text-center h-100 project">
+            <div class="d-flex h-100">
+              <div class="project-text w-100 my-auto text-center text-lg-left myforntformat">
+                <h4>財團法人勵馨社會福利事業基金會</h4>
+                <p style="font-size: 20px;" id="boxOne">已放入金幣袋數量 : 0 </p>
+                <br />
+                <table style="width:100%;font-size: 20px;" >
+                  <tr>
+                    <td><input type="button" Onclick="donateAddOneForBox01()" class="btn btn-primary " id="donateYes" value=" + 1 " /></td>
+                    <td><input type="button" Onclick="donateMinOneForBox01()" class="btn btn-primary " id="donateNo" value=" - 1 " /></td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Donate Box Two Row -->
+      <div class="row justify-content-center no-gutters mb-5 mb-lg-0">
+        <div class="col-lg-6">
+          <img class="img-fluid" src="donateBox02.png" alt="">
+        </div>
+        <div class="col-lg-6">
+          <div class="text-center h-100 project">
+            <div class="d-flex h-100">
+              <div class="project-text w-100 my-auto text-center text-lg-left myforntformat">
+                <h4>社團法人台灣憂鬱症防治協會</h4>
+                <p style="font-size: 20px;" id="boxTwo">已放入金幣袋數量 : 0 </p>
+                <br />
+                <table style="width:100%;font-size: 20px;" >
+                  <tr>
+                    <td><input type="button" Onclick="donateAddOneForBox02()" class="btn btn-primary " id="donateYes" value=" + 1 " /></td>
+                    <td><input type="button" Onclick="donateMinOneForBox02()" class="btn btn-primary " id="donateNo" value=" - 1 " /></td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Donate Box Three Row -->
+      <div class="row justify-content-center no-gutters mb-5 mb-lg-0">
+        <div class="col-lg-6">
+          <img class="img-fluid" src="donateBox03.png" alt="">
+        </div>
+        <div class="col-lg-6">
+          <div class="text-center h-100 project">
+            <div class="d-flex h-100">
+              <div class="project-text w-100 my-auto text-center text-lg-left myforntformat">
+                <h4>財團法人台灣更生保護會</h4>
+                <p style="font-size: 20px;" id="boxThree">已放入金幣袋數量 : 0 </p>
+                <br />
+                <table style="width:100%;font-size: 20px;" >
+                  <tr>
+                    <td><input type="button" Onclick="donateAddOneForBox03()" class="btn btn-primary " id="donateYes" value=" + 1 " /></td>
+                    <td><input type="button" Onclick="donateMinOneForBox03()" class="btn btn-primary " id="donateNo" value=" - 1 " /></td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-black small text-center text-white-50">
+    <div class="container">
+      Chou4J &copy; 2020 - for 中原大學心理學研究所指碩士班研究生：廖婉婷
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="js/grayscale.min.js"></script>
+  <script type="text/javascript" src="getUrlParam.js"></script>
+
+</body>
+
+<!-- JavaScript Part -->
+<script type="text/javascript">
+  /* Global var */
+  var totalMoneyBag = 10;
+  var totalMoneyBagUsed = 0;
+  var BoxOneContentSize = 0;
+  var BoxTwoContentSize = 0;
+  var BoxThreeContentSize = 0;
+
+  function init() {
+    
+    UpdateMoneyBag();
+
+
+  }
+  
+  init();
+  
+  function donateAddOneForBox01()
+  {
+    /* Check Box One content size */
+    if( BoxOneContentSize >= 5)
+      return;
+    if( UseMoneyBag() == false )
+      return ;
+    BoxOneContentSize = BoxOneContentSize + 1;  
+    UpdateMoneyBag();
+    document.getElementById("boxOne").innerHTML = "已放入金幣袋數量 : " + BoxOneContentSize.toString();
+    
+  }
+
+  function donateMinOneForBox01()
+  {
+    if( BoxOneContentSize == 0)
+    { return; }
+    if( InsertMoneyBag() == false )
+      return ;
+    BoxOneContentSize = BoxOneContentSize - 1;
+    UpdateMoneyBag();
+    document.getElementById("boxOne").innerHTML = "已放入金幣袋數量 : " + BoxOneContentSize.toString();
+  }
+
+  function donateAddOneForBox02()
+  {
+    /* Check Box One content size */
+    if( BoxTwoContentSize >= 5)
+      return;
+    if( UseMoneyBag() == false )
+      return ;
+      BoxTwoContentSize = BoxTwoContentSize + 1;  
+    UpdateMoneyBag();
+    document.getElementById("boxTwo").innerHTML = "已放入金幣袋數量 : " + BoxTwoContentSize.toString();
+  }
+
+  function donateMinOneForBox02()
+  {
+    if( BoxTwoContentSize == 0)
+    { return; }
+    if( InsertMoneyBag() == false )
+      return ;
+      BoxTwoContentSize = BoxTwoContentSize - 1;
+    UpdateMoneyBag();
+    document.getElementById("boxTwo").innerHTML = "已放入金幣袋數量 : " + BoxTwoContentSize.toString();
+  }
+
+  function donateAddOneForBox03()
+  {
+    /* Check Box One content size */
+    if( BoxThreeContentSize >= 5)
+      return;
+    if( UseMoneyBag() == false )
+      return ;
+      BoxThreeContentSize = BoxThreeContentSize + 1;  
+    UpdateMoneyBag();
+    document.getElementById("boxThree").innerHTML = "已放入金幣袋數量 : " + BoxThreeContentSize.toString();
+  }
+
+  function donateMinOneForBox03()
+  {
+    if( BoxThreeContentSize == 0)
+    { return; }
+    if( InsertMoneyBag() == false )
+      return ;
+      BoxThreeContentSize = BoxThreeContentSize - 1;
+    UpdateMoneyBag();
+    document.getElementById("boxThree").innerHTML = "已放入金幣袋數量 : " + BoxThreeContentSize.toString();
+  }
+
+   /* Func - for show moneyBag */
+  function UseMoneyBag()
+  {
+    /* 沒錢了 */
+    if ( totalMoneyBag == 0 )
+    {
+      return false;
+    }
+    totalMoneyBag = totalMoneyBag - 1 ;
+    totalMoneyBagUsed = totalMoneyBagUsed + 1;
+    return true;
+  }
+
+   function InsertMoneyBag()
+   {
+      /* 沒錢了 */
+      if ( totalMoneyBagUsed == 0 )
+      {
+        return false;
+      }
+      totalMoneyBag = totalMoneyBag + 1 ;
+      totalMoneyBagUsed = totalMoneyBagUsed - 1;
+      return true;
+   }
+
+  function UpdateMoneyBag()
+  {
+    document.getElementById("titleBarForMoneyBagCounter").innerHTML = totalMoneyBag.toString();
+    document.getElementById("desForMoneyBagCounter").innerHTML = " X " +  totalMoneyBag.toString();
+  }
+
+  </script>
+
+</html>
+
+
+
