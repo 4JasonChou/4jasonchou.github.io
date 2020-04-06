@@ -42,8 +42,8 @@
   </nav>
 
   <!-- 捐款 Section -->
-  <section id="projects" class="projects-section bg-light">
-    <div class="container">
+  <section id="projects" class="projects-section bg-light" >
+    <div class="container" id="sectionForDonate" >
 
       <!-- Donate Intro Row -->
       <div class="row align-items-center no-gutters mb-4 mb-lg-5">
@@ -59,7 +59,7 @@
       </div>
 
       <!-- Donate Box One Row -->
-      <div class="row justify-content-center no-gutters mb-5 mb-lg-0">
+      <div class="row justify-content-center no-gutters mb-5 mb-lg-0" id="donateBoxGoh">
         <div class="col-lg-6">
           <img class="img-fluid" src="donateBox01.png" alt="">
         </div>
@@ -83,7 +83,7 @@
       </div>
 
       <!-- Donate Box Two Row -->
-      <div class="row justify-content-center no-gutters mb-5 mb-lg-0">
+      <div class="row justify-content-center no-gutters mb-5 mb-lg-0" id="donateBoxDep" >
         <div class="col-lg-6">
           <img class="img-fluid" src="donateBox02.png" alt="">
         </div>
@@ -107,7 +107,7 @@
       </div>
 
       <!-- Donate Box Three Row -->
-      <div class="row justify-content-center no-gutters mb-5 mb-lg-0">
+      <div class="row justify-content-center no-gutters mb-5 mb-lg-0" id="donateBoxAft" >
         <div class="col-lg-6">
           <img class="img-fluid" src="donateBox03.png" alt="">
         </div>
@@ -130,11 +130,120 @@
         </div>
       </div>
 
+      <input type="button" Onclick="finishDonate()" class="btn btn-primary col-xl-12"  id="finalSubmitFinishDonate" value="完成捐款" />
+
+    </div>
+
+    <div class="container" id="sectionForRecordName" style="display:none">
+
+      <!-- Des Intro Row -->
+      <div class="row align-items-center no-gutters mb-4 mb-lg-5" >
+        <div class="col-xl-12 col-lg-12">
+          <div class="text-center text-lg-left myforntformat">
+            <h4>感謝您的捐款！</h4>
+            <p class="mb-0">請問您是否願意空開姓名至該基金會芳名錄 ? </p></br>
+            <table class="myforntformat" style="width:100%;font-size:16px;">
+              <!--Question Ele-->
+              <fieldset>
+                <tr height=50>
+                  <td><input type="radio" name="donateShowName" value="Yes" >  願意公開姓名至基金會芳名錄</td>
+                </tr>
+                <tr height=50>
+                  <td><input type="radio" name="donateShowName" value="No"  checked="checked" > 不願意公開姓名至基金會芳名錄</td>
+                </tr>
+              </fieldset>
+            </table>
+          </br><p class="mb-0">(本研究“僅提供姓名”至該基金會，並不會提供額外任何隱私訊息(包含您的個人基本資料、填答內容)，以維護您的個人資料與隱私。)  </p></br>
+            <input type="button" Onclick="finishAndSubmit()" class="btn btn-primary col-xl-12"  id="finishAndSubmit" value="next" />
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="container">
+
+      <!-- Des Intro Row -->
+      <div class="row align-items-center no-gutters mb-4 mb-lg-5"  id="tanksExplan" style="display:none"> 
+        <div class="col-xl-12 col-lg-12">
+          <div class="text-center myforntformat">
+            <h4>非常感謝您完成本實驗！</br>
+              接下來將進行釋疑說明</h4>
+            </br>
+            <input type="button" Onclick="NextToPurpose()" class="btn btn-primary col-xl-6" value="next" />
+          </div>
+        </div>
+      </div>
+
+       <!-- Des Intro Row -->
+       <div class="row align-items-center no-gutters mb-4 mb-lg-5" id="purposeExplan" style="display:none">
+        <div class="col-xl-12 col-lg-12">
+          <div class="text-lg-left myforntformat">
+            <h4>實驗目的：</h4>
+            <p class="mb-0">本實驗研究目的是想了解同理心誘發對於利社會行為的影響，並且瞭解心理病態人格特質者的利社會行為表現形態。而在剛才的實驗中，藉由讓您觀看故事、書寫故事內容的過程，讓您更能夠站在不同觀點(同理 或 站在客觀角度)去理解故事主角的狀態，而這樣的狀態是否會影響您的態度、情緒，進而影響到您是否願意幫助與主角相似的族群，以及願意幫助的量(如：本研究的捐款多寡)。而本研究的第一階段是了解您的心理病態人格特質及同理能力，目的在於了解在心理病態人格特質、同理能力的高、低程度不同，是否會影響利社會行為表現的型態。由上述的結果藉此能夠使我們了解同理心的運作模式及心理病態人格特質會有的利社會行為模式。</p>
+          </div>
+          <div class="text-center">
+            </br>
+            <input type="button" Onclick="NextToDeceive()" class="btn btn-primary col-xl-6" value="next" />
+          </div>
+        </div>
+      </div>
+
+       <!-- Des Intro Row -->
+       <div class="row align-items-center no-gutters mb-4 mb-lg-5" id="deceiveExplan" style="display:none">
+        <div class="col-xl-12 col-lg-12">
+          <div class="text-lg-left myforntformat">
+            <h4>欺瞞：</h4>
+            <p class="mb-0">本研究中，有部分欺瞞參與者成分，內容如下： </br>
+              1 . 本研究並未與科技部及基金會合作，且目的並非「調查大學生對不同族群之興趣及了解」，而此欺瞞目的是為了避免參與者猜測實驗目的及增加實驗的真實性，降低參與者出現社會期許效果。 </br>
+              2 . 本研究並不會實際執行捐款或提供捐款者姓名至基金會，而此操弄目的是為了瞭解參與者在不同狀態下的利社會行為的類別及表現。</br>
+              </p>
+          </div>
+          <div class="text-center">
+            </br>
+            <input type="button" Onclick="NextToQuestion()" class="btn btn-primary col-xl-6" value="next" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Des Intro Row -->
+      <div class="row align-items-center no-gutters mb-4 mb-lg-5" id="qustionExplan" style="display:none">
+        <div class="col-xl-12 col-lg-12">
+          <div class="text-lg-left myforntformat">
+            <h4>解釋疑問：</h4>
+            <p class="mb-0">若參與者欲更深入了解研究中的主題，可參考以下說明：</br>
+              1 . 心理病態人格特質：心理病態人格特質並不等同於罹患心理疾患，而是有部分人格特質與心理病態人格者的表現相似(如：行事較為大膽、具有魅力、有自信、冷酷、為達目的不擇手段、同理心能力較低等…)。而此人格特質常見於特定產業中的專業人士。若您對於此議題感興趣，建議您可以閱讀書籍：《沒有良知的人：那些讓人不安的精神病態者》、《反社會人格者的告白：善於操弄人心、剝削弱點的天才》</br>
+              2 . 同理：同理為大多數人熟知，根據過去學者定義同理為您目前所處在一個情緒狀態，而此情緒狀態與同理的對象(如：故事主角)有相似的情緒結構，是我們藉由觀察、想像此對象所誘發出來的，且我們能夠了解目前出現的情緒狀態是由對方造成的(De Vignemont & Singer, 2006)。而同理包含了認知同理及情感同理的成分。</br>
+              </p>
+          </div>
+          <div class="text-center">
+            </br>
+            <input type="button" Onclick="NextToSup()" class="btn btn-primary col-xl-6" value="next" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Des Intro Row -->
+      <div class="row align-items-center no-gutters mb-4 mb-lg-5" id="supExplan" style="display:none">
+        <div class="col-xl-12 col-lg-12">
+          <div class="text-lg-left myforntformat">
+            <h4>其他補充說明：</h4>
+            <p class="mb-0">本研究所執行測驗並非臨床上標準化工具，因此結果並無優劣好壞之分，僅供參與者參考。若您在完成本實驗後仍有疑問及任何建議，歡迎與研究者聯繫：</br>
+              研究生-廖婉婷 </br>
+              聯絡電話：03-2653427，電子郵件信箱：liao9909@hotmail.com.tw </br>
+              </p>
+          </div>
+          <div class="text-center">
+            </br>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-black small text-center text-white-50">
+  <footer class="small text-center text-black-50">
     <div class="container">
       Chou4J &copy; 2020 - for 中原大學心理學研究所指碩士班研究生：廖婉婷
     </div>
@@ -150,13 +259,14 @@
   <!-- Custom scripts for this template -->
   <script src="js/grayscale.min.js"></script>
   <script type="text/javascript" src="getUrlParam.js"></script>
+  <script type="text/javascript" src="commonFuncs.js"></script>
 
 </body>
 
 <!-- JavaScript Part -->
 <script type="text/javascript">
   /* Global var */
-  var totalMoneyBag = 10;
+  var totalMoneyBag = 15;
   var totalMoneyBagUsed = 0;
   var BoxOneContentSize = 0;
   var BoxTwoContentSize = 0;
@@ -164,17 +274,94 @@
 
   function init() {
     
-    UpdateMoneyBag();
+    var donateForBoxGoh = getCookie("donateBoxGoh");
+    var donateForBoxDep = getCookie("donateBoxDep");
+    var donateForBoxAft = getCookie("donateBoxAft");
 
+
+    if ( donateForBoxGoh == 1 )
+    {
+      totalMoneyBag = totalMoneyBag - 1 ;
+      totalMoneyBagUsed = totalMoneyBagUsed + 1;
+      BoxOneContentSize = BoxOneContentSize + 1;
+    }
+    else
+    {
+      document.getElementById("donateBoxGoh").style.display = "none";
+    }
+
+    if ( donateForBoxDep == 1 )
+    {
+      totalMoneyBag = totalMoneyBag - 1 ;
+      totalMoneyBagUsed = totalMoneyBagUsed + 1;
+      BoxTwoContentSize = BoxTwoContentSize + 1 ;
+    }
+    else
+    {
+      document.getElementById("donateBoxDep").style.display = "none";
+    }
+
+    if ( donateForBoxAft == 1 )
+    {
+      totalMoneyBag = totalMoneyBag - 1 ;
+      totalMoneyBagUsed = totalMoneyBagUsed + 1;
+      BoxThreeContentSize = BoxThreeContentSize + 1;
+    }
+    else
+    {
+      document.getElementById("donateBoxAft").style.display = "none";
+    }
+
+    UpdateMoneyBag();
+    document.getElementById("boxOne").innerHTML = "已放入金幣袋數量 : " + BoxOneContentSize.toString();
+    document.getElementById("boxTwo").innerHTML = "已放入金幣袋數量 : " + BoxTwoContentSize.toString();
+    document.getElementById("boxThree").innerHTML = "已放入金幣袋數量 : " + BoxThreeContentSize.toString();
 
   }
   
   init();
   
+  /* Process Func */
+  function finishDonate(){
+    document.getElementById("sectionForDonate").style.display = "none";    
+    document.getElementById("sectionForRecordName").style.display = "block";    
+  }
+
+  function finishAndSubmit(){
+    document.getElementById("sectionForRecordName").style.display = "none";    
+    document.getElementById("tanksExplan").style.display = "block";    
+  }
+  
+  function NextToPurpose(){
+    document.getElementById("tanksExplan").style.display = "none";    
+    document.getElementById("purposeExplan").style.display = "block";    
+  }
+
+  function NextToPurpose(){
+    document.getElementById("tanksExplan").style.display = "none";    
+    document.getElementById("purposeExplan").style.display = "block";    
+  }
+
+  function NextToDeceive(){
+    document.getElementById("purposeExplan").style.display = "none";    
+    document.getElementById("deceiveExplan").style.display = "block";    
+  }
+
+  function NextToQuestion(){
+    document.getElementById("deceiveExplan").style.display = "none";    
+    document.getElementById("qustionExplan").style.display = "block";    
+  }
+
+  function NextToSup(){
+    document.getElementById("qustionExplan").style.display = "none";    
+    document.getElementById("supExplan").style.display = "block";    
+  }
+
+
   function donateAddOneForBox01()
   {
     /* Check Box One content size */
-    if( BoxOneContentSize >= 5)
+    if( BoxOneContentSize >= 15)
       return;
     if( UseMoneyBag() == false )
       return ;
@@ -198,7 +385,7 @@
   function donateAddOneForBox02()
   {
     /* Check Box One content size */
-    if( BoxTwoContentSize >= 5)
+    if( BoxTwoContentSize >= 15)
       return;
     if( UseMoneyBag() == false )
       return ;
@@ -221,7 +408,7 @@
   function donateAddOneForBox03()
   {
     /* Check Box One content size */
-    if( BoxThreeContentSize >= 5)
+    if( BoxThreeContentSize >= 15)
       return;
     if( UseMoneyBag() == false )
       return ;
@@ -272,6 +459,32 @@
     document.getElementById("desForMoneyBagCounter").innerHTML = " X " +  totalMoneyBag.toString();
   }
 
+
+  function sendDataToExcel()
+  {
+    var tempMR = getCookie("one_mrv1") + getCookie("one_mrv2") + getCookie("one_mrv3") + getCookie("one_mrv4") + getCookie("one_mrv5") + getCookie("one_mrv6") + getCookie("one_mrv7") + getCookie("one_mrv8") + getCookie("one_mrv9") + + getCookie("one_mrv10") + getCookie("one_mrv11") + getCookie("one_mrv12") + getCookie("one_mrv13");
+    var subjectInfo = {
+      'Name' : getCookie("subjectName") ,
+      'Gender' : getCookie("subjectGender") ,
+      'Age' : getCookie("subjectAge") ,
+      'Phone' : getCookie("subjectPhone") ,
+      'Email' : getCookie("subjectEmail") ,
+      'StoryOne_Type' : storyOne ,
+      'StoryOne_UseTimes' : experienceWrittingTime.toString() ,
+      'StoryOne_Art' : getCookie("one_subjectInputArt") ,
+      'StoryOne_MR' : tempMR,
+      'StoryOne_AR' : ""
+    }
+    $.ajax({
+        type: "post",
+        url: "https://script.google.com/macros/s/AKfycbxWOB548AGfz9OqUFSKRaBkkWXDpMpyxOr3ronUNJ5VyABRFm4/exec",
+        data: subjectInfo ,
+        dataType: "JSON",
+        success: function (response) {
+          alert('感謝您的填寫');
+        }
+      });
+   }
   </script>
 
 </html>

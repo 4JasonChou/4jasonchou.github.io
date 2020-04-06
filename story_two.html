@@ -82,7 +82,7 @@
                 <h4 class="text-white" id="descriptionOfEditTitle" >請您以”我”為主詞...</h4>
                 <p class="mb-0 text-white-50" id="descriptionOfEditSubTitle">如：美美...</p>
                 <hr class="d-none d-lg-block mb-0 mr-0"><br />
-                <textarea   class="mytextarea col-xl-12" rows="10" >輸入你想要寫的內容...</textarea>
+                <textarea   class="mytextarea col-xl-12" rows="10" id="subjectInputArt">輸入你想要寫的內容...</textarea>
                 <br/>
                 <input type="button" Onclick="startStoryMoodReply()" class="btn btn-primary col-xl-12"  id="storyReadFinish" value="Next" />
               </div>
@@ -414,6 +414,7 @@
   <!-- Custom scripts for this template -->
   <script src="js/grayscale.min.js"></script>
   <script type="text/javascript" src="getUrlParam.js"></script>
+  <script type="text/javascript" src="commonFuncs.js"></script>
 
 </body>
 
@@ -448,20 +449,6 @@
   
   init();
   
-	/* Unit Func - Get Cookie */
-	function getCookie(name){
-		var arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
-		if (arr != null) return unescape(arr[2]); return null;
-	}
-
-  /* Unit Func - Get Random */
-  function getRandomOneOrTwo(){
-		var num = Math.floor(Math.random() * 10) + 1;
-		if ( num > 5 )
-			return 2;
-		return 1 ;
-	}
-
   /* Process Func */
   function startReadingStory(){
     document.getElementById("startMyStory").style.display = "none";    
@@ -470,30 +457,91 @@
 
   function startStoryReply()
   {
+    experienceTimerStart();
     document.getElementById("sectionForStory").style.display = "none";    
     document.getElementById("sectionForStoryReply").style.display = "block";    
   }
 
   function startStoryMoodReply()
   {
+    var editBox = document.getElementById("subjectInputArt");
+    if ( editBox.textLength < 100 ) {
+      alert("請您再多書些一些內容喔！謝謝！");
+      return;
+    }
+
+    experienceTimerStop();
+    // Set to Cookie : 
+    SetCookie("two_subjectInputArt",editBox.value,1);
+    SetCookie("two_subjectInputArtTime",experienceWrittingTime,1);
+
     document.getElementById("sectionForStoryReply").style.display = "none";    
-    document.getElementById("sectionForStoryMoodReply").style.display = "block";    
+    document.getElementById("sectionForStoryMoodReply").style.display = "block";  
   }
 
   function startStoryAttitudeReply()
   {
+    var v1 = getCheckBoxValue(document.getElementsByName("nausea_value"));
+    var v2 = getCheckBoxValue(document.getElementsByName("happy_value"));
+    var v3 = getCheckBoxValue(document.getElementsByName("sorrowful_value"));
+    var v4 = getCheckBoxValue(document.getElementsByName("rejoice_value"));
+    var v5 = getCheckBoxValue(document.getElementsByName("sad_value"));
+    var v6 = getCheckBoxValue(document.getElementsByName("compassionate_value"));
+    var v7 = getCheckBoxValue(document.getElementsByName("warm_value"));
+    var v8 = getCheckBoxValue(document.getElementsByName("sympathetic_value"));
+    var v9 = getCheckBoxValue(document.getElementsByName("softhearted_value"));
+    var v10 = getCheckBoxValue(document.getElementsByName("moved_value"));
+    var v11 = getCheckBoxValue(document.getElementsByName("tension_value"));
+    var v12 = getCheckBoxValue(document.getElementsByName("fear_value"));
+    var v13 = getCheckBoxValue(document.getElementsByName("tender_value"));
+
+    if ( v1 == "" || v2 == "" || v3 == "" || v4 == "" || v5 == "" || v6 == "" || v7 == "" || v8 == "" || v9 == "" || v10 == "" || v11 == "" || v12 == "" || v13 == ""  ) {
+      alert("尚有選項未填寫喔！謝謝！");
+      return;
+    }
+
+    // Set to Cookie : 
+    var tempMR = v1 + ";" + v2 + ";" + v3 + ";" + v4 + ";" + v5 + ";" + v6 + ";" + v7 + ";" + v8 + ";" + v9 + ";" + v10 + ";" + v11 + ";" + v12 + ";" + v13 ; 
+    SetCookie("two_mrv", tempMR ,1);
+
     document.getElementById("sectionForStoryMoodReply").style.display = "none";    
     document.getElementById("sectionForStoryAttitudeReply").style.display = "block";    
   }
 
   function startStoryDonate()
   {
+    var v1 = getCheckBoxValue(document.getElementsByName("q1_value"));
+    var v2 = getCheckBoxValue(document.getElementsByName("q2_value"));
+    var v3 = getCheckBoxValue(document.getElementsByName("q3_value"));
+    var v4 = getCheckBoxValue(document.getElementsByName("q4_value"));
+    var v5 = getCheckBoxValue(document.getElementsByName("q5_value"));
+    var v6 = getCheckBoxValue(document.getElementsByName("q6_value"));
+    var v7 = getCheckBoxValue(document.getElementsByName("q7_value"));
+
+    if ( v1 == "" || v2 == "" || v3 == "" || v4 == "" || v5 == "" || v6 == "" || v7 == ""  ) {
+      alert("尚有選項未填寫喔！謝謝！");
+      return;
+    }
+
+    // Set to Cookie : 
+    var tempAR = v1 + ";" + v2 + ";" + v3 + ";" + v4 + ";" + v5 + ";" + v6 + ";" + v7 ; 
+    SetCookie("two_arv", tempAR ,1);
+
     document.getElementById("sectionForStoryAttitudeReply").style.display = "none";    
     document.getElementById("sectionForStoryDonate").style.display = "block";     
   }
   
-  function donateStoryYes(){ startNextStory(); }
-  
+  function donateStoryYes()
+  { 
+    if ( storyTwo[0] == 'A' )
+      SetCookie("donateBoxGoh", 1 , 1);
+    if ( storyTwo[0] == 'B' )
+      SetCookie("donateBoxDep", 1 , 1);
+    if ( storyTwo[0] == 'C' )
+      SetCookie("donateBoxAft", 1 , 1);
+    
+    startNextStory();
+  }
 
   function donateStoryNo(){ startNextStory(); }
   
@@ -562,31 +610,25 @@
       });
   }
 
+  
+  var experienceWrittingTimeID = -1 ; 
+  var experienceWrittingTime = 0 ; 
 
-  function sendDataToExcel()
+  function experienceTimerEvent()
   {
-    var subjectInfo = {
-      'Name' : '老王' ,
-      'Gender' : 'Gender' ,
-      'Age' : 'Age',
-      'Occupation' : 'Occupation' ,
-      'Phone' : 'Phone' ,
-      'Email' : 'Email' ,
-      'AbusedAndDomesticViolence' : 'AbusedAndDomesticViolence' ,
-      'DepressionHistory' : 'DepressionHistory' ,
-      'Suicide' : 'Suicide' ,
-      'Drugs' : 'Drugs' ,
-      'Prisoner' : 'Prisoner'
-    }
-    $.ajax({
-        type: "post",
-        url: "https://script.google.com/macros/s/AKfycbxWOB548AGfz9OqUFSKRaBkkWXDpMpyxOr3ronUNJ5VyABRFm4/exec",
-        dataType: "JSON",
-        success: function (response) {
-          alert('感謝您的訂購！！');
-        }
-      });
-   }
+     experienceWrittingTime++ ; 
+  }
+
+  function experienceTimerStart()
+  {
+    experienceWrittingTimeID = setInterval(experienceTimerEvent , 1000);
+  }
+
+  function experienceTimerStop()
+  {
+    clearTimeout(experienceWrittingTimeID);
+  }
+
 	
   </script>
 

@@ -415,6 +415,7 @@
   <!-- Custom scripts for this template -->
   <script src="js/grayscale.min.js"></script>
   <script type="text/javascript" src="getUrlParam.js"></script>
+  <script type="text/javascript" src="commonFuncs.js"></script>
 
 </body>
 
@@ -449,18 +450,7 @@
   
   init();
 
-  /* Func - Setting Cookie */
-  function SetCookie(cookieName,cookieValue,nDays) {
-		var expires = new Date();
-		expires.setTime(expires.getTime() + 86400000);//有效時間保存 1 天 1*24*60*60*1000
-		document.cookie = cookieName + "=" + escape(cookieValue) + ";expires=" + expires.toGMTString()
-	}
-
-	/* Unit Func - Get Cookie */
-	function getCookie(name){
-		var arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
-		if (arr != null) return unescape(arr[2]); return null;
-	}
+  
 
   /* Unit Func - Get Random */
   function getRandomOneOrTwo(){
@@ -478,6 +468,7 @@
 
   function startStoryReply()
   {
+    experienceTimerStart();
     document.getElementById("sectionForStory").style.display = "none";    
     document.getElementById("sectionForStoryReply").style.display = "block";    
   }
@@ -491,8 +482,10 @@
       return;
     }
 
+    experienceTimerStop();
     // Set to Cookie : 
     SetCookie("one_subjectInputArt",editBox.value,1);
+    SetCookie("one_subjectInputArtTime",experienceWrittingTime,1);
 
     document.getElementById("sectionForStoryReply").style.display = "none";    
     document.getElementById("sectionForStoryMoodReply").style.display = "block";    
@@ -521,19 +514,8 @@
 
 
     // Set to Cookie : 
-    SetCookie("one_nausea_value", v1 ,1);
-    SetCookie("one_happy_value", v2 ,1);
-    SetCookie("one_sorrowful_value", v3,1);
-    SetCookie("one_rejoice_value", v4 ,1);
-    SetCookie("one_sad_value", v5,1);
-    SetCookie("one_compassionate_value", v6 ,1);
-    SetCookie("one_warm_value", v7,1);
-    SetCookie("one_sympathetic_value", v8 ,1);
-    SetCookie("one_softhearted_value", v9 ,1);
-    SetCookie("one_moved_value", v10 ,1);
-    SetCookie("one_tension_value", v11 ,1);
-    SetCookie("one_fear_value", v12 ,1);
-    SetCookie("one_tender_value", v13 ,1);
+    var tempMR = v1 + ";" + v2 + ";" + v3 + ";" + v4 + ";" + v5 + ";" + v6 + ";" + v7 + ";" + v8 + ";" + v9 + ";" + v10 + ";" + v11 + ";" + v12 + ";" + v13 ; 
+    SetCookie("one_mrv", tempMR ,1);
 
     document.getElementById("sectionForStoryMoodReply").style.display = "none";    
     document.getElementById("sectionForStoryAttitudeReply").style.display = "block";    
@@ -555,42 +537,35 @@
     }
 
     // Set to Cookie : 
-    SetCookie("one_atv1", v1 ,1);
-    SetCookie("one_atv2", v2 ,1);
-    SetCookie("one_atv3", v3, 1);
-    SetCookie("one_atv4", v4 ,1);
-    SetCookie("one_atv5", v5, 1);
-    SetCookie("one_atv6", v6 ,1);
-    SetCookie("one_atv7", v7, 1);
-
+    var tempAR = v1 + ";" + v2 + ";" + v3 + ";" + v4 + ";" + v5 + ";" + v6 + ";" + v7 ; 
+    SetCookie("one_arv", tempAR ,1);
+    
     document.getElementById("sectionForStoryAttitudeReply").style.display = "none";    
     document.getElementById("sectionForStoryDonate").style.display = "block";     
   }
 
-  function donateStoryYes(){ startNextStory("Y"); }
-  
+  function donateStoryYes()
+  { 
+    if ( storyOne[0] == 'A' )
+      SetCookie("donateBoxGoh", 1 , 1);
+    if ( storyOne[0] == 'B' )
+      SetCookie("donateBoxDep", 1 , 1);
+    if ( storyOne[0] == 'C' )
+      SetCookie("donateBoxAft", 1 , 1);
+    
+    startNextStory();
+  }
 
-  function donateStoryNo(){ startNextStory("N"); }
+
+  function donateStoryNo(){ startNextStory(); }
   
-  function startNextStory(isDonate)
+  function startNextStory()
   {
-    SetCookie("StoryOneDonate", isDonate , 1);
     var nextLocationUrl =  "story_two.html?" + "UserSituation=" + userSituation + "&StoryOne=" + storyOne + "&StoryTwo=" + storyTwo + "&StoryThree=" + storyThree ;
     document.location =  nextLocationUrl ;
   }
 
-  function getCheckBoxValue(ele)
-  {
-    var selected=[];
-		for (var i=0; i<ele.length; i++) 
-    {
-			if (ele[i].checked) 
-      {
-			  selected.push(ele[i].value);
-			}
-    }
-    return selected.join();
-  }
+  
 
   function getStoryInfo(storyType)
   {
@@ -631,33 +606,27 @@
         }
       });
   }
+  var experienceWrittingTimeID = -1 ; 
+  var experienceWrittingTime = 0 ; 
 
-
-  function sendDataToExcel()
+  function experienceTimerEvent()
   {
-    var subjectInfo = {
-      'Name' : '老王' ,
-      'Gender' : 'Gender' ,
-      'Age' : 'Age',
-      'Occupation' : 'Occupation' ,
-      'Phone' : 'Phone' ,
-      'Email' : 'Email' ,
-      'AbusedAndDomesticViolence' : 'AbusedAndDomesticViolence' ,
-      'DepressionHistory' : 'DepressionHistory' ,
-      'Suicide' : 'Suicide' ,
-      'Drugs' : 'Drugs' ,
-      'Prisoner' : 'Prisoner'
-    }
-    $.ajax({
-        type: "post",
-        url: "https://script.google.com/macros/s/AKfycbxWOB548AGfz9OqUFSKRaBkkWXDpMpyxOr3ronUNJ5VyABRFm4/exec",
-        dataType: "JSON",
-        success: function (response) {
-          alert('感謝您的訂購！！');
-        }
-      });
-   }
+     experienceWrittingTime++ ; 
+  }
+
+  function experienceTimerStart()
+  {
+    experienceWrittingTimeID = setInterval(experienceTimerEvent , 1000);
+  }
+
+  function experienceTimerStop()
+  {
+    clearTimeout(experienceWrittingTimeID);
+  }
+
 	
+
+
   </script>
 
 </html>
