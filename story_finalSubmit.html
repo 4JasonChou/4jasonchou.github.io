@@ -274,6 +274,12 @@
 
   function init() {
     
+    // Get Html Value to load story
+    storyOne = UrlParam.paramValues("StoryOne")[0];
+    storyTwo = UrlParam.paramValues("StoryTwo")[0];
+    storyThree = UrlParam.paramValues("StoryThree")[0];
+
+
     var donateForBoxGoh = getCookie("donateBoxGoh");
     var donateForBoxDep = getCookie("donateBoxDep");
     var donateForBoxAft = getCookie("donateBoxAft");
@@ -328,6 +334,7 @@
   }
 
   function finishAndSubmit(){
+    sendDataToExcel();
     document.getElementById("sectionForRecordName").style.display = "none";    
     document.getElementById("tanksExplan").style.display = "block";    
   }
@@ -462,18 +469,34 @@
 
   function sendDataToExcel()
   {
-    var tempMR = getCookie("one_mrv1") + getCookie("one_mrv2") + getCookie("one_mrv3") + getCookie("one_mrv4") + getCookie("one_mrv5") + getCookie("one_mrv6") + getCookie("one_mrv7") + getCookie("one_mrv8") + getCookie("one_mrv9") + + getCookie("one_mrv10") + getCookie("one_mrv11") + getCookie("one_mrv12") + getCookie("one_mrv13");
+    // Get subject info 
+    var needRecordName = getCheckBoxValue(document.getElementsByName("donateShowName"));
+
     var subjectInfo = {
       'Name' : getCookie("subjectName") ,
       'Gender' : getCookie("subjectGender") ,
       'Age' : getCookie("subjectAge") ,
       'Phone' : getCookie("subjectPhone") ,
       'Email' : getCookie("subjectEmail") ,
-      'StoryOne_Type' : storyOne ,
-      'StoryOne_UseTimes' : experienceWrittingTime.toString() ,
+      'StoryOne_Type' : storyOne,
       'StoryOne_Art' : getCookie("one_subjectInputArt") ,
-      'StoryOne_MR' : tempMR,
-      'StoryOne_AR' : ""
+      'StoryOne_UseTimes' : getCookie("one_subjectInputArtTime") ,
+      'StoryOne_MR' : getCookie("one_mrv"),
+      'StoryOne_AR' : getCookie("one_arv"),
+      'StoryTwo_Type' : storyTwo,
+      'StoryTwo_Art' : getCookie("two_subjectInputArt") ,
+      'StoryTwo_UseTimes' : getCookie("two_subjectInputArtTime") ,
+      'StoryTwo_MR' : getCookie("two_mrv"),
+      'StoryTwo_AR' : getCookie("two_arv"),
+      'StoryThree_Type' : storyThree,
+      'StoryThree_Art' : getCookie("three_subjectInputArt") ,
+      'StoryThree_UseTimes' : getCookie("three_subjectInputArtTime") ,
+      'StoryThree_MR' : getCookie("three_mrv"),
+      'StoryThree_AR' : getCookie("three_arv"),
+      'DonateGoh' : BoxOneContentSize,
+      'DonateDep' : BoxTwoContentSize,
+      'DonateAft' : BoxThreeContentSize,
+      'NeedRecordName' : needRecordName
     }
     $.ajax({
         type: "post",

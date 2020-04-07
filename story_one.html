@@ -62,6 +62,7 @@
           <div class="text-center h-100 project" style="background-color:#F0F0F0">
             <div class="d-flex h-100">
               <div class="project-text w-100 my-auto text-center text-lg-left">
+                <img src="" alt="Story One Image" width="100%" id="storyImg">
                 <h4 id='storyTitle'></h4><hr class="d-none d-lg-block mb-0 ml-0">
                 <p class="mb-0" id="storyArea"><br/></p>
 				        <br />
@@ -442,6 +443,19 @@
 
     // Select the Version
     userSituation = getRandomOneOrTwo();
+
+    if ( storyOne[0] == 'A' ) 
+    { 
+      document.getElementById("storyImg").src = "StoryA.png";
+    }
+    if ( storyOne[0] == 'B' ) 
+    { 
+      document.getElementById("storyImg").src = "StoryB.png";
+    }
+    if ( storyOne[0] == 'C' ) 
+    { 
+      document.getElementById("storyImg").src = "StoryC.png";
+    }
 
     // Handler Story Info
     getStoryInfo(storyOne);
