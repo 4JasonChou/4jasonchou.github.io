@@ -276,7 +276,7 @@
             <div class="d-flex h-100">
               <div class="project-text w-100 my-auto text-center text-lg-left">
                 <h4 class="myforntformat">態度測量</h4>
-                <p class="mb-0 myforntformat" id="descriptionOfEditSubTitle">作答說明：請圈選你在閱讀完此報導後，現在/此時的情緒與感受狀況，請不用思考太久，憑著現在的情緒感受圈選即可，越往左邊表示越沒有此情緒，越往右邊，表示此情緒感受越為強烈。</p>
+                <p class="mb-0 myforntformat" id="descriptionOfEditSubTitle">請參與者依下列題目回答，對此族群描述的同意程度、重要程度及正負向感受，進行填答(1~9分)</p>
                 <p></p>
                 <table class="myforntformat" style="width:100%;font-size:16px;">
                   <!--Question Ele-->
@@ -306,7 +306,7 @@
                     <td><input type="radio" name="q2_value" value="9"> 9</td>
                   </fieldset></tr>
                   <!--Question Ele-->
-                  <tr><td colspan="9" id='attitudeQ3' ></td></tr><tr height=50><td  colspan="4">強烈不同意</td><td colspan="5" style="text-align: right;">強烈同意</td></tr>
+                  <tr><td colspan="9" id='attitudeQ3' ></td></tr><tr height=50><td  colspan="4">非常不在乎</td><td colspan="5" style="text-align: right;">非常在乎</td></tr>
                   <tr height=50><fieldset>
                     <td><input type="radio" name="q3_value" value="1"> 1</td>
                     <td><input type="radio" name="q3_value" value="2"> 2</td>
@@ -332,7 +332,7 @@
                     <td><input type="radio" name="q4_value" value="9"> 9</td>
                   </fieldset></tr>
                   <!--Question Ele-->
-                  <tr><td colspan="9" id='attitudeQ5' ></td></td></tr><tr height=50><td  colspan="4">強烈不同意</td><td colspan="5" style="text-align: right;">強烈同意</td></tr>
+                  <tr><td colspan="9" id='attitudeQ5' ></td></tr><tr height=50><td  colspan="4">非常不重要</td><td colspan="5" style="text-align: right;">非常重要</td></tr>
                   <tr height=50><fieldset>
                     <td><input type="radio" name="q5_value" value="1"> 1</td>
                     <td><input type="radio" name="q5_value" value="2"> 2</td>
@@ -383,7 +383,7 @@
         <div class="col-xl-12 col-lg-12">
           <div class="featured-text text-center text-lg-left">
             <h4>感謝您閱讀完本故事 : </h4>
-            <p class="text-black-50 mb-0" id="descriptionOfTitle">
+            <p class="text-black-50 mb-0" id="descriptionOfDonateTitle">
               為了感謝，我們在您閱讀完本故事後，將提供您5個代幣作為捐款籌碼(三則故事，共15枚代幣，每一個籌碼可替您捐出100元)。而本故事我們與勵馨社會福利事業基金會合作，請問您在閱讀完本故事後，您有意願捐款給勵馨社會福利事業基金會嗎?
             </p>
           </div>
@@ -621,6 +621,7 @@
           document.getElementById("storyTitle").innerHTML = data['StoryTitle'] ;
           situation_One_Des_For_EditSub = data['StoryEx'] ;
           situation_Two_Des_For_EditSub = data['StoryEx2'] ;
+          document.getElementById("descriptionOfDonateTitle").innerHTML = data['DonateBoxName'] ;
           // Handler Des of title.
           var desStr = "本階段會讓您閱讀幾則故事內容，這些故事分別是由不同基金會提供實際案例(已做化名處理，並消除任何可辨識個人訊息內容)，在閱讀故事時，請您在觀看時，";
           if(userSituation==1) {
