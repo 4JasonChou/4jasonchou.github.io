@@ -335,10 +335,13 @@
 
   function finishAndSubmit(){
     sendDataToExcel();
-    document.getElementById("sectionForRecordName").style.display = "none";    
-    document.getElementById("tanksExplan").style.display = "block";    
   }
   
+  function ScuessSubmit(){
+    document.getElementById("sectionForRecordName").style.display = "none";    
+    document.getElementById("tanksExplan").style.display = "block"; 
+  }
+
   function NextToPurpose(){
     document.getElementById("tanksExplan").style.display = "none";    
     document.getElementById("purposeExplan").style.display = "block";    
@@ -504,7 +507,7 @@
         data: subjectInfo ,
         dataType: "JSON",
         success: function (response) {
-          alert('感謝您的填寫');
+          ScuessSubmit();
         }
       });
    }

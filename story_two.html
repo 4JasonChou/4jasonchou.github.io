@@ -202,6 +202,18 @@
                     <td><input type="radio" name="sympathetic_value" value="9"> 9</td>
                   </fieldset></tr>
                   <tr height=50><fieldset>
+                    <td>生氣</td>
+                    <td><input type="radio" name="angry_value" value="1"> 1</td>
+                    <td><input type="radio" name="angry_value" value="2"> 2</td>
+                    <td><input type="radio" name="angry_value" value="3"> 3</td>
+                    <td><input type="radio" name="angry_value" value="4"> 4</td>
+                    <td><input type="radio" name="angry_value" value="5"> 5</td>
+                    <td><input type="radio" name="angry_value" value="6"> 6</td>
+                    <td><input type="radio" name="angry_value" value="7"> 7</td>
+                    <td><input type="radio" name="angry_value" value="8"> 8</td>
+                    <td><input type="radio" name="angry_value" value="9"> 9</td>
+                  </fieldset></tr>
+                  <tr height=50><fieldset>
                     <td>溫柔</td>
                     <td><input type="radio" name="softhearted_value" value="1"> 1</td>
                     <td><input type="radio" name="softhearted_value" value="2"> 2</td>
@@ -481,6 +493,7 @@
   function startReadingStory(){
     document.getElementById("startMyStory").style.display = "none";    
     document.getElementById("sectionForStory").style.display = "block";    
+    $(window).scrollTop("0");
   }
 
   function startStoryReply()
@@ -488,6 +501,7 @@
     experienceTimerStart();
     document.getElementById("sectionForStory").style.display = "none";    
     document.getElementById("sectionForStoryReply").style.display = "block";    
+    $(window).scrollTop("0");
   }
 
   function startStoryMoodReply()
@@ -504,7 +518,8 @@
     SetCookie("two_subjectInputArtTime",experienceWrittingTime,1);
 
     document.getElementById("sectionForStoryReply").style.display = "none";    
-    document.getElementById("sectionForStoryMoodReply").style.display = "block";  
+    document.getElementById("sectionForStoryMoodReply").style.display = "block"; 
+    $(window).scrollTop("0"); 
   }
 
   function startStoryAttitudeReply()
@@ -517,23 +532,26 @@
     var v6 = getCheckBoxValue(document.getElementsByName("compassionate_value"));
     var v7 = getCheckBoxValue(document.getElementsByName("warm_value"));
     var v8 = getCheckBoxValue(document.getElementsByName("sympathetic_value"));
-    var v9 = getCheckBoxValue(document.getElementsByName("softhearted_value"));
-    var v10 = getCheckBoxValue(document.getElementsByName("moved_value"));
-    var v11 = getCheckBoxValue(document.getElementsByName("tension_value"));
-    var v12 = getCheckBoxValue(document.getElementsByName("fear_value"));
-    var v13 = getCheckBoxValue(document.getElementsByName("tender_value"));
+    var v9 = getCheckBoxValue(document.getElementsByName("angry_value"));
+    var v10 = getCheckBoxValue(document.getElementsByName("softhearted_value"));
+    var v11 = getCheckBoxValue(document.getElementsByName("moved_value"));
+    var v12 = getCheckBoxValue(document.getElementsByName("tension_value"));
+    var v13 = getCheckBoxValue(document.getElementsByName("fear_value"));
+    var v14 = getCheckBoxValue(document.getElementsByName("tender_value"));
 
-    if ( v1 == "" || v2 == "" || v3 == "" || v4 == "" || v5 == "" || v6 == "" || v7 == "" || v8 == "" || v9 == "" || v10 == "" || v11 == "" || v12 == "" || v13 == ""  ) {
+    if ( v1 == "" || v2 == "" || v3 == "" || v4 == "" || v5 == "" || v6 == "" || v7 == "" || v8 == "" || v9 == "" || v10 == "" || v11 == "" || v12 == "" || v13 == "" || v14 == ""  ) {
       alert("尚有選項未填寫喔！謝謝！");
       return;
     }
 
+
     // Set to Cookie : 
-    var tempMR = v1 + ";" + v2 + ";" + v3 + ";" + v4 + ";" + v5 + ";" + v6 + ";" + v7 + ";" + v8 + ";" + v9 + ";" + v10 + ";" + v11 + ";" + v12 + ";" + v13 ; 
+    var tempMR = v1 + ";" + v2 + ";" + v3 + ";" + v4 + ";" + v5 + ";" + v6 + ";" + v7 + ";" + v8 + ";" + v9 + ";" + v10 + ";" + v11 + ";" + v12 + ";" + v13 + ";" + v14 ; 
     SetCookie("two_mrv", tempMR ,1);
 
     document.getElementById("sectionForStoryMoodReply").style.display = "none";    
-    document.getElementById("sectionForStoryAttitudeReply").style.display = "block";    
+    document.getElementById("sectionForStoryAttitudeReply").style.display = "block";
+    $(window).scrollTop("0");
   }
 
   function startStoryDonate()
@@ -557,6 +575,7 @@
 
     document.getElementById("sectionForStoryAttitudeReply").style.display = "none";    
     document.getElementById("sectionForStoryDonate").style.display = "block";     
+    $(window).scrollTop("0");
   }
   
   function donateStoryYes()
