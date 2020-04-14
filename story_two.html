@@ -65,8 +65,10 @@
             <div class="d-flex h-100">
               <div class="project-text w-100 my-auto text-center text-lg-left">
                 <img src="" alt="Story One Image" width="100%" id="storyImg">
-                <h4 id='storyTitle'></h4><hr class="d-none d-lg-block mb-0 ml-0">
-                <p class="mb-0" id="storyArea"><br/></p>
+                <p></p>
+                <h4 class="myforntformat" id='storyTitle'></h4><hr class="d-none d-lg-block mb-0 ml-0">
+                <p></p>
+                <p class="mb-0 myforntformat myforntSizeformat" id="storyArea"><br/></p>
 				        <br />
 				        <input type="button" Onclick="startStoryReply()" class="btn btn-primary col-xl-12"  id="storyReadFinish" value="Next" />
               </div>
@@ -499,9 +501,9 @@
   function startStoryReply()
   {
     experienceTimerStart();
-    document.getElementById("sectionForStory").style.display = "none";    
+    document.getElementById("storyReadFinish").style.display = "none";    
     document.getElementById("sectionForStoryReply").style.display = "block";    
-    $(window).scrollTop("0");
+    
   }
 
   function startStoryMoodReply()
