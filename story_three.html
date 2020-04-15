@@ -502,8 +502,9 @@
   function startStoryReply()
   {
     experienceTimerStart();
-    document.getElementById("storyReadFinish").style.display = "none";    
+    document.getElementById("sectionForStory").style.display = "none";   
     document.getElementById("sectionForStoryReply").style.display = "block";    
+    $(window).scrollTop("0");
   }
 
   function startStoryMoodReply()
@@ -519,7 +520,6 @@
     SetCookie("three_subjectInputArt",editBox.value,1);
     SetCookie("three_subjectInputArtTime",experienceWrittingTime,1);
 
-    document.getElementById("sectionForStory").style.display = "none";   
     document.getElementById("sectionForStoryReply").style.display = "none";    
     document.getElementById("sectionForStoryMoodReply").style.display = "block";    
     $(window).scrollTop("0");

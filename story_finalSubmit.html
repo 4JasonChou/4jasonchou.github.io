@@ -278,7 +278,7 @@
     storyOne = UrlParam.paramValues("StoryOne")[0];
     storyTwo = UrlParam.paramValues("StoryTwo")[0];
     storyThree = UrlParam.paramValues("StoryThree")[0];
-
+    userSituation = UrlParam.paramValues("UserSituation")[0];
 
     var donateForBoxGoh = getCookie("donateBoxGoh");
     var donateForBoxDep = getCookie("donateBoxDep");
@@ -481,6 +481,7 @@
       'Age' : getCookie("subjectAge") ,
       'Phone' : getCookie("subjectPhone") ,
       'Email' : getCookie("subjectEmail") ,
+      'StoryHintType' : userSituation ,
       'StoryOne_Type' : storyOne,
       'StoryOne_Art' : getCookie("one_subjectInputArt") ,
       'StoryOne_UseTimes' : getCookie("one_subjectInputArtTime") ,

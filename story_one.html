@@ -456,10 +456,10 @@
     storyOne = UrlParam.paramValues("StoryOne")[0];
     storyTwo = UrlParam.paramValues("StoryTwo")[0];
     storyThree = UrlParam.paramValues("StoryThree")[0];
+    // 改由外部指定
+    userSituation = UrlParam.paramValues("UserSituation")[0];
 
     // Select the Version
-    userSituation = getRandomOneOrTwo();
-
     if ( storyOne[0] == 'A' ) 
     { 
       document.getElementById("storyImg").src = "StoryA.png";
@@ -511,8 +511,9 @@
   function startStoryReply()
   {
     experienceTimerStart();
-    document.getElementById("storyReadFinish").style.display = "none";    
+    document.getElementById("sectionForStory").style.display = "none";   
     document.getElementById("sectionForStoryReply").style.display = "block";    
+    $(window).scrollTop("0");
   }
 
   function startStoryMoodReply()
@@ -529,7 +530,7 @@
     SetCookie("one_subjectInputArt",editBox.value,1);
     SetCookie("one_subjectInputArtTime",experienceWrittingTime,1);
 
-    document.getElementById("sectionForStory").style.display = "none";   
+    
     document.getElementById("sectionForStoryReply").style.display = "none";    
     document.getElementById("sectionForStoryMoodReply").style.display = "block";  
     

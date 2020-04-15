@@ -30,6 +30,7 @@
     storyOne = UrlParam.paramValues("StoryOne")[0];
     storyTwo = UrlParam.paramValues("StoryTwo")[0];
     storyThree = UrlParam.paramValues("StoryThree")[0];
+    userSituation = UrlParam.paramValues("UserSituation")[0];
   }
   init();
   
@@ -42,7 +43,7 @@
       document.getElementById("inputHint").style.visibility = "visible";
       return;
     }
-    var nextUrl = "story_one.html?" + "StoryOne=" + storyOne + "&StoryTwo=" + storyTwo + "&StoryThree=" + storyThree ;
+    var nextUrl = "story_one.html?" + "UserSituation=" + userSituation +  "&StoryOne=" + storyOne + "&StoryTwo=" + storyTwo + "&StoryThree=" + storyThree ;
     document.location = nextUrl ;
   }
 
