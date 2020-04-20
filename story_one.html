@@ -10,6 +10,13 @@
 
   <title>實驗二 - 流程模擬</title>
 
+  <!-- Lock Copy -->
+  <style type="text/css">
+    body {
+    　-moz-user-select : none;
+    　-webkit-user-select: none;
+    }
+  </style>
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -25,7 +32,7 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
-      <a class="navbar-brand js-scroll-trigger myforntformat" href="#page-top">實驗階段二</a>
+      <a class="navbar-brand js-scroll-trigger myforntformat" href="#page-top">中原大學論文研究</a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menu
         <i class="fas fa-bars"></i>
@@ -48,8 +55,8 @@
       <div class="row align-items-center no-gutters mb-4 mb-lg-5">
         <div class="col-xl-12 col-lg-12">
           <div class="featured-text text-center text-lg-left">
-            <h4>序.</h4>
-            <p class="text-black-50 mb-0" id="descriptionOfTitle">本階段會讓您閱讀幾則故事內容....</p>
+            <h4 class="myforntformat">序.</h4>
+            <p class="mb-0 myforntformat" id="descriptionOfTitle">本階段會讓您閱讀幾則故事內容....</p>
           </div>
 		      <br />
 		      <input type="button" Onclick="startReadingStory()" class="btn btn-primary col-xl-12" id="startMyStory" value="Next" />
@@ -97,7 +104,7 @@
       </div>
       
       <!-- 情緒測量 Row style="display:none" -->
-      <div class="row justify-content-center no-gutters mb-5 mb-lg-0" id="sectionForStoryMoodReply" style="display:none">
+      <div class="row justify-content-center no-gutters mb-5 mb-lg-0" id="sectionForStoryMoodReply" style="display:none" >
         <div class="col-lg-12">
           <div class="text-center h-100 project" style="background-color:#F0F0F0">
             <div class="d-flex h-100">
@@ -106,174 +113,174 @@
                 <p class="mb-0 myforntformat" id="descriptionOfEditSubTitle">作答說明：請圈選你在閱讀完此報導後，現在/此時的情緒與感受狀況，請不用思考太久，憑著現在的情緒感受圈選即可，越往左邊表示越沒有此情緒，越往右邊，表示此情緒感受越為強烈。</p>
                 <p></p>
                 <table class="myforntformat" style="width:100%;font-size:16px;">
-                  <tr height=50><td></td><td  colspan="4">沒有此情緒</td><td colspan="5" style="text-align: right;">強烈感受此情緒</td></tr>
-                  <tr height=50><fieldset>
-                    <td>噁心</td>
-                    <td><input type="radio" name="nausea_value" value="1"> 1</td>
-                    <td><input type="radio" name="nausea_value" value="2"> 2</td>
-                    <td><input type="radio" name="nausea_value" value="3"> 3</td>
-                    <td><input type="radio" name="nausea_value" value="4"> 4</td>
-                    <td><input type="radio" name="nausea_value" value="5"> 5</td>
-                    <td><input type="radio" name="nausea_value" value="6"> 6</td>
-                    <td><input type="radio" name="nausea_value" value="7"> 7</td>
-                    <td><input type="radio" name="nausea_value" value="8"> 8</td>
-                    <td><input type="radio" name="nausea_value" value="9"> 9</td>
+                  <tr height=50 ><td></td><td  colspan="4">沒有此情緒</td><td colspan="5" style="text-align: right;">強烈感受此情緒</td></tr>
+                  <tr height=50 style="border-bottom:1px #666666 solid;" style="border-bottom:1px #666666 solid;" ><fieldset >
+                    <td >1.噁心</td>
+                    <td><input type="radio" class="option-input radio" class="option-input radio" name="nausea_value" value="1"> 1</td>
+                    <td><input type="radio" class="option-input radio" class="option-input radio" name="nausea_value" value="2"> 2</td>
+                    <td><input type="radio" class="option-input radio" class="option-input radio" name="nausea_value" value="3"> 3</td>
+                    <td><input type="radio" class="option-input radio" class="option-input radio" name="nausea_value" value="4"> 4</td>
+                    <td><input type="radio" class="option-input radio" class="option-input radio" name="nausea_value" value="5"> 5</td>
+                    <td><input type="radio" class="option-input radio" class="option-input radio" name="nausea_value" value="6"> 6</td>
+                    <td><input type="radio" class="option-input radio" class="option-input radio" name="nausea_value" value="7"> 7</td>
+                    <td><input type="radio" class="option-input radio" class="option-input radio" name="nausea_value" value="8"> 8</td>
+                    <td><input type="radio" class="option-input radio" class="option-input radio" name="nausea_value" value="9"> 9</td>
+                  </fieldset></tr>
+                  <tr height=50 style="border-bottom:1px #666666 solid;"><fieldset>
+                    <td>2.幸福</td>
+                    <td><input type="radio" class="option-input radio" name="happy_value" value="1"> 1</td>
+                    <td><input type="radio" class="option-input radio" name="happy_value" value="2"> 2</td>
+                    <td><input type="radio" class="option-input radio" name="happy_value" value="3"> 3</td>
+                    <td><input type="radio" class="option-input radio" name="happy_value" value="4"> 4</td>
+                    <td><input type="radio" class="option-input radio" name="happy_value" value="5"> 5</td>
+                    <td><input type="radio" class="option-input radio" name="happy_value" value="6"> 6</td>
+                    <td><input type="radio" class="option-input radio" name="happy_value" value="7"> 7</td>
+                    <td><input type="radio" class="option-input radio" name="happy_value" value="8"> 8</td>
+                    <td><input type="radio" class="option-input radio" name="happy_value" value="9"> 9</td>
+                  </fieldset></tr>
+                  <tr height=50 style="border-bottom:1px #666666 solid;"><fieldset>
+                    <td>3.悲傷</td>
+                    <td><input type="radio" class="option-input radio" name="sorrowful_value" value="1"> 1</td>
+                    <td><input type="radio" class="option-input radio" name="sorrowful_value" value="2"> 2</td>
+                    <td><input type="radio" class="option-input radio" name="sorrowful_value" value="3"> 3</td>
+                    <td><input type="radio" class="option-input radio" name="sorrowful_value" value="4"> 4</td>
+                    <td><input type="radio" class="option-input radio" name="sorrowful_value" value="5"> 5</td>
+                    <td><input type="radio" class="option-input radio" name="sorrowful_value" value="6"> 6</td>
+                    <td><input type="radio" class="option-input radio" name="sorrowful_value" value="7"> 7</td>
+                    <td><input type="radio" class="option-input radio" name="sorrowful_value" value="8"> 8</td>
+                    <td><input type="radio" class="option-input radio" name="sorrowful_value" value="9"> 9</td>
+                  </fieldset></tr>
+                  <tr height=50 style="border-bottom:1px #666666 solid;"><fieldset>
+                    <td>4.開心</td>
+                    <td><input type="radio" class="option-input radio" name="rejoice_value" value="1"> 1</td>
+                    <td><input type="radio" class="option-input radio" name="rejoice_value" value="2"> 2</td>
+                    <td><input type="radio" class="option-input radio" name="rejoice_value" value="3"> 3</td>
+                    <td><input type="radio" class="option-input radio" name="rejoice_value" value="4"> 4</td>
+                    <td><input type="radio" class="option-input radio" name="rejoice_value" value="5"> 5</td>
+                    <td><input type="radio" class="option-input radio" name="rejoice_value" value="6"> 6</td>
+                    <td><input type="radio" class="option-input radio" name="rejoice_value" value="7"> 7</td>
+                    <td><input type="radio" class="option-input radio" name="rejoice_value" value="8"> 8</td>
+                    <td><input type="radio" class="option-input radio" name="rejoice_value" value="9"> 9</td>
+                  </fieldset></tr>
+                  <tr height=50 style="border-bottom:1px #666666 solid;"><fieldset>
+                    <td>5.難過</td>
+                    <td><input type="radio" class="option-input radio" name="sad_value" value="1"> 1</td>
+                    <td><input type="radio" class="option-input radio" name="sad_value" value="2"> 2</td>
+                    <td><input type="radio" class="option-input radio" name="sad_value" value="3"> 3</td>
+                    <td><input type="radio" class="option-input radio" name="sad_value" value="4"> 4</td>
+                    <td><input type="radio" class="option-input radio" name="sad_value" value="5"> 5</td>
+                    <td><input type="radio" class="option-input radio" name="sad_value" value="6"> 6</td>
+                    <td><input type="radio" class="option-input radio" name="sad_value" value="7"> 7</td>
+                    <td><input type="radio" class="option-input radio" name="sad_value" value="8"> 8</td>
+                    <td><input type="radio" class="option-input radio" name="sad_value" value="9"> 9</td>
+                  </fieldset></tr>
+                  <tr height=50 style="border-bottom:1px #666666 solid;"><fieldset>
+                    <td>6.同情</td>
+                    <td><input type="radio" class="option-input radio" name="compassionate_value" value="1"> 1</td>
+                    <td><input type="radio" class="option-input radio" name="compassionate_value" value="2"> 2</td>
+                    <td><input type="radio" class="option-input radio" name="compassionate_value" value="3"> 3</td>
+                    <td><input type="radio" class="option-input radio" name="compassionate_value" value="4"> 4</td>
+                    <td><input type="radio" class="option-input radio" name="compassionate_value" value="5"> 5</td>
+                    <td><input type="radio" class="option-input radio" name="compassionate_value" value="6"> 6</td>
+                    <td><input type="radio" class="option-input radio" name="compassionate_value" value="7"> 7</td>
+                    <td><input type="radio" class="option-input radio" name="compassionate_value" value="8"> 8</td>
+                    <td><input type="radio" class="option-input radio" name="compassionate_value" value="9"> 9</td>
+                  </fieldset></tr>
+                  <tr height=50 style="border-bottom:1px #666666 solid;"><fieldset>
+                    <td>7.溫暖</td>
+                    <td><input type="radio" class="option-input radio" name="warm_value" value="1"> 1</td>
+                    <td><input type="radio" class="option-input radio" name="warm_value" value="2"> 2</td>
+                    <td><input type="radio" class="option-input radio" name="warm_value" value="3"> 3</td>
+                    <td><input type="radio" class="option-input radio" name="warm_value" value="4"> 4</td>
+                    <td><input type="radio" class="option-input radio" name="warm_value" value="5"> 5</td>
+                    <td><input type="radio" class="option-input radio" name="warm_value" value="6"> 6</td>
+                    <td><input type="radio" class="option-input radio" name="warm_value" value="7"> 7</td>
+                    <td><input type="radio" class="option-input radio" name="warm_value" value="8"> 8</td>
+                    <td><input type="radio" class="option-input radio" name="warm_value" value="9"> 9</td>
+                  </fieldset></tr>
+                  <tr height=50 style="border-bottom:1px #666666 solid;"><fieldset>
+                    <td>8.同理</td>
+                    <td><input type="radio" class="option-input radio" name="sympathetic_value" value="1"> 1</td>
+                    <td><input type="radio" class="option-input radio" name="sympathetic_value" value="2"> 2</td>
+                    <td><input type="radio" class="option-input radio" name="sympathetic_value" value="3"> 3</td>
+                    <td><input type="radio" class="option-input radio" name="sympathetic_value" value="4"> 4</td>
+                    <td><input type="radio" class="option-input radio" name="sympathetic_value" value="5"> 5</td>
+                    <td><input type="radio" class="option-input radio" name="sympathetic_value" value="6"> 6</td>
+                    <td><input type="radio" class="option-input radio" name="sympathetic_value" value="7"> 7</td>
+                    <td><input type="radio" class="option-input radio" name="sympathetic_value" value="8"> 8</td>
+                    <td><input type="radio" class="option-input radio" name="sympathetic_value" value="9"> 9</td>
+                  </fieldset></tr>
+                  <tr height=50 style="border-bottom:1px #666666 solid;"><fieldset>
+                    <td>9.生氣</td>
+                    <td><input type="radio" class="option-input radio" name="angry_value" value="1"> 1</td>
+                    <td><input type="radio" class="option-input radio" name="angry_value" value="2"> 2</td>
+                    <td><input type="radio" class="option-input radio" name="angry_value" value="3"> 3</td>
+                    <td><input type="radio" class="option-input radio" name="angry_value" value="4"> 4</td>
+                    <td><input type="radio" class="option-input radio" name="angry_value" value="5"> 5</td>
+                    <td><input type="radio" class="option-input radio" name="angry_value" value="6"> 6</td>
+                    <td><input type="radio" class="option-input radio" name="angry_value" value="7"> 7</td>
+                    <td><input type="radio" class="option-input radio" name="angry_value" value="8"> 8</td>
+                    <td><input type="radio" class="option-input radio" name="angry_value" value="9"> 9</td>
+                  </fieldset></tr>
+                  <tr height=50 style="border-bottom:1px #666666 solid;"><fieldset>
+                    <td>10.溫柔</td>
+                    <td><input type="radio" class="option-input radio" name="softhearted_value" value="1"> 1</td>
+                    <td><input type="radio" class="option-input radio" name="softhearted_value" value="2"> 2</td>
+                    <td><input type="radio" class="option-input radio" name="softhearted_value" value="3"> 3</td>
+                    <td><input type="radio" class="option-input radio" name="softhearted_value" value="4"> 4</td>
+                    <td><input type="radio" class="option-input radio" name="softhearted_value" value="5"> 5</td>
+                    <td><input type="radio" class="option-input radio" name="softhearted_value" value="6"> 6</td>
+                    <td><input type="radio" class="option-input radio" name="softhearted_value" value="7"> 7</td>
+                    <td><input type="radio" class="option-input radio" name="softhearted_value" value="8"> 8</td>
+                    <td><input type="radio" class="option-input radio" name="softhearted_value" value="9"> 9</td>
+                  </fieldset></tr>
+                  <tr height=50 style="border-bottom:1px #666666 solid;"><fieldset>
+                    <td>11.感動</td>
+                    <td><input type="radio" class="option-input radio" name="moved_value" value="1"> 1</td>
+                    <td><input type="radio" class="option-input radio" name="moved_value" value="2"> 2</td>
+                    <td><input type="radio" class="option-input radio" name="moved_value" value="3"> 3</td>
+                    <td><input type="radio" class="option-input radio" name="moved_value" value="4"> 4</td>
+                    <td><input type="radio" class="option-input radio" name="moved_value" value="5"> 5</td>
+                    <td><input type="radio" class="option-input radio" name="moved_value" value="6"> 6</td>
+                    <td><input type="radio" class="option-input radio" name="moved_value" value="7"> 7</td>
+                    <td><input type="radio" class="option-input radio" name="moved_value" value="8"> 8</td>
+                    <td><input type="radio" class="option-input radio" name="moved_value" value="9"> 9</td>
+                  </fieldset></tr>
+                  <tr height=50 style="border-bottom:1px #666666 solid;"><fieldset>
+                    <td>12.緊張</td>
+                    <td><input type="radio" class="option-input radio" name="tension_value" value="1"> 1</td>
+                    <td><input type="radio" class="option-input radio" name="tension_value" value="2"> 2</td>
+                    <td><input type="radio" class="option-input radio" name="tension_value" value="3"> 3</td>
+                    <td><input type="radio" class="option-input radio" name="tension_value" value="4"> 4</td>
+                    <td><input type="radio" class="option-input radio" name="tension_value" value="5"> 5</td>
+                    <td><input type="radio" class="option-input radio" name="tension_value" value="6"> 6</td>
+                    <td><input type="radio" class="option-input radio" name="tension_value" value="7"> 7</td>
+                    <td><input type="radio" class="option-input radio" name="tension_value" value="8"> 8</td>
+                    <td><input type="radio" class="option-input radio" name="tension_value" value="9"> 9</td>
+                  </fieldset></tr>
+                  <tr height=50 style="border-bottom:1px #666666 solid;"><fieldset>
+                    <td>13.恐懼</td>
+                    <td><input type="radio" class="option-input radio" name="fear_value" value="1"> 1</td>
+                    <td><input type="radio" class="option-input radio" name="fear_value" value="2"> 2</td>
+                    <td><input type="radio" class="option-input radio" name="fear_value" value="3"> 3</td>
+                    <td><input type="radio" class="option-input radio" name="fear_value" value="4"> 4</td>
+                    <td><input type="radio" class="option-input radio" name="fear_value" value="5"> 5</td>
+                    <td><input type="radio" class="option-input radio" name="fear_value" value="6"> 6</td>
+                    <td><input type="radio" class="option-input radio" name="fear_value" value="7"> 7</td>
+                    <td><input type="radio" class="option-input radio" name="fear_value" value="8"> 8</td>
+                    <td><input type="radio" class="option-input radio" name="fear_value" value="9"> 9</td>
                   </fieldset></tr>
                   <tr height=50><fieldset>
-                    <td>幸福</td>
-                    <td><input type="radio" name="happy_value" value="1"> 1</td>
-                    <td><input type="radio" name="happy_value" value="2"> 2</td>
-                    <td><input type="radio" name="happy_value" value="3"> 3</td>
-                    <td><input type="radio" name="happy_value" value="4"> 4</td>
-                    <td><input type="radio" name="happy_value" value="5"> 5</td>
-                    <td><input type="radio" name="happy_value" value="6"> 6</td>
-                    <td><input type="radio" name="happy_value" value="7"> 7</td>
-                    <td><input type="radio" name="happy_value" value="8"> 8</td>
-                    <td><input type="radio" name="happy_value" value="9"> 9</td>
-                  </fieldset></tr>
-                  <tr height=50><fieldset>
-                    <td>悲傷</td>
-                    <td><input type="radio" name="sorrowful_value" value="1"> 1</td>
-                    <td><input type="radio" name="sorrowful_value" value="2"> 2</td>
-                    <td><input type="radio" name="sorrowful_value" value="3"> 3</td>
-                    <td><input type="radio" name="sorrowful_value" value="4"> 4</td>
-                    <td><input type="radio" name="sorrowful_value" value="5"> 5</td>
-                    <td><input type="radio" name="sorrowful_value" value="6"> 6</td>
-                    <td><input type="radio" name="sorrowful_value" value="7"> 7</td>
-                    <td><input type="radio" name="sorrowful_value" value="8"> 8</td>
-                    <td><input type="radio" name="sorrowful_value" value="9"> 9</td>
-                  </fieldset></tr>
-                  <tr height=50><fieldset>
-                    <td>開心</td>
-                    <td><input type="radio" name="rejoice_value" value="1"> 1</td>
-                    <td><input type="radio" name="rejoice_value" value="2"> 2</td>
-                    <td><input type="radio" name="rejoice_value" value="3"> 3</td>
-                    <td><input type="radio" name="rejoice_value" value="4"> 4</td>
-                    <td><input type="radio" name="rejoice_value" value="5"> 5</td>
-                    <td><input type="radio" name="rejoice_value" value="6"> 6</td>
-                    <td><input type="radio" name="rejoice_value" value="7"> 7</td>
-                    <td><input type="radio" name="rejoice_value" value="8"> 8</td>
-                    <td><input type="radio" name="rejoice_value" value="9"> 9</td>
-                  </fieldset></tr>
-                  <tr height=50><fieldset>
-                    <td>難過</td>
-                    <td><input type="radio" name="sad_value" value="1"> 1</td>
-                    <td><input type="radio" name="sad_value" value="2"> 2</td>
-                    <td><input type="radio" name="sad_value" value="3"> 3</td>
-                    <td><input type="radio" name="sad_value" value="4"> 4</td>
-                    <td><input type="radio" name="sad_value" value="5"> 5</td>
-                    <td><input type="radio" name="sad_value" value="6"> 6</td>
-                    <td><input type="radio" name="sad_value" value="7"> 7</td>
-                    <td><input type="radio" name="sad_value" value="8"> 8</td>
-                    <td><input type="radio" name="sad_value" value="9"> 9</td>
-                  </fieldset></tr>
-                  <tr height=50><fieldset>
-                    <td>同情</td>
-                    <td><input type="radio" name="compassionate_value" value="1"> 1</td>
-                    <td><input type="radio" name="compassionate_value" value="2"> 2</td>
-                    <td><input type="radio" name="compassionate_value" value="3"> 3</td>
-                    <td><input type="radio" name="compassionate_value" value="4"> 4</td>
-                    <td><input type="radio" name="compassionate_value" value="5"> 5</td>
-                    <td><input type="radio" name="compassionate_value" value="6"> 6</td>
-                    <td><input type="radio" name="compassionate_value" value="7"> 7</td>
-                    <td><input type="radio" name="compassionate_value" value="8"> 8</td>
-                    <td><input type="radio" name="compassionate_value" value="9"> 9</td>
-                  </fieldset></tr>
-                  <tr height=50><fieldset>
-                    <td>溫暖</td>
-                    <td><input type="radio" name="warm_value" value="1"> 1</td>
-                    <td><input type="radio" name="warm_value" value="2"> 2</td>
-                    <td><input type="radio" name="warm_value" value="3"> 3</td>
-                    <td><input type="radio" name="warm_value" value="4"> 4</td>
-                    <td><input type="radio" name="warm_value" value="5"> 5</td>
-                    <td><input type="radio" name="warm_value" value="6"> 6</td>
-                    <td><input type="radio" name="warm_value" value="7"> 7</td>
-                    <td><input type="radio" name="warm_value" value="8"> 8</td>
-                    <td><input type="radio" name="warm_value" value="9"> 9</td>
-                  </fieldset></tr>
-                  <tr height=50><fieldset>
-                    <td>同理</td>
-                    <td><input type="radio" name="sympathetic_value" value="1"> 1</td>
-                    <td><input type="radio" name="sympathetic_value" value="2"> 2</td>
-                    <td><input type="radio" name="sympathetic_value" value="3"> 3</td>
-                    <td><input type="radio" name="sympathetic_value" value="4"> 4</td>
-                    <td><input type="radio" name="sympathetic_value" value="5"> 5</td>
-                    <td><input type="radio" name="sympathetic_value" value="6"> 6</td>
-                    <td><input type="radio" name="sympathetic_value" value="7"> 7</td>
-                    <td><input type="radio" name="sympathetic_value" value="8"> 8</td>
-                    <td><input type="radio" name="sympathetic_value" value="9"> 9</td>
-                  </fieldset></tr>
-                  <tr height=50><fieldset>
-                    <td>生氣</td>
-                    <td><input type="radio" name="angry_value" value="1"> 1</td>
-                    <td><input type="radio" name="angry_value" value="2"> 2</td>
-                    <td><input type="radio" name="angry_value" value="3"> 3</td>
-                    <td><input type="radio" name="angry_value" value="4"> 4</td>
-                    <td><input type="radio" name="angry_value" value="5"> 5</td>
-                    <td><input type="radio" name="angry_value" value="6"> 6</td>
-                    <td><input type="radio" name="angry_value" value="7"> 7</td>
-                    <td><input type="radio" name="angry_value" value="8"> 8</td>
-                    <td><input type="radio" name="angry_value" value="9"> 9</td>
-                  </fieldset></tr>
-                  <tr height=50><fieldset>
-                    <td>溫柔</td>
-                    <td><input type="radio" name="softhearted_value" value="1"> 1</td>
-                    <td><input type="radio" name="softhearted_value" value="2"> 2</td>
-                    <td><input type="radio" name="softhearted_value" value="3"> 3</td>
-                    <td><input type="radio" name="softhearted_value" value="4"> 4</td>
-                    <td><input type="radio" name="softhearted_value" value="5"> 5</td>
-                    <td><input type="radio" name="softhearted_value" value="6"> 6</td>
-                    <td><input type="radio" name="softhearted_value" value="7"> 7</td>
-                    <td><input type="radio" name="softhearted_value" value="8"> 8</td>
-                    <td><input type="radio" name="softhearted_value" value="9"> 9</td>
-                  </fieldset></tr>
-                  <tr height=50><fieldset>
-                    <td>感動</td>
-                    <td><input type="radio" name="moved_value" value="1"> 1</td>
-                    <td><input type="radio" name="moved_value" value="2"> 2</td>
-                    <td><input type="radio" name="moved_value" value="3"> 3</td>
-                    <td><input type="radio" name="moved_value" value="4"> 4</td>
-                    <td><input type="radio" name="moved_value" value="5"> 5</td>
-                    <td><input type="radio" name="moved_value" value="6"> 6</td>
-                    <td><input type="radio" name="moved_value" value="7"> 7</td>
-                    <td><input type="radio" name="moved_value" value="8"> 8</td>
-                    <td><input type="radio" name="moved_value" value="9"> 9</td>
-                  </fieldset></tr>
-                  <tr height=50><fieldset>
-                    <td>緊張</td>
-                    <td><input type="radio" name="tension_value" value="1"> 1</td>
-                    <td><input type="radio" name="tension_value" value="2"> 2</td>
-                    <td><input type="radio" name="tension_value" value="3"> 3</td>
-                    <td><input type="radio" name="tension_value" value="4"> 4</td>
-                    <td><input type="radio" name="tension_value" value="5"> 5</td>
-                    <td><input type="radio" name="tension_value" value="6"> 6</td>
-                    <td><input type="radio" name="tension_value" value="7"> 7</td>
-                    <td><input type="radio" name="tension_value" value="8"> 8</td>
-                    <td><input type="radio" name="tension_value" value="9"> 9</td>
-                  </fieldset></tr>
-                  <tr height=50><fieldset>
-                    <td>恐懼</td>
-                    <td><input type="radio" name="fear_value" value="1"> 1</td>
-                    <td><input type="radio" name="fear_value" value="2"> 2</td>
-                    <td><input type="radio" name="fear_value" value="3"> 3</td>
-                    <td><input type="radio" name="fear_value" value="4"> 4</td>
-                    <td><input type="radio" name="fear_value" value="5"> 5</td>
-                    <td><input type="radio" name="fear_value" value="6"> 6</td>
-                    <td><input type="radio" name="fear_value" value="7"> 7</td>
-                    <td><input type="radio" name="fear_value" value="8"> 8</td>
-                    <td><input type="radio" name="fear_value" value="9"> 9</td>
-                  </fieldset></tr>
-                  <tr height=50><fieldset>
-                    <td>平靜</td>
-                    <td><input type="radio" name="tender_value" value="1"> 1</td>
-                    <td><input type="radio" name="tender_value" value="2"> 2</td>
-                    <td><input type="radio" name="tender_value" value="3"> 3</td>
-                    <td><input type="radio" name="tender_value" value="4"> 4</td>
-                    <td><input type="radio" name="tender_value" value="5"> 5</td>
-                    <td><input type="radio" name="tender_value" value="6"> 6</td>
-                    <td><input type="radio" name="tender_value" value="7"> 7</td>
-                    <td><input type="radio" name="tender_value" value="8"> 8</td>
-                    <td><input type="radio" name="tender_value" value="9"> 9</td>
+                    <td>14.平靜</td>
+                    <td><input type="radio" class="option-input radio" name="tender_value" value="1"> 1</td>
+                    <td><input type="radio" class="option-input radio" name="tender_value" value="2"> 2</td>
+                    <td><input type="radio" class="option-input radio" name="tender_value" value="3"> 3</td>
+                    <td><input type="radio" class="option-input radio" name="tender_value" value="4"> 4</td>
+                    <td><input type="radio" class="option-input radio" name="tender_value" value="5"> 5</td>
+                    <td><input type="radio" class="option-input radio" name="tender_value" value="6"> 6</td>
+                    <td><input type="radio" class="option-input radio" name="tender_value" value="7"> 7</td>
+                    <td><input type="radio" class="option-input radio" name="tender_value" value="8"> 8</td>
+                    <td><input type="radio" class="option-input radio" name="tender_value" value="9"> 9</td>
                   </fieldset></tr>
                 </table>
                 <input type="button" Onclick="startStoryAttitudeReply()" class="btn btn-primary col-xl-12"  id="storyMoonFinish" value="Next" />
@@ -295,95 +302,94 @@
                 <table class="myforntformat" style="width:100%;font-size:16px;">
                   <!--Question Ele-->
                   <tr><td colspan="9" id='attitudeQ1' ></td></tr><tr height=50><td  colspan="4">強烈不同意</td><td colspan="5" style="text-align: right;">強烈同意</td></tr>
-                  <tr height=50><fieldset>
-                    <td><input type="radio" name="q1_value" value="1"> 1</td>
-                    <td><input type="radio" name="q1_value" value="2"> 2</td>
-                    <td><input type="radio" name="q1_value" value="3"> 3</td>
-                    <td><input type="radio" name="q1_value" value="4"> 4</td>
-                    <td><input type="radio" name="q1_value" value="5"> 5</td>
-                    <td><input type="radio" name="q1_value" value="6"> 6</td>
-                    <td><input type="radio" name="q1_value" value="7"> 7</td>
-                    <td><input type="radio" name="q1_value" value="8"> 8</td>
-                    <td><input type="radio" name="q1_value" value="9"> 9</td>
+                  <tr height=50 style="border-bottom:1px #666666 solid;"><fieldset>
+                    <td><input type="radio" class="option-input radio" name="q1_value" value="1"> 1</td>
+                    <td><input type="radio" class="option-input radio" name="q1_value" value="2"> 2</td>
+                    <td><input type="radio" class="option-input radio" name="q1_value" value="3"> 3</td>
+                    <td><input type="radio" class="option-input radio" name="q1_value" value="4"> 4</td>
+                    <td><input type="radio" class="option-input radio" name="q1_value" value="5"> 5</td>
+                    <td><input type="radio" class="option-input radio" name="q1_value" value="6"> 6</td>
+                    <td><input type="radio" class="option-input radio" name="q1_value" value="7"> 7</td>
+                    <td><input type="radio" class="option-input radio" name="q1_value" value="8"> 8</td>
+                    <td><input type="radio" class="option-input radio" name="q1_value" value="9"> 9</td>
                   </fieldset></tr>
                   <!--Question Ele-->
                   <tr><td colspan="9" id='attitudeQ2' ></td></tr><tr height=50><td  colspan="4">強烈不同意</td><td colspan="5" style="text-align: right;">強烈同意</td></tr>
-                  <tr height=50><fieldset>
-                    <td><input type="radio" name="q2_value" value="1"> 1</td>
-                    <td><input type="radio" name="q2_value" value="2"> 2</td>
-                    <td><input type="radio" name="q2_value" value="3"> 3</td>
-                    <td><input type="radio" name="q2_value" value="4"> 4</td>
-                    <td><input type="radio" name="q2_value" value="5"> 5</td>
-                    <td><input type="radio" name="q2_value" value="6"> 6</td>
-                    <td><input type="radio" name="q2_value" value="7"> 7</td>
-                    <td><input type="radio" name="q2_value" value="8"> 8</td>
-                    <td><input type="radio" name="q2_value" value="9"> 9</td>
+                  <tr height=50 style="border-bottom:1px #666666 solid;"><fieldset>
+                    <td><input type="radio" class="option-input radio" name="q2_value" value="1"> 1</td>
+                    <td><input type="radio" class="option-input radio" name="q2_value" value="2"> 2</td>
+                    <td><input type="radio" class="option-input radio" name="q2_value" value="3"> 3</td>
+                    <td><input type="radio" class="option-input radio" name="q2_value" value="4"> 4</td>
+                    <td><input type="radio" class="option-input radio" name="q2_value" value="5"> 5</td>
+                    <td><input type="radio" class="option-input radio" name="q2_value" value="6"> 6</td>
+                    <td><input type="radio" class="option-input radio" name="q2_value" value="7"> 7</td>
+                    <td><input type="radio" class="option-input radio" name="q2_value" value="8"> 8</td>
+                    <td><input type="radio" class="option-input radio" name="q2_value" value="9"> 9</td>
                   </fieldset></tr>
                   <!--Question Ele-->
                   <tr><td colspan="9" id='attitudeQ3' ></td></tr><tr height=50><td  colspan="4">非常不在乎</td><td colspan="5" style="text-align: right;">非常在乎</td></tr>
-                  <tr height=50><fieldset>
-                    <td><input type="radio" name="q3_value" value="1"> 1</td>
-                    <td><input type="radio" name="q3_value" value="2"> 2</td>
-                    <td><input type="radio" name="q3_value" value="3"> 3</td>
-                    <td><input type="radio" name="q3_value" value="4"> 4</td>
-                    <td><input type="radio" name="q3_value" value="5"> 5</td>
-                    <td><input type="radio" name="q3_value" value="6"> 6</td>
-                    <td><input type="radio" name="q3_value" value="7"> 7</td>
-                    <td><input type="radio" name="q3_value" value="8"> 8</td>
-                    <td><input type="radio" name="q3_value" value="9"> 9</td>
+                  <tr height=50 style="border-bottom:1px #666666 solid;"><fieldset>
+                    <td><input type="radio" class="option-input radio" name="q3_value" value="1"> 1</td>
+                    <td><input type="radio" class="option-input radio" name="q3_value" value="2"> 2</td>
+                    <td><input type="radio" class="option-input radio" name="q3_value" value="3"> 3</td>
+                    <td><input type="radio" class="option-input radio" name="q3_value" value="4"> 4</td>
+                    <td><input type="radio" class="option-input radio" name="q3_value" value="5"> 5</td>
+                    <td><input type="radio" class="option-input radio" name="q3_value" value="6"> 6</td>
+                    <td><input type="radio" class="option-input radio" name="q3_value" value="7"> 7</td>
+                    <td><input type="radio" class="option-input radio" name="q3_value" value="8"> 8</td>
+                    <td><input type="radio" class="option-input radio" name="q3_value" value="9"> 9</td>
                   </fieldset></tr>
                   <!--Question Ele-->
                   <tr><td colspan="9" id='attitudeQ4' ></td></tr><tr height=50><td  colspan="4">強烈不同意</td><td colspan="5" style="text-align: right;">強烈同意</td></tr>
-                  <tr height=50><fieldset>
-                    <td><input type="radio" name="q4_value" value="1"> 1</td>
-                    <td><input type="radio" name="q4_value" value="2"> 2</td>
-                    <td><input type="radio" name="q4_value" value="3"> 3</td>
-                    <td><input type="radio" name="q4_value" value="4"> 4</td>
-                    <td><input type="radio" name="q4_value" value="5"> 5</td>
-                    <td><input type="radio" name="q4_value" value="6"> 6</td>
-                    <td><input type="radio" name="q4_value" value="7"> 7</td>
-                    <td><input type="radio" name="q4_value" value="8"> 8</td>
-                    <td><input type="radio" name="q4_value" value="9"> 9</td>
+                  <tr height=50 style="border-bottom:1px #666666 solid;"><fieldset>
+                    <td><input type="radio" class="option-input radio" name="q4_value" value="1"> 1</td>
+                    <td><input type="radio" class="option-input radio" name="q4_value" value="2"> 2</td>
+                    <td><input type="radio" class="option-input radio" name="q4_value" value="3"> 3</td>
+                    <td><input type="radio" class="option-input radio" name="q4_value" value="4"> 4</td>
+                    <td><input type="radio" class="option-input radio" name="q4_value" value="5"> 5</td>
+                    <td><input type="radio" class="option-input radio" name="q4_value" value="6"> 6</td>
+                    <td><input type="radio" class="option-input radio" name="q4_value" value="7"> 7</td>
+                    <td><input type="radio" class="option-input radio" name="q4_value" value="8"> 8</td>
+                    <td><input type="radio" class="option-input radio" name="q4_value" value="9"> 9</td>
                   </fieldset></tr>
                   <!--Question Ele-->
                   <tr><td colspan="9" id='attitudeQ5' ></td></tr><tr height=50><td  colspan="4">非常不重要</td><td colspan="5" style="text-align: right;">非常重要</td></tr>
-                  <tr height=50><fieldset>
-                    <td><input type="radio" name="q5_value" value="1"> 1</td>
-                    <td><input type="radio" name="q5_value" value="2"> 2</td>
-                    <td><input type="radio" name="q5_value" value="3"> 3</td>
-                    <td><input type="radio" name="q5_value" value="4"> 4</td>
-                    <td><input type="radio" name="q5_value" value="5"> 5</td>
-                    <td><input type="radio" name="q5_value" value="6"> 6</td>
-                    <td><input type="radio" name="q5_value" value="7"> 7</td>
-                    <td><input type="radio" name="q5_value" value="8"> 8</td>
-                    <td><input type="radio" name="q5_value" value="9"> 9</td>
+                  <tr height=50 style="border-bottom:1px #666666 solid;"><fieldset>
+                    <td><input type="radio" class="option-input radio" name="q5_value" value="1"> 1</td>
+                    <td><input type="radio" class="option-input radio" name="q5_value" value="2"> 2</td>
+                    <td><input type="radio" class="option-input radio" name="q5_value" value="3"> 3</td>
+                    <td><input type="radio" class="option-input radio" name="q5_value" value="4"> 4</td>
+                    <td><input type="radio" class="option-input radio" name="q5_value" value="5"> 5</td>
+                    <td><input type="radio" class="option-input radio" name="q5_value" value="6"> 6</td>
+                    <td><input type="radio" class="option-input radio" name="q5_value" value="7"> 7</td>
+                    <td><input type="radio" class="option-input radio" name="q5_value" value="8"> 8</td>
+                    <td><input type="radio" class="option-input radio" name="q5_value" value="9"> 9</td>
                   </fieldset></tr>
                   <!--Question Ele-->
                   <tr><td colspan="9" id='attitudeQ6' ></td></tr><tr height=50><td  colspan="4">強烈不同意</td><td colspan="5" style="text-align: right;">強烈同意</td></tr>
-                  <tr height=50><fieldset>
-                    <td><input type="radio" name="q6_value" value="1"> 1</td>
-                    <td><input type="radio" name="q6_value" value="2"> 2</td>
-                    <td><input type="radio" name="q6_value" value="3"> 3</td>
-                    <td><input type="radio" name="q6_value" value="4"> 4</td>
-                    <td><input type="radio" name="q6_value" value="5"> 5</td>
-                    <td><input type="radio" name="q6_value" value="6"> 6</td>
-                    <td><input type="radio" name="q6_value" value="7"> 7</td>
-                    <td><input type="radio" name="q6_value" value="8"> 8</td>
-                    <td><input type="radio" name="q6_value" value="9"> 9</td>
+                  <tr height=50 style="border-bottom:1px #666666 solid;"><fieldset>
+                    <td><input type="radio" class="option-input radio" name="q6_value" value="1"> 1</td>
+                    <td><input type="radio" class="option-input radio" name="q6_value" value="2"> 2</td>
+                    <td><input type="radio" class="option-input radio" name="q6_value" value="3"> 3</td>
+                    <td><input type="radio" class="option-input radio" name="q6_value" value="4"> 4</td>
+                    <td><input type="radio" class="option-input radio" name="q6_value" value="5"> 5</td>
+                    <td><input type="radio" class="option-input radio" name="q6_value" value="6"> 6</td>
+                    <td><input type="radio" class="option-input radio" name="q6_value" value="7"> 7</td>
+                    <td><input type="radio" class="option-input radio" name="q6_value" value="8"> 8</td>
+                    <td><input type="radio" class="option-input radio" name="q6_value" value="9"> 9</td>
                   </fieldset></tr>
                   <!--Question Ele-->
-                  <tr><td colspan="9" id='attitudeQ7'></td></tr>
-                  <tr height=50><td  colspan="4">非常負向</td><td colspan="5" style="text-align: right;">非常正向</td></tr>
+                  <tr><td colspan="9" id='attitudeQ7'></td></tr><tr height=50><td  colspan="4">非常負向</td><td colspan="5" style="text-align: right;">非常正向</td></tr>
                   <tr height=50><fieldset>
-                    <td><input type="radio" name="q7_value" value="1"> 1</td>
-                    <td><input type="radio" name="q7_value" value="2"> 2</td>
-                    <td><input type="radio" name="q7_value" value="3"> 3</td>
-                    <td><input type="radio" name="q7_value" value="4"> 4</td>
-                    <td><input type="radio" name="q7_value" value="5"> 5</td>
-                    <td><input type="radio" name="q7_value" value="6"> 6</td>
-                    <td><input type="radio" name="q7_value" value="7"> 7</td>
-                    <td><input type="radio" name="q7_value" value="8"> 8</td>
-                    <td><input type="radio" name="q7_value" value="9"> 9</td>
+                    <td><input type="radio" class="option-input radio" name="q7_value" value="1"> 1</td>
+                    <td><input type="radio" class="option-input radio" name="q7_value" value="2"> 2</td>
+                    <td><input type="radio" class="option-input radio" name="q7_value" value="3"> 3</td>
+                    <td><input type="radio" class="option-input radio" name="q7_value" value="4"> 4</td>
+                    <td><input type="radio" class="option-input radio" name="q7_value" value="5"> 5</td>
+                    <td><input type="radio" class="option-input radio" name="q7_value" value="6"> 6</td>
+                    <td><input type="radio" class="option-input radio" name="q7_value" value="7"> 7</td>
+                    <td><input type="radio" class="option-input radio" name="q7_value" value="8"> 8</td>
+                    <td><input type="radio" class="option-input radio" name="q7_value" value="9"> 9</td>
                   </fieldset></tr>
                 </table>
                 <input type="button" Onclick="startStoryDonate()" class="btn btn-primary col-xl-12"  id="storyAttitudeFinish" value="Next" />
@@ -396,9 +402,9 @@
       <!-- 捐獻 Row -->
       <div class="row align-items-center no-gutters mb-4 mb-lg-5" id="sectionForStoryDonate" style="display:none" >
         <div class="col-xl-12 col-lg-12">
-          <div class="featured-text text-center text-lg-left">
+          <div class="featured-text text-center text-lg-left myforntformat">
             <h4>感謝您閱讀完本故事 : </h4>
-            <p class="text-black-50 mb-0" id="descriptionOfDonateTitle">
+            <p class="mb-0" id="descriptionOfDonateTitle">
               為了感謝，我們在您閱讀完本故事後，將提供您5個代幣作為捐款籌碼(三則故事，共15枚代幣，每一個籌碼可替您捐出100元)。而本故事我們與勵馨社會福利事業基金會合作，請問您在閱讀完本故事後，您有意願捐款給勵馨社會福利事業基金會嗎?
             </p>
           </div>
@@ -418,7 +424,7 @@
   <!-- Footer -->
   <footer class="bg-black small text-center text-white-50">
     <div class="container">
-      Chou4J &copy; 2020 - for 中原大學心理學研究所指碩士班研究生：廖婉婷
+      Chou4J &copy; 2020 - for 中原大學心理所碩士研究生：廖婉婷
     </div>
   </footer>
 
@@ -443,7 +449,7 @@
   var storyTwo = '';
   var storyThree = '';
   var userSituation = 0 ;
-  var situation_One_Des = "盡可能設身處地、彷彿自己就是故事中的主角";
+  var situation_One_Des = "盡可能設身處地、就像自己就是故事中的主角";
   var situation_Two_Des = "盡可能的保持客觀、理性的觀看主角遭遇的事件";
   var situation_One_Des_For_Edit = "請您以”我”為主詞，就剛才所閱讀到的故事進行書寫。請將剛才所閱讀到的感受、情境、事件，以”我”為主詞進行描述。";
   var situation_Two_Des_For_Edit = "請您以”他”為主詞，就剛才所閱讀到的故事進行書寫。請盡可能的以客觀、中立的角度去描述事件、情境。";
@@ -554,11 +560,12 @@
     var v13 = getCheckBoxValue(document.getElementsByName("fear_value"));
     var v14 = getCheckBoxValue(document.getElementsByName("tender_value"));
 
-    if ( v1 == "" || v2 == "" || v3 == "" || v4 == "" || v5 == "" || v6 == "" || v7 == "" || v8 == "" || v9 == "" || v10 == "" || v11 == "" || v12 == "" || v13 == "" || v14 == ""  ) {
-      alert("尚有選項未填寫喔！謝謝！");
+    var checkRes = getWhichCheckBoxValueIsNull([v1,v2,v3,v4,v5,v6,v7,v8,v9,v10,v11,v12,v13,v14]);
+    if ( checkRes != "")
+    {
+      alert(checkRes);
       return;
     }
-
 
     // Set to Cookie : 
     var tempMR = v1 + ";" + v2 + ";" + v3 + ";" + v4 + ";" + v5 + ";" + v6 + ";" + v7 + ";" + v8 + ";" + v9 + ";" + v10 + ";" + v11 + ";" + v12 + ";" + v13 + ";" + v14 ; 
@@ -580,8 +587,10 @@
     var v6 = getCheckBoxValue(document.getElementsByName("q6_value"));
     var v7 = getCheckBoxValue(document.getElementsByName("q7_value"));
 
-    if ( v1 == "" || v2 == "" || v3 == "" || v4 == "" || v5 == "" || v6 == "" || v7 == ""  ) {
-      alert("尚有選項未填寫喔！謝謝！");
+    var checkRes = getWhichCheckBoxValueIsNull([v1,v2,v3,v4,v5,v6,v7]);
+    if ( checkRes != "")
+    {
+      alert(checkRes);
       return;
     }
 
@@ -643,14 +652,14 @@
           situation_One_Des_For_EditSub = data['StoryEx'] ;
           situation_Two_Des_For_EditSub = data['StoryEx2'] ;
           // Handler Des of title.
-          var desStr = "本階段會讓您閱讀幾則故事內容，這些故事分別是由不同基金會提供實際案例(已做化名處理，並消除任何可辨識個人訊息內容)，在閱讀故事時，請您在觀看時，";
+          var desStr = "本階段會讓您閱讀幾則故事，這些故事分別是由不同基金會提供實際案例(以化名呈現，並消除任何可辨識個人的訊息內容)，請您在閱讀故事時，";
           if(userSituation==1) {
-            desStr = desStr + situation_One_Des + "。看完故事後，會請您書寫剛才所看見的故事內容。";
+            desStr = desStr + situation_One_Des + "。看完故事後，會請您書寫剛才所看見的故事內容。<br/>注意：當您閱讀完故事後，進入書寫階段，將無法再次閱讀該故事，故提醒您必須完整閱讀故事後，再按下『NEXT』鍵。";
             document.getElementById("descriptionOfEditTitle").innerHTML = situation_One_Des_For_Edit ;
             document.getElementById("descriptionOfEditSubTitle").innerHTML = situation_One_Des_For_EditSub ;
           }
           else {
-            desStr = desStr + situation_Two_Des + "。看完故事後，會請您書寫剛才所看見的故事內容。";
+            desStr = desStr + situation_Two_Des + "。看完故事後，會請您書寫剛才所看見的故事內容。<br/>注意：當您閱讀完故事後，進入書寫階段，將無法再次閱讀該故事，故提醒您必須完整閱讀故事後，再按下『NEXT』鍵。";
             document.getElementById("descriptionOfEditTitle").innerHTML = situation_Two_Des_For_Edit ;
             document.getElementById("descriptionOfEditSubTitle").innerHTML = situation_Two_Des_For_EditSub ;
           }
