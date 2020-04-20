@@ -40,7 +40,7 @@ function iEsc(){ return false; }
 function iRec(){ return true; }
  
 function DisableKeys() {
-　if(event.ctrlKey || event.shiftKey || event.altKey) {
+　if(event.ctrlKey || event.altKey) {
 　　window.event.returnValue=false;
 　　iEsc();
 　}

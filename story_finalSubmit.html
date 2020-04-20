@@ -17,7 +17,7 @@
     　-webkit-user-select: none;
     }
   </style>
-  
+
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -28,6 +28,7 @@
 
 <body id="page-top">
 
+  <div id="loadingImg" class="MyLoafingfixed"><div class="text-center myforntformat" style="width: 100%;">Loading...</div></div>
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
@@ -58,7 +59,7 @@
         <div class="col-xl-12 col-lg-12">
           <div class="text-center text-lg-left myforntformat">
             <h4>感謝您閱讀完所有故事</h4>
-            <p class="text-black-50 mb-0">感謝您，我們將提供給您17 個代幣作為感謝(每一袋金幣表示會替您捐出100元)，讓您可以作為捐款的籌碼。<br />
+            <p class="text-black-50 mb-0" id="moneyDes">感謝您，我們將提供給您17 個代幣作為感謝(每一袋金幣表示會替您捐出100元)，讓您可以作為捐款的籌碼。<br />
               請根據剛才所閱讀之故事去分配您願意捐贈的數量。<br />
               您不一定要將所有的代幣用完，但每個捐款箱至少要有一個代幣。</p>
             <p class="text-black-50 mb-0"> - 每一袋金幣表示會替您捐出100元 </p>
@@ -127,7 +128,6 @@
               <div class="project-text w-100 my-auto text-center text-lg-left myforntformat">
                 <h4>財團法人台灣更生保護會</h4>
                 <p style="font-size: 20px;" id="boxThree">已放入金幣袋數量 : 0 </p>
-                +
                 <br />
                 <table style="width:100%;font-size: 20px;" >
                   <tr>
@@ -172,6 +172,18 @@
 
     </div>
 
+    <!-- Uploading Page -->
+    <div class="container" id="sectionForLonding" style="display:none">
+      <!-- Des Intro Row -->
+      <div class="row align-items-center no-gutters mb-4 mb-lg-5" >
+        <div class="col-xl-12 col-lg-12">
+          <div class="text-center myforntformat">
+            <h4>Uploading... 請稍候...</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="container">
 
       <!-- Des Intro Row -->
@@ -191,7 +203,7 @@
         <div class="col-xl-12 col-lg-12">
           <div class="text-lg-left myforntformat">
             <h4>實驗目的：</h4>
-            <p class="mb-0">本實驗研究目的是想了解同理心誘發對於利社會行為的影響，並且瞭解心理病態人格特質者的利社會行為表現形態。而在剛才的實驗中，藉由讓您觀看故事、書寫故事內容的過程，讓您更能夠站在不同觀點(同理 或 站在客觀角度)去理解故事主角的狀態，而這樣的狀態是否會影響您的態度、情緒，進而影響到您是否願意幫助與主角相似的族群，以及願意幫助的量(如：本研究的捐款多寡)。而本研究的第一階段是了解您的心理病態人格特質及同理能力，目的在於了解在心理病態人格特質、同理能力的高、低程度不同，是否會影響利社會行為表現的型態。由上述的結果藉此能夠使我們了解同理心的運作模式及心理病態人格特質會有的利社會行為模式。</p>
+            <p class="mb-0" id="finalDes01">本實驗研究目的是想了解同理心誘發對於利社會行為的影響，並且瞭解心理病態人格特質者的利社會行為表現形態。而在剛才的實驗中，藉由讓您觀看故事、書寫故事內容的過程，讓您更能夠站在不同觀點(同理 或 站在客觀角度)去理解故事主角的狀態，而這樣的狀態是否會影響您的態度、情緒，進而影響到您是否願意幫助與主角相似的族群，以及願意幫助的量(如：本研究的捐款多寡)。而本研究的第一階段是了解您的心理病態人格特質及同理能力，目的在於了解在心理病態人格特質、同理能力的高、低程度不同，是否會影響利社會行為表現的型態。由上述的結果藉此能夠使我們了解同理心的運作模式及心理病態人格特質會有的利社會行為模式。</p>
           </div>
           <div class="text-center">
             </br>
@@ -205,7 +217,7 @@
         <div class="col-xl-12 col-lg-12">
           <div class="text-lg-left myforntformat">
             <h4>欺瞞：</h4>
-            <p class="mb-0">本研究中，有部分欺瞞參與者成分，內容如下： </br>
+            <p class="mb-0" id="finalDes02">本研究中，有部分欺瞞參與者成分，內容如下： </br>
               1 . 本研究並未與科技部及基金會合作，且目的並非「調查大學生對不同族群之興趣及了解」，而此欺瞞目的是為了避免參與者猜測實驗目的及增加實驗的真實性，降低參與者出現社會期許效果。 </br>
               2 . 本研究並不會實際執行捐款或提供捐款者姓名至基金會，而此操弄目的是為了瞭解參與者在不同狀態下的利社會行為的類別及表現。</br>
               </p>
@@ -222,7 +234,7 @@
         <div class="col-xl-12 col-lg-12">
           <div class="text-lg-left myforntformat">
             <h4>解釋疑問：</h4>
-            <p class="mb-0">若參與者欲更深入了解研究中的主題，可參考以下說明：</br>
+            <p class="mb-0" id="finalDes03">若參與者欲更深入了解研究中的主題，可參考以下說明：</br>
               1 . 心理病態人格特質：心理病態人格特質並不等同於罹患心理疾患，而是有部分人格特質與心理病態人格者的表現相似(如：行事較為大膽、具有魅力、有自信、冷酷、為達目的不擇手段、同理心能力較低等…)。而此人格特質常見於特定產業中的專業人士。若您對於此議題感興趣，建議您可以閱讀書籍：《沒有良知的人：那些讓人不安的精神病態者》、《反社會人格者的告白：善於操弄人心、剝削弱點的天才》</br>
               2 . 同理：同理為大多數人熟知，根據過去學者定義同理為您目前所處在一個情緒狀態，而此情緒狀態與同理的對象(如：故事主角)有相似的情緒結構，是我們藉由觀察、想像此對象所誘發出來的，且我們能夠了解目前出現的情緒狀態是由對方造成的(De Vignemont & Singer, 2006)。而同理包含了認知同理及情感同理的成分。</br>
               </p>
@@ -334,6 +346,21 @@
     document.getElementById("boxTwo").innerHTML = "已放入金幣袋數量 : " + BoxTwoContentSize.toString();
     document.getElementById("boxThree").innerHTML = "已放入金幣袋數量 : " + BoxThreeContentSize.toString();
 
+    getStoryInfo("A1");
+    thisPageUsingTimerStart();
+
+  }
+
+  var loadingDivOpa = 1 ;
+  function loadingDivOpaFade() {
+    
+    loadingDivOpa = loadingDivOpa - 0.1 ;
+    if( loadingDivOpa <= 0 ) {
+      document.getElementById("loadingImg").style.display = "none";
+      clearInterval(loadingDivOpaFade);
+      return;
+    }
+    document.getElementById("loadingImg").style.opacity=loadingDivOpa;
   }
   
   init();
@@ -345,11 +372,13 @@
   }
 
   function finishAndSubmit(){
+    document.getElementById("sectionForRecordName").style.display = "none";    
+    document.getElementById("sectionForLonding").style.display = "block";  
     sendDataToExcel();
   }
   
   function ScuessSubmit(){
-    document.getElementById("sectionForRecordName").style.display = "none";    
+    document.getElementById("sectionForLonding").style.display = "none";    
     document.getElementById("tanksExplan").style.display = "block"; 
   }
 
@@ -480,9 +509,32 @@
     document.getElementById("desForMoneyBagCounter").innerHTML = " X " +  totalMoneyBag.toString();
   }
 
+  function getStoryInfo(storyType)
+  {
+    myStoryType = storyType
+    var subjectInfo = {
+      'storyType' : myStoryType
+    }
+    $.ajax({
+        type: "get",
+        url: "https://script.google.com/macros/s/AKfycbxJs1MCV4T6Ffc0g9hnH-fj8AyqmAwRYIGdextzsTfip2syH4c/exec",
+        data: subjectInfo,
+        dataType: "JSON",
+        success: function (data) {
+          document.getElementById("moneyDes").innerHTML = data['MoneyDes'] ;
+          document.getElementById("finalDes01").innerHTML = data['FinalDes01'] ;
+          document.getElementById("finalDes02").innerHTML = data['FinalDes02'] ;
+          document.getElementById("finalDes03").innerHTML = data['FinalDes03'] ;
+          setInterval(loadingDivOpaFade, 100);
+        }
+      });
+  }
 
   function sendDataToExcel()
   {
+
+    thisPageUsingTimerStop();
+    var totalSec = Number(getCookie("one_pageTime")) + Number(getCookie("two_pageTime")) + Number(getCookie("three_pageTime")) + thisPageUsingTime;
     // Get subject info 
     var needRecordName = getCheckBoxValue(document.getElementsByName("donateShowName"));
 
@@ -511,7 +563,8 @@
       'DonateGoh' : BoxOneContentSize,
       'DonateDep' : BoxTwoContentSize,
       'DonateAft' : BoxThreeContentSize,
-      'NeedRecordName' : needRecordName
+      'NeedRecordName' : needRecordName,
+      'TotalSec' : totalSec
     }
     $.ajax({
         type: "post",
@@ -523,6 +576,25 @@
         }
       });
    }
+
+  var thisPageUsingTimeID = -1;
+  var thisPageUsingTime = 0;
+  
+  function thisPageUsingTimerEvent()
+  {
+    thisPageUsingTime++ ; 
+  }
+
+  function thisPageUsingTimerStart()
+  {
+    thisPageUsingTimeID = setInterval(thisPageUsingTimerEvent , 1000);
+  }
+
+  function thisPageUsingTimerStop()
+  {
+    clearTimeout(thisPageUsingTimeID);
+  }
+
   </script>
 
 </html>

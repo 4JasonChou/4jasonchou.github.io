@@ -11,12 +11,7 @@
   <title>實驗二 - 流程模擬</title>
 
   <!-- Lock Copy -->
-  <style type="text/css">
-    body {
-    　-moz-user-select : none;
-    　-webkit-user-select: none;
-    }
-  </style>
+
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -40,7 +35,7 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger myforntformat" href="#about">測驗階段</a>
+            <a class="nav-link js-scroll-trigger myforntformat" href="#about">故事書寫階段</a>
           </li>
         </ul>
       </div>
@@ -91,8 +86,8 @@
           <div class="text-center h-100 project" style="background-color:#8E8E8E" >
             <div class="d-flex h-100">
               <div class="project-text w-100 my-auto text-center text-lg-right">
-                <h4 class="text-white" id="descriptionOfEditTitle" >請您以”我”為主詞...</h4>
-                <p class="mb-0 text-white-50" id="descriptionOfEditSubTitle">如：美美...</p>
+                <h4 class="text-white myforntformat" id="descriptionOfEditTitle" >請您以”我”為主詞...</h4>
+                <p class="mb-0 text-white-50 myforntformat" id="descriptionOfEditSubTitle">如：美美...</p>
                 <hr class="d-none d-lg-block mb-0 mr-0"><br />
                 <textarea   class="mytextarea col-xl-12" rows="10" id="subjectInputArt" placeholder="輸入你想要寫的內容..."></textarea>
                 <br/>
@@ -451,8 +446,8 @@
   var userSituation = 0 ;
   var situation_One_Des = "盡可能設身處地、就像自己就是故事中的主角";
   var situation_Two_Des = "盡可能的保持客觀、理性的觀看主角遭遇的事件";
-  var situation_One_Des_For_Edit = "請您以”我”為主詞，就剛才所閱讀到的故事進行書寫。請將剛才所閱讀到的感受、情境、事件，以”我”為主詞進行描述。";
-  var situation_Two_Des_For_Edit = "請您以”他”為主詞，就剛才所閱讀到的故事進行書寫。請盡可能的以客觀、中立的角度去描述事件、情境。";
+  var situation_One_Des_For_Edit = "請您以“我”為主詞，就剛才所閱讀到的故事進行書寫。<br />請將剛才所閱讀到的感受、情境、事件，以“我”為主詞進行描述。";
+  var situation_Two_Des_For_Edit = "請您以“他”為主詞，就剛才所閱讀到的故事進行書寫。<br />請盡可能的以客觀、中立的角度去描述事件、情境。";
   var situation_One_Des_For_EditSub = "如：我是??，我是個??的受害者...";
   var situation_Two_Des_For_EditSub = "如：??是個??的受害者...";
   
@@ -482,6 +477,7 @@
     // Handler Story Info
     getStoryInfo(storyOne);
 
+    thisPageUsingTimerStart();
   }
   
   init();
@@ -621,6 +617,8 @@
   
   function startNextStory()
   {
+    thisPageUsingTimerStop();
+    SetCookie("one_pageTime",experienceWrittingTime,1);
     var nextLocationUrl =  "story_two.html?" + "UserSituation=" + userSituation + "&StoryOne=" + storyOne + "&StoryTwo=" + storyTwo + "&StoryThree=" + storyThree ;
     document.location =  nextLocationUrl ;
   }
@@ -670,9 +668,10 @@
         }
       });
   }
+
+
   var experienceWrittingTimeID = -1 ; 
   var experienceWrittingTime = 0 ; 
-
   function experienceTimerEvent()
   {
      experienceWrittingTime++ ; 
@@ -688,7 +687,23 @@
     clearTimeout(experienceWrittingTimeID);
   }
 
-	
+  var thisPageUsingTimeID = -1;
+  var thisPageUsingTime = 0;
+  
+  function thisPageUsingTimerEvent()
+  {
+    thisPageUsingTime++ ; 
+  }
+
+  function thisPageUsingTimerStart()
+  {
+    thisPageUsingTimeID = setInterval(thisPageUsingTimerEvent , 1000);
+  }
+
+  function thisPageUsingTimerStop()
+  {
+    clearTimeout(thisPageUsingTimeID);
+  }
 
 
   </script>

@@ -41,7 +41,7 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger myforntformat" href="#about">測驗階段</a>
+            <a class="nav-link js-scroll-trigger myforntformat" href="#about">故事書寫階段</a>
           </li>
         </ul>
       </div>
@@ -92,8 +92,8 @@
           <div class="text-center h-100 project" style="background-color:#8E8E8E" >
             <div class="d-flex h-100">
               <div class="project-text w-100 my-auto text-center text-lg-right">
-                <h4 class="text-white" id="descriptionOfEditTitle" >請您以”我”為主詞...</h4>
-                <p class="mb-0 text-white-50" id="descriptionOfEditSubTitle">如：美美...</p>
+                <h4 class="text-white myforntformat" id="descriptionOfEditTitle" >請您以”我”為主詞...</h4>
+                <p class="mb-0 text-white-50 myforntformat" id="descriptionOfEditSubTitle">如：美美...</p>
                 <hr class="d-none d-lg-block mb-0 mr-0"><br />
                 <textarea   class="mytextarea col-xl-12" rows="10" id="subjectInputArt" placeholder="輸入你想要寫的內容..."></textarea>
                 <br/>
@@ -483,6 +483,7 @@
 
     // Handler Story Info
     getStoryInfo(storyTwo);
+    thisPageUsingTimerStart();
   }
   
   init();
@@ -609,6 +610,8 @@
   
   function startNextStory()
   {
+    thisPageUsingTimerStop();
+    SetCookie("two_pageTime",experienceWrittingTime,1);
     var nextLocationUrl =  "story_three.html?" + "UserSituation=" + userSituation + "&StoryOne=" + storyOne + "&StoryTwo=" + storyTwo + "&StoryThree=" + storyThree ;
     document.location =  nextLocationUrl ;
   }
@@ -694,7 +697,24 @@
     clearTimeout(experienceWrittingTimeID);
   }
 
-	
+	var thisPageUsingTimeID = -1;
+  var thisPageUsingTime = 0;
+  
+  function thisPageUsingTimerEvent()
+  {
+    thisPageUsingTime++ ; 
+  }
+
+  function thisPageUsingTimerStart()
+  {
+    thisPageUsingTimeID = setInterval(thisPageUsingTimerEvent , 1000);
+  }
+
+  function thisPageUsingTimerStop()
+  {
+    clearTimeout(thisPageUsingTimeID);
+  }
+
   </script>
 
 </html>
