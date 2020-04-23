@@ -450,8 +450,8 @@
   var storyTwo = '';
   var storyThree = '';
   var userSituation = 0 ;
-  var situation_One_Des = "盡可能設身處地、就像自己就是故事中的主角";
-  var situation_Two_Des = "盡可能的保持客觀、理性的觀看主角遭遇的事件";
+  var situation_One_Des = "盡可能設身處地、就像自己就是故事中的主角一樣。";
+  var situation_Two_Des = "盡可能地保持客觀、理性的觀看故事主角遭遇的事件。";
   var situation_One_Des_For_Edit = "請您以”我”為主詞，就剛才所閱讀到的故事進行書寫。請將剛才所閱讀到的感受、情境、事件，以”我”為主詞進行描述。";
   var situation_Two_Des_For_Edit = "請您以”他”為主詞，就剛才所閱讀到的故事進行書寫。請盡可能的以客觀、中立的角度去描述事件、情境。";
   var situation_One_Des_For_EditSub = "如：我是美美，我是個家暴的受害者...";
@@ -660,14 +660,14 @@
           situation_Two_Des_For_EditSub = data['StoryEx2'] ;
           document.getElementById("descriptionOfDonateTitle").innerHTML = data['DonateBoxName'] ;
           // Handler Des of title.
-          var desStr ="本階段會讓您閱讀幾則故事，這些故事分別是由不同基金會提供實際案例(以化名呈現，並消除任何可辨識個人的訊息內容)，請您在閱讀故事時，";
+          var desStr = "本階段，您將閱讀幾則故事，這些故事分別由不同的基金會提供實際案例 (以化名呈現，並消除所有可供辨識的個人訊息)，請您在閱讀故事時，";
           if(userSituation==1) {
-            desStr = desStr + situation_One_Des + "。看完故事後，會請您書寫剛才所看見的故事內容。<br/><b>注意：當您閱讀完故事後，進入書寫階段，將無法再次閱讀該故事，故提醒您必須完整閱讀故事後，再按下『NEXT』鍵。</b>";
+            desStr = desStr + situation_One_Des + "看完故事後，會請您書寫剛才所看見的故事內容。<br/><b>注意：當您閱讀完故事後，進入書寫階段，將無法再次閱讀該故事，故提醒您必須完整閱讀故事後，再按下『NEXT』鍵。</b>";
             document.getElementById("descriptionOfEditTitle").innerHTML = situation_One_Des_For_Edit ;
             document.getElementById("descriptionOfEditSubTitle").innerHTML = situation_One_Des_For_EditSub ;
           }
           else {
-            desStr = desStr + situation_Two_Des +"。看完故事後，會請您書寫剛才所看見的故事內容。<br/><b>注意：當您閱讀完故事後，進入書寫階段，將無法再次閱讀該故事，故提醒您必須完整閱讀故事後，再按下『NEXT』鍵。</b>";
+            desStr = desStr + situation_Two_Des + "看完故事後，會請您書寫剛才所看見的故事內容。<br/><b>注意：當您閱讀完故事後，進入書寫階段，將無法再次閱讀該故事，故提醒您必須完整閱讀故事後，再按下『NEXT』鍵。</b>";
             document.getElementById("descriptionOfEditTitle").innerHTML = situation_Two_Des_For_Edit ;
             document.getElementById("descriptionOfEditSubTitle").innerHTML = situation_Two_Des_For_EditSub ;
           }
