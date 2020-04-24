@@ -79,6 +79,7 @@
             <div class="d-flex h-100">
               <div class="project-text w-100 my-auto text-center text-lg-left myforntformat">
                 <h4>財團法人勵馨社會福利事業基金會</h4>
+                <p style="font-size: 20px;">( 幫助家暴受害者之基金會 )</p>
                 <p style="font-size: 20px;" id="boxOne">已放入金幣袋數量 : 0 </p>
                 <br />
                 <table style="width:100%;font-size: 20px;" >
@@ -103,6 +104,7 @@
             <div class="d-flex h-100">
               <div class="project-text w-100 my-auto text-center text-lg-left myforntformat">
                 <h4>社團法人台灣憂鬱症防治協會</h4>
+                <p style="font-size: 20px;">( 幫助憂鬱症之基金會 )</p>
                 <p style="font-size: 20px;" id="boxTwo">已放入金幣袋數量 : 0 </p>
                 <br />
                 <table style="width:100%;font-size: 20px;" >
@@ -127,6 +129,7 @@
             <div class="d-flex h-100">
               <div class="project-text w-100 my-auto text-center text-lg-left myforntformat">
                 <h4>財團法人台灣更生保護會</h4>
+                <p style="font-size: 20px;">( 幫助更生人之基金會 )</p>
                 <p style="font-size: 20px;" id="boxThree">已放入金幣袋數量 : 0 </p>
                 <br />
                 <table style="width:100%;font-size: 20px;" >
@@ -160,7 +163,7 @@
                   <td><input type="radio" name="donateShowName" value="Yes" >  願意公開姓名至基金會芳名錄</td>
                 </tr>
                 <tr height=50>
-                  <td><input type="radio" name="donateShowName" value="No"  checked="checked" > 不願意公開姓名至基金會芳名錄</td>
+                  <td><input type="radio" name="donateShowName" value="No" > 不願意公開姓名至基金會芳名錄</td>
                 </tr>
               </fieldset>
             </table>
@@ -372,6 +375,14 @@
   }
 
   function finishAndSubmit(){
+
+    var needRecordName = getCheckBoxValue(document.getElementsByName("donateShowName"));
+    if ( needRecordName == "")
+    {
+      alert( "請幫我選擇是否要登記芳名錄 , 謝謝 !" );
+      return;
+    }
+
     document.getElementById("sectionForRecordName").style.display = "none";    
     document.getElementById("sectionForLonding").style.display = "block";  
     sendDataToExcel();
@@ -537,7 +548,6 @@
     var totalSec = Number(getCookie("one_pageTime")) + Number(getCookie("two_pageTime")) + Number(getCookie("three_pageTime")) + thisPageUsingTime;
     // Get subject info 
     var needRecordName = getCheckBoxValue(document.getElementsByName("donateShowName"));
-
     var subjectInfo = {
       'Name' : getCookie("subjectName") ,
       'Gender' : getCookie("subjectGender") ,
