@@ -613,7 +613,17 @@
   }
 
 
-  function donateStoryNo(){ startNextStory(); }
+  function donateStoryNo()
+  { 
+    if ( storyOne[0] == 'A' )
+      SetCookie("donateBoxGoh", 0 , 1);
+    if ( storyOne[0] == 'B' )
+      SetCookie("donateBoxDep", 0 , 1);
+    if ( storyOne[0] == 'C' )
+      SetCookie("donateBoxAft", 0 , 1);
+
+    startNextStory(); 
+  }
   
   function startNextStory()
   {
