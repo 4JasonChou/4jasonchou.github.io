@@ -35,7 +35,7 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger myforntformat" href="#signup">前往我的QRCode</a>
+            <a class="nav-link js-scroll-trigger myforntformat" href="#mqQrCodeName">前往我的QRCode</a>
           </li>
         </ul>
       </div>
@@ -148,6 +148,10 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
       qrcode.clear(); // clear the code.
       qrcode.makeCode(myQRCode);
     }
+    else
+    {
+      document.getElementById("mqQrCodeName").innerHTML = "您還沒有填寫任何的資料喔!";      
+    }
   }
 
   function toUtf8(str) {    
@@ -180,6 +184,8 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
     qrcode.makeCode(qrCodeInfo);
     SetCookie("myQrCodeName",subjectName,7);
     SetCookie("myQrCode",qrCodeInfo,7);
+
+    document.querySelector('#mqQrCodeName').scrollIntoView();
   }
 
   </script>
