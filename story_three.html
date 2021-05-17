@@ -605,7 +605,17 @@
     startNextStory();
   }
 
-  function donateStoryNo(){ startNextStory(); }
+  function donateStoryNo()
+  { 
+    if ( storyThree[0] == 'A' )
+      SetCookie("donateBoxGoh", 2 , 1);
+    if ( storyThree[0] == 'B' )
+      SetCookie("donateBoxDep", 2 , 1);
+    if ( storyThree[0] == 'C' )
+      SetCookie("donateBoxAft", 2 , 1);
+
+    startNextStory(); 
+  }
   
   function startNextStory()
   {
