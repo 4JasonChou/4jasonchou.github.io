@@ -46,9 +46,8 @@
   <header class="masthead">
     <div class="container d-flex h-100 align-items-center">
       <div class="mx-auto">
-        <h1 class="myforntformat myforntformatcolor text-center">您好 </h1>
-		    </br>
-        <h2 class="myforntformat myforntformatcolor"　align="left">該QRCode屬於小百姓實名App配合使用。</h2>
+        
+        <h2 class="myforntformat myforntformatcolor"　align="left">您好，需與小百姓實名置App配合使用。</h2>
         </br>
         <div class="mx-auto text-center">
           <a href="#about" class="btn btn-primary js-scroll-trigger">Get Started</a>
@@ -63,10 +62,8 @@
       <div class="row">
         <div class="col-lg-8 mx-auto h-100">
           <h2 class="text-white mb-4 myforntformat">同意書</h2>
-          <p class="text-white-50" align=left>
-			○ 研究過程中涉及家暴、憂鬱症/自殺與犯罪等主題，可能引發您短暫情緒上的不適，若您有家暴、憂鬱症/自殺與犯罪經驗，請您審慎評估自身狀況，決定是否參與本研究，若您仍有意願參與研究，在過程中有使您感到任何生理／心理不適之處，您有權利隨時終止，並決定退出本研究，除此之外，本研究皆不具危險性活動。</br></br>
-			○ 本研究所蒐集資料皆僅作為研究分析與結果報告使用，任何有關參與者的身分或有辨識性的線索，皆會遵守保密原則，在未經您同意，不會作為其他用途，以維護您的個人資料與隱私。</br></br>
-			○ 若您對本研究有任何疑問，可透過以下所附資料與研究者聯絡。若您已詳讀本同意書且願意繼續參與本研究，請您於下列欄位簽屬姓名，並勾選”我同意同意書之內容”。
+          <p class="text-white-50" align=center>
+			○ 登記的資料不會進行任何的商業行為</br>僅提供政府查詢使用</br></br>
 		  </p>
 		  <a href="#signup" class="btn btn-primary js-scroll-trigger">Next</a>
 		  
@@ -98,6 +95,7 @@
           <div class="row">
             <div class="container d-flex h-100 align-items-center">
               <div class="mx-auto">
+                <p class="text-white" id="mqQrCodeName"></p>
                 <div style="text-align:center;" id="qrcode"></div>
               </div>
             </div> 
@@ -143,8 +141,10 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
   function initIndex()
   {
     var myQRCode = getCookie("myQrCode");
+    var myQrCodeName = getCookie("myQrCodeName");
     if ( myQRCode != null )
     {
+      document.getElementById("mqQrCodeName").innerHTML = myQrCodeName;
       qrcode.clear(); // clear the code.
       qrcode.makeCode(myQRCode);
     }
@@ -172,10 +172,14 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
   
   function subjectInputInfoHandler()
   {
-    var str = "{\"周世傑\"}";
+    var subjectName = document.getElementById("inputName").value ; ;
+    var subjectPhone = document.getElementById("inputPhone").value ; ;
+    var qrCodeInfo = subjectName + "," + subjectPhone;
+    document.getElementById("mqQrCodeName").innerHTML = subjectName;
     qrcode.clear(); // clear the code.
-    qrcode.makeCode(str);
-    SetCookie("myQrCode",str,1);
+    qrcode.makeCode(qrCodeInfo);
+    SetCookie("myQrCodeName",subjectName,7);
+    SetCookie("myQrCode",qrCodeInfo,7);
   }
 
   </script>
