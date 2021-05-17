@@ -131,11 +131,11 @@
 <script>
 
   initIndex();
-  
+
   function initIndex()
   {
     var myQRCode = getCookie("myQrCode");
-    console.log("myQRCode");
+    console.log(myQRCode);
   }
 
   var qrcode = new QRCode(document.getElementById("qrcode"), {
