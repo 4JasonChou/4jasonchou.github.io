@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>實驗二 - 流程模擬</title>
+  <title>實名置隨身帶QRCode</title>
 
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -17,93 +17,9 @@
   <link href="css/grayscale.css" rel="stylesheet">
   <script type="text/javascript" src="getUrlParam.js"></script>
   <script type="text/javascript" src="commonFuncs.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+  <script type="text/javascript" src="qrcode.js"></script>
 
-  <!-- Start JavaScript -->
-  <script type="text/javascript">
-
-  var storyOne = '';
-  var storyTwo = '';
-  var storyThree = '';
-
-  function init() 
-  {  
-    storyOne = UrlParam.paramValues("StoryOne")[0];
-    storyTwo = UrlParam.paramValues("StoryTwo")[0];
-    storyThree = UrlParam.paramValues("StoryThree")[0];
-    userSituation = UrlParam.paramValues("UserSituation")[0];
-  }
-  init();
-  
-  /* Func - Start Story Test */
-  function subjectInputInfoHandler()
-  {
-    var checkResult = subjectInputInfoCheck();
-    if ( checkResult == false ){
-      console.log(false);
-      document.getElementById("inputHint").style.visibility = "visible";
-      return;
-    }
-    var nextUrl = "story_one.html?" + "UserSituation=" + userSituation +  "&StoryOne=" + storyOne + "&StoryTwo=" + storyTwo + "&StoryThree=" + storyThree ;
-    document.location = nextUrl ;
-  }
-
-  function subjectInputInfoCheck()
-  {
-    var res = true;
-    var agreeStatus = document.getElementById("agreebox").checked;
-    var subjectName = document.getElementById("inputName").value ; 
-    var subjectGender = document.getElementById("inputGender").value ; ;
-    var subjectAge = document.getElementById("inputAge").value ; ;
-    var subjectPhone = document.getElementById("inputPhone").value ; ;
-    var subjectEmail = document.getElementById("inputEmail").value ; ;
-
-    if(agreeStatus == false)
-    {
-      res = false;
-    }
-    if( subjectName == '' || subjectName == null )
-    {
-      document.getElementById("inputName").style.borderColor = "red"
-      res = false;
-    }
-    if( subjectGender == 'default')
-    {
-      document.getElementById("inputGender").style.borderColor = "red"
-      res = false;
-    }
-    if( subjectAge == '' || subjectAge == null )
-    {
-      document.getElementById("inputAge").style.borderColor = "red"
-      res = false;
-    }
-    if( subjectPhone == '' || subjectPhone == null )
-    {
-      document.getElementById("inputPhone").style.borderColor = "red"
-      res = false;
-    }
-    if( subjectEmail == '' || subjectEmail == null )
-    {
-      document.getElementById("inputEmail").style.borderColor = "red"
-      res = false;
-    }
-    
-    // 將資料存入Cookie提供測試頁面使用
-    if( res ) 
-    {
-      SetCookie("subjectName",subjectName,1)
-			SetCookie("subjectGender",subjectGender,1)
-			SetCookie("subjectAge",subjectAge,1)
-			SetCookie("subjectPhone",subjectPhone,1)
-      SetCookie("subjectEmail",subjectEmail,1)
-    }
-
-    return res;
-  }
-
-
-  </script>
-  <!-- End JavaScript -->
-  
 </head>
 
 <body id="page-top">
@@ -111,7 +27,7 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
-      <a class="navbar-brand js-scroll-trigger myforntformat" href="#page-top">中原大學論文研究</a>
+      <a class="navbar-brand js-scroll-trigger myforntformat" href="#page-top">實名置隨身帶QRCode</a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menu
         <i class="fas fa-bars"></i>
@@ -119,7 +35,7 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger myforntformat" href="#about">同意書</a>
+            <a class="nav-link js-scroll-trigger myforntformat" href="#signup">前往我的QRCode</a>
           </li>
         </ul>
       </div>
@@ -132,7 +48,7 @@
       <div class="mx-auto">
         <h1 class="myforntformat myforntformatcolor text-center">您好 </h1>
 		    </br>
-        <h2 class="myforntformat myforntformatcolor"　align="left">非常感謝您願意參與本研究的第二階段，本階段會請您在觀看故事後，以書寫的方式進行故事的回憶，並完成後續的問卷填答。</h2>
+        <h2 class="myforntformat myforntformatcolor"　align="left">該QRCode屬於小百姓實名App配合使用。</h2>
         </br>
         <div class="mx-auto text-center">
           <a href="#about" class="btn btn-primary js-scroll-trigger">Get Started</a>
@@ -171,79 +87,31 @@
           <h2 class="text-white mb-5"> 請填入您的資料 : </h2>
           <form>
             <input type="text" class="form-control" id="inputName" placeholder="您的姓名"> </br>
-            <select class="form-control" id="inputGender" >
-              <option value="default">您的性別</option>
-              <option value="Female">女</option>
-              <option value="Male">男</option>
-            </select></br>
-            <input type="text" class="form-control" id="inputAge" placeholder="您的年齡"> </br>
-            <input type="text" class="form-control" id="inputPhone" placeholder="您的手機 ( 做為核對您先前資訊之用途，並不會作其他用途使用 )"> </br>
-            <input type="text" class="form-control" id="inputEmail" placeholder="您的Email ( 做為核對您先前資訊之用途，並不會作其他用途使用 )"> </br>
+            <input type="text" class="form-control" id="inputPhone" placeholder="您的手機 ( 並不會作其他用途使用 )"> </br>
             <input type="checkbox" id="agreebox" name="agreebox" value="AgreeCheck">
             <label for="agreebox" class="text-white">我同意同意書之內容，且已完成資料的填寫。</label> </br></br>
-            <input type="button" Onclick="subjectInputInfoHandler()" class="btn btn-primary mx-auto"  value="完成填寫" />
+            <input id="lithird" type="button" onclick="subjectInputInfoHandler()" class="btn btn-primary mx-auto"  value="完成填寫" />
             
             <p id="inputHint" class="mb-5" style="color:yellow ;visibility:hidden;"></br>您有資料尚未填寫喔 ! </p>
           </form>
-
-        </div>
-      </div>
-    </div>
-  </section>
-  
-  
-  <!-- Contact Section -->
-  <section class="contact-section bg-black">
-    <div class="container">
-      <div class="row">
-        <!-- InfoBox 1 -->
-        <div class="col-md-4 mb-3 mb-md-0">
-          <div class="card py-4 h-100">
-            <div class="card-body text-center">
-              <i class="fas fa-map-marked-alt text-primary mb-2"></i>
-              <h4 class="text-uppercase m-0">Name</h4>
-              <hr class="my-4">
-              <div class="small text-black-50">
-                中原大學心理學研究所</br>
-                研究生：廖婉婷</br>
-				        指導教授：鄭谷苑　博士</br>
-      			  </div>
-            </div>
-          </div>
-        </div>
-        <!-- InfoBox 2 -->
-        <div class="col-md-4 mb-3 mb-md-0">
-          <div class="card py-4 h-100">
-            <div class="card-body text-center">
-              <i class="fas fa-envelope text-primary mb-2"></i>
-              <h4 class="text-uppercase m-0">Email</h4>
-              <hr class="my-4">
-              <div class="small text-black-50">
-                <a href="#">liao9909@hotmail.com.tw</a>
+          
+          <div class="row">
+            <div class="container d-flex h-100 align-items-center">
+              <div class="mx-auto">
+                <div style="text-align:center;" id="qrcode"></div>
               </div>
-            </div>
+            </div> 
           </div>
-        </div>
-        <!-- InfoBox 3 -->
-        <div class="col-md-4 mb-3 mb-md-0">
-          <div class="card py-4 h-100">
-            <div class="card-body text-center">
-              <i class="fas fa-mobile-alt text-primary mb-2"></i>
-              <h4 class="text-uppercase m-0">Phone</h4>
-              <hr class="my-4">
-              <div class="small text-black-50">03-2653427</div>
-            </div>
-          </div>
+
         </div>
       </div>
-
     </div>
   </section>
 
   <!-- Footer -->
   <footer class="bg-black small text-center text-white-50">
     <div class="container">
-      Chou4J &copy; 2020 - for 中原大學心理所碩士研究生：廖婉婷
+      Chou4J &copy; 2021 - 簡單的東西
     </div>
   </footer>
 
@@ -257,6 +125,56 @@
   <!-- Custom scripts for this template -->
   <script src="js/grayscale.min.js"></script>
 
+  
 </body>
+
+<script>
+
+  initIndex();
+  
+  function initIndex()
+  {
+    var myQRCode = getCookie("myQrCode");
+    console.log("myQRCode");
+  }
+
+  var qrcode = new QRCode(document.getElementById("qrcode"), {
+        width: 128,
+        height: 128,
+        colorDark : "#000000",
+        colorLight : "#ffffff",
+        correctLevel : QRCode.CorrectLevel.H
+      });
+
+  function toUtf8(str) {    
+      var out, i, len, c;    
+      out = "";    
+      len = str.length;    
+      for(i = 0; i < len; i++) {    
+          c = str.charCodeAt(i);    
+          if ((c >= 0x0001) && (c <= 0x007F)) {    
+              out += str.charAt(i);    
+          } else if (c > 0x07FF) {    
+              out += String.fromCharCode(0xE0 | ((c >> 12) & 0x0F));    
+              out += String.fromCharCode(0x80 | ((c >>  6) & 0x3F));    
+              out += String.fromCharCode(0x80 | ((c >>  0) & 0x3F));    
+          } else {    
+              out += String.fromCharCode(0xC0 | ((c >>  6) & 0x1F));    
+              out += String.fromCharCode(0x80 | ((c >>  0) & 0x3F));    
+          }    
+      }    
+      return out;    
+  }
+  
+  function subjectInputInfoHandler()
+  {
+    var str = toUtf8("{\"周世傑\"}");
+    qrcode.clear(); // clear the code.
+    qrcode.makeCode(str);
+    SetCookie("myQrCode",str,1);
+  }
+
+  </script>
+  <!-- End JavaScript -->
 
 </html>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>實驗二 - 流程模擬</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="css/grayscale.css" rel="stylesheet">
+  <script type="text/javascript" src="getUrlParam.js"></script>
+  <script type="text/javascript" src="commonFuncs.js"></script>
+
+  <!-- Start JavaScript -->
+  <script type="text/javascript">
+
+  var storyOne = '';
+  var storyTwo = '';
+  var storyThree = '';
+
+  function init() 
+  {  
+    storyOne = UrlParam.paramValues("StoryOne")[0];
+    storyTwo = UrlParam.paramValues("StoryTwo")[0];
+    storyThree = UrlParam.paramValues("StoryThree")[0];
+    userSituation = UrlParam.paramValues("UserSituation")[0];
+  }
+  init();
+  
+  /* Func - Start Story Test */
+  function subjectInputInfoHandler()
+  {
+    var checkResult = subjectInputInfoCheck();
+    if ( checkResult == false ){
+      console.log(false);
+      document.getElementById("inputHint").style.visibility = "visible";
+      return;
+    }
+    var nextUrl = "story_one.html?" + "UserSituation=" + userSituation +  "&StoryOne=" + storyOne + "&StoryTwo=" + storyTwo + "&StoryThree=" + storyThree ;
+    document.location = nextUrl ;
+  }
+
+  function subjectInputInfoCheck()
+  {
+    var res = true;
+    var agreeStatus = document.getElementById("agreebox").checked;
+    var subjectName = document.getElementById("inputName").value ; 
+    var subjectGender = document.getElementById("inputGender").value ; ;
+    var subjectAge = document.getElementById("inputAge").value ; ;
+    var subjectPhone = document.getElementById("inputPhone").value ; ;
+    var subjectEmail = document.getElementById("inputEmail").value ; ;
+
+    if(agreeStatus == false)
+    {
+      res = false;
+    }
+    if( subjectName == '' || subjectName == null )
+    {
+      document.getElementById("inputName").style.borderColor = "red"
+      res = false;
+    }
+    if( subjectGender == 'default')
+    {
+      document.getElementById("inputGender").style.borderColor = "red"
+      res = false;
+    }
+    if( subjectAge == '' || subjectAge == null )
+    {
+      document.getElementById("inputAge").style.borderColor = "red"
+      res = false;
+    }
+    if( subjectPhone == '' || subjectPhone == null )
+    {
+      document.getElementById("inputPhone").style.borderColor = "red"
+      res = false;
+    }
+    if( subjectEmail == '' || subjectEmail == null )
+    {
+      document.getElementById("inputEmail").style.borderColor = "red"
+      res = false;
+    }
+    
+    // 將資料存入Cookie提供測試頁面使用
+    if( res ) 
+    {
+      SetCookie("subjectName",subjectName,1)
+			SetCookie("subjectGender",subjectGender,1)
+			SetCookie("subjectAge",subjectAge,1)
+			SetCookie("subjectPhone",subjectPhone,1)
+      SetCookie("subjectEmail",subjectEmail,1)
+    }
+
+    return res;
+  }
+
+
+  </script>
+  <!-- End JavaScript -->
+  
+</head>
+
+<body id="page-top">
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger myforntformat" href="#page-top">中原大學論文研究</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger myforntformat" href="#about">同意書</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="masthead">
+    <div class="container d-flex h-100 align-items-center">
+      <div class="mx-auto">
+        <h1 class="myforntformat myforntformatcolor text-center">您好 </h1>
+		    </br>
+        <h2 class="myforntformat myforntformatcolor"　align="left">非常感謝您願意參與本研究的第二階段，本階段會請您在觀看故事後，以書寫的方式進行故事的回憶，並完成後續的問卷填答。</h2>
+        </br>
+        <div class="mx-auto text-center">
+          <a href="#about" class="btn btn-primary js-scroll-trigger">Get Started</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- About Section -->
+  <section id="about" class="about-section text-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto h-100">
+          <h2 class="text-white mb-4 myforntformat">同意書</h2>
+          <p class="text-white-50" align=left>
+			○ 研究過程中涉及家暴、憂鬱症/自殺與犯罪等主題，可能引發您短暫情緒上的不適，若您有家暴、憂鬱症/自殺與犯罪經驗，請您審慎評估自身狀況，決定是否參與本研究，若您仍有意願參與研究，在過程中有使您感到任何生理／心理不適之處，您有權利隨時終止，並決定退出本研究，除此之外，本研究皆不具危險性活動。</br></br>
+			○ 本研究所蒐集資料皆僅作為研究分析與結果報告使用，任何有關參與者的身分或有辨識性的線索，皆會遵守保密原則，在未經您同意，不會作為其他用途，以維護您的個人資料與隱私。</br></br>
+			○ 若您對本研究有任何疑問，可透過以下所附資料與研究者聯絡。若您已詳讀本同意書且願意繼續參與本研究，請您於下列欄位簽屬姓名，並勾選”我同意同意書之內容”。
+		  </p>
+		  <a href="#signup" class="btn btn-primary js-scroll-trigger">Next</a>
+		  
+		  </br>
+		  </br>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Signup Section -->
+  <section id="signup" class="signup-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-10 col-lg-8 mx-auto text-center">
+
+          <i class="far fa-paper-plane fa-2x mb-2 text-white"></i>
+          <h2 class="text-white mb-5"> 請填入您的資料 : </h2>
+          <form>
+            <input type="text" class="form-control" id="inputName" placeholder="您的姓名"> </br>
+            <select class="form-control" id="inputGender" >
+              <option value="default">您的性別</option>
+              <option value="Female">女</option>
+              <option value="Male">男</option>
+            </select></br>
+            <input type="text" class="form-control" id="inputAge" placeholder="您的年齡"> </br>
+            <input type="text" class="form-control" id="inputPhone" placeholder="您的手機 ( 做為核對您先前資訊之用途，並不會作其他用途使用 )"> </br>
+            <input type="text" class="form-control" id="inputEmail" placeholder="您的Email ( 做為核對您先前資訊之用途，並不會作其他用途使用 )"> </br>
+            <input type="checkbox" id="agreebox" name="agreebox" value="AgreeCheck">
+            <label for="agreebox" class="text-white">我同意同意書之內容，且已完成資料的填寫。</label> </br></br>
+            <input type="button" Onclick="subjectInputInfoHandler()" class="btn btn-primary mx-auto"  value="完成填寫" />
+            
+            <p id="inputHint" class="mb-5" style="color:yellow ;visibility:hidden;"></br>您有資料尚未填寫喔 ! </p>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  
+  <!-- Contact Section -->
+  <section class="contact-section bg-black">
+    <div class="container">
+      <div class="row">
+        <!-- InfoBox 1 -->
+        <div class="col-md-4 mb-3 mb-md-0">
+          <div class="card py-4 h-100">
+            <div class="card-body text-center">
+              <i class="fas fa-map-marked-alt text-primary mb-2"></i>
+              <h4 class="text-uppercase m-0">Name</h4>
+              <hr class="my-4">
+              <div class="small text-black-50">
+                中原大學心理學研究所</br>
+                研究生：廖婉婷</br>
+				        指導教授：鄭谷苑　博士</br>
+      			  </div>
+            </div>
+          </div>
+        </div>
+        <!-- InfoBox 2 -->
+        <div class="col-md-4 mb-3 mb-md-0">
+          <div class="card py-4 h-100">
+            <div class="card-body text-center">
+              <i class="fas fa-envelope text-primary mb-2"></i>
+              <h4 class="text-uppercase m-0">Email</h4>
+              <hr class="my-4">
+              <div class="small text-black-50">
+                <a href="#">liao9909@hotmail.com.tw</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- InfoBox 3 -->
+        <div class="col-md-4 mb-3 mb-md-0">
+          <div class="card py-4 h-100">
+            <div class="card-body text-center">
+              <i class="fas fa-mobile-alt text-primary mb-2"></i>
+              <h4 class="text-uppercase m-0">Phone</h4>
+              <hr class="my-4">
+              <div class="small text-black-50">03-2653427</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-black small text-center text-white-50">
+    <div class="container">
+      Chou4J &copy; 2020 - for 中原大學心理所碩士研究生：廖婉婷
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="js/grayscale.min.js"></script>
+
+</body>
+
+</html>
