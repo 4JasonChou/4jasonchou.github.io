@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>實名置隨身帶QRCode</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="css/grayscale.css" rel="stylesheet">
+  <script type="text/javascript" src="getUrlParam.js"></script>
+  <script type="text/javascript" src="commonFuncs.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+  <script type="text/javascript" src="qrcode.js"></script>
+
+</head>
+
+<body id="page-top">
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger myforntformat" href="#page-top">實名置隨身帶QRCode</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger myforntformat" href="#mqQrCodeName">前往我的QRCode</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="masthead">
+    <div class="container d-flex h-100 align-items-center">
+      <div class="mx-auto">
+        
+        <h2 class="myforntformat myforntformatcolor"　align="left">您好，需與小百姓實名置App配合使用。</h2>
+        </br>
+        <div class="mx-auto text-center">
+          <a href="#about" class="btn btn-primary js-scroll-trigger">Get Started</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- About Section -->
+  <section id="about" class="about-section text-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto h-100">
+          <h2 class="text-white mb-4 myforntformat">同意書</h2>
+          <p class="text-white-50" align=center>
+			○ 登記的資料不會進行任何的商業行為</br>僅提供政府查詢使用</br></br>
+		  </p>
+		  <a href="#signup" class="btn btn-primary js-scroll-trigger">Next</a>
+		  
+		  </br>
+		  </br>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Signup Section -->
+  <section id="signup" class="signup-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-10 col-lg-8 mx-auto text-center">
+
+          <i class="far fa-paper-plane fa-2x mb-2 text-white"></i>
+          <h2 class="text-white mb-5"> 請填入您的資料 : </h2>
+          <form>
+            <input type="text" class="form-control" id="inputName" placeholder="您的姓名"> </br>
+            <input type="text" class="form-control" id="inputPhone" placeholder="您的手機 ( 並不會作其他用途使用 )"> </br>
+            <input type="checkbox" id="agreebox" name="agreebox" value="AgreeCheck">
+            <label for="agreebox" class="text-white">我同意同意書之內容，且已完成資料的填寫。</label> </br></br>
+            <input id="lithird" type="button" onclick="subjectInputInfoHandler()" class="btn btn-primary mx-auto"  value="完成填寫" />
+            
+            <p id="inputHint" class="mb-5" style="color:yellow ;visibility:hidden;"></br>您有資料尚未填寫喔 ! </p>
+          </form>
+          
+          <div class="row">
+            <div class="container d-flex h-100 align-items-center">
+              <div class="mx-auto">
+                <p>我的QRCode</p></br>
+                <p class="text-white" id="mqQrCodeName"></p>
+                <div style="text-align:center;" id="qrcode"></div>
+              </div>
+            </div> 
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-black small text-center text-white-50">
+    <div class="container">
+      Chou4J &copy; 2021 - 簡單的東西
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="js/grayscale.min.js"></script>
+
+  
+</body>
+
+<script>
+
+var qrcode = new QRCode(document.getElementById("qrcode"), {
+        width: 128,
+        height: 128,
+        colorDark : "#000000",
+        colorLight : "#ffffff",
+        correctLevel : QRCode.CorrectLevel.H
+      });
+
+  initIndex();
+
+  function initIndex()
+  {
+    var myQRCode = getCookie("myQrCode");
+    var myQrCodeName = getCookie("myQrCodeName");
+    if ( myQRCode != null )
+    {
+      document.getElementById("mqQrCodeName").innerHTML = myQrCodeName;
+      qrcode.clear(); // clear the code.
+      qrcode.makeCode(myQRCode);
+    }
+    else
+    {
+      document.getElementById("mqQrCodeName").innerHTML = "您還沒有填寫任何的資料喔!";      
+    }
+  }
+
+  function toUtf8(str) {    
+      var out, i, len, c;    
+      out = "";    
+      len = str.length;    
+      for(i = 0; i < len; i++) {    
+          c = str.charCodeAt(i);    
+          if ((c >= 0x0001) && (c <= 0x007F)) {    
+              out += str.charAt(i);    
+          } else if (c > 0x07FF) {    
+              out += String.fromCharCode(0xE0 | ((c >> 12) & 0x0F));    
+              out += String.fromCharCode(0x80 | ((c >>  6) & 0x3F));    
+              out += String.fromCharCode(0x80 | ((c >>  0) & 0x3F));    
+          } else {    
+              out += String.fromCharCode(0xC0 | ((c >>  6) & 0x1F));    
+              out += String.fromCharCode(0x80 | ((c >>  0) & 0x3F));    
+          }    
+      }    
+      return out;    
+  }
+  
+  function subjectInputInfoHandler()
+  {
+    var subjectName = document.getElementById("inputName").value ; ;
+    var subjectPhone = document.getElementById("inputPhone").value ; ;
+    var qrCodeInfo = subjectName + "," + subjectPhone;
+    document.getElementById("mqQrCodeName").innerHTML = subjectName;
+    qrcode.clear(); // clear the code.
+    qrcode.makeCode(qrCodeInfo);
+    SetCookie("myQrCodeName",subjectName,7);
+    SetCookie("myQrCode",qrCodeInfo,7);
+
+    document.querySelector('#mqQrCodeName').scrollIntoView();
+  }
+
+  </script>
+  <!-- End JavaScript -->
+
+</html>
