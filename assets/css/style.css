@@ -34,6 +34,8 @@ h6 {
   font-family: "Raleway", sans-serif;
 }
 
+
+
 #main {
   margin-top: 50px;
 }
@@ -47,6 +49,7 @@ h6 {
 /*--------------------------------------------------------------
 # Preloader
 --------------------------------------------------------------*/
+
 #preloader {
   position: fixed;
   top: 0;
@@ -454,10 +457,11 @@ h6 {
   font-weight: 700;
   line-height: 56px;
   color: #222222;
+  -webkit-text-stroke: 0.4px white;
 }
 
 #hero h2 {
-  color: #6f6f6f;
+  color: #222222;
   margin: 10px 0 0 0;
   font-size: 22px;
 }
@@ -1309,4 +1313,8 @@ section {
 
 #footer .credits a {
   color: #34b7a7;
+}
+
+.skilllist li{
+  list-style: inside;
 }
