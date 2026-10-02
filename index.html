@@ -4,7 +4,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>FUKUOKA 2D — 福岡兩日 Trip Site</title>
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <style>
 :root{--bg:#f5f2ec;--card:#fff;--ink:#1f2523;--muted:#747873;--accent:#d95f43;--line:#e8e2d8;--dark:#202622}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,"Noto Sans TC",system-ui,sans-serif}
@@ -14,12 +13,14 @@ header{padding:28px 22px 18px;max-width:1180px;margin:auto}h1{margin:0;font-size
 .panel{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px;box-shadow:0 8px 30px #00000008}
 .timeline{display:grid;gap:12px}.item{padding:14px;border:1px solid var(--line);border-radius:15px;cursor:pointer}.item:hover{border-color:#c9bfb0}.time{font-size:12px;color:var(--accent);font-weight:800}.title{font-size:17px;font-weight:800;margin:4px 0}.note{font-size:13px;color:var(--muted);line-height:1.55}
 .badge{display:inline-block;font-size:11px;background:#f0ece5;padding:4px 8px;border-radius:999px;margin-top:6px}.transport{background:#edf3ef}.dinner{background:#fff0ec}
-#map{height:660px;border-radius:16px;overflow:hidden}.maptop{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}.maptop b{font-size:18px}
+.maptop{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}.maptop b{font-size:18px}
 .btn{border:0;border-radius:10px;padding:9px 12px;background:var(--dark);color:#fff;cursor:pointer}.btn.secondary{background:#eee9e0;color:var(--ink)}
 .actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}.actions a{font-size:12px;text-decoration:none;color:var(--ink);background:#f1ede6;padding:7px 9px;border-radius:9px}
 .info{margin-top:14px;padding:12px;background:#f8f5ef;border-radius:12px;font-size:12px;line-height:1.55}
 .legend{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}.legend span{font-size:11px;padding:5px 8px;border-radius:999px;background:#f0ece5}
-@media(max-width:850px){.wrap{grid-template-columns:1fr}.panel.mapPanel{order:-1}#map{height:430px}header{padding-top:20px}}
+.map-container{width:100%;height:660px;border-radius:16px;overflow:hidden;background:#eee9e0}
+.map-container iframe{display:block;width:100%;height:100%;border:0}
+@media(max-width:850px){.wrap{grid-template-columns:1fr}.panel.mapPanel{order:-1}.map-container{height:430px}header{padding-top:20px}}
 </style>
 </head>
 <body>
@@ -43,11 +44,16 @@ header{padding:28px 22px 18px;max-width:1180px;margin:auto}h1{margin:0;font-size
 <section class="panel mapPanel">
   <div class="maptop"><b id="mapTitle">DAY 01 · 天神</b><button class="btn" id="addPin">＋ Pin</button></div>
   <div class="legend"><span>🍴 餐廳</span><span>🏨 飯店</span><span>🚇 地鐵</span><span>🛍️ 逛街</span><span>✦ 自訂</span></div>
-  <div id="map"></div>
+  <div class="map-container">
+    <iframe
+      src="https://www.google.com/maps/d/embed?mid=1fPasJHq78RdklRsFNAgNDBLSSUoro7c&hl=zh-TW&ehbc=2E312F"
+      loading="lazy"
+      allowfullscreen>
+    </iframe>
+  </div>
 </section>
 </main>
 
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
 const days={
  d1:{
@@ -92,39 +98,34 @@ const days={
  }
 };
 
-let day="d1", map, markers=[], routeLayer;
+let day="d1";
 const $=id=>document.getElementById(id);
 
-function initMap(){
- map=L.map("map").setView(days[day].center,days[day].zoom);
- L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:19,attribution:"© OpenStreetMap"}).addTo(map);
- renderDay();
-}
-function clearMap(){markers.forEach(m=>map.removeLayer(m));markers=[]; if(routeLayer){map.removeLayer(routeLayer);routeLayer=null;}}
-function addMarker(name,lat,lng,emoji,custom=false){
- const m=L.marker([lat,lng]).addTo(map);
- m.bindPopup(`<b>${emoji} ${name}</b><br><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=${lat},${lng}">Google Maps</a>`);
- markers.push(m);
-}
 function renderDay(){
- clearMap(); const d=days[day];
- $("summary").innerHTML=`<div style="font-size:13px;color:#8a8278">福岡 2 DAY QUICK TRIP</div><h2 style="margin:4px 0 8px">${d.summary}</h2>`;
- $("mapTitle").textContent=d.title;
- $("timeline").innerHTML=d.items.map((x,i)=>`<div class="item" data-i="${i}"><div class="time">${x[0]}</div><div class="title">${x[1]}</div><div class="note">${x[2]}</div><span class="badge">${x[3]}</span><div class="actions"><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(x[4])}">Google Maps</a></div></div>`).join("");
- d.pins.forEach(p=>addMarker(p[0],p[1],p[2],p[3]));
- // approximate walking/subway visualization only between key area pins
- if(day==="d1") routeLayer=L.polyline([[33.5857,130.4164],[33.5909,130.3986],[33.5905,130.3940]],{dashArray:"7 8"}).addTo(map);
- if(day==="d2") routeLayer=L.polyline([[33.5890,130.4200],[33.5899,130.4205],[33.5890,130.4257]],{dashArray:"7 8"}).addTo(map);
- document.querySelectorAll(".item").forEach(el=>el.onclick=()=>{let i=+el.dataset.i;let x=d.items[i];map.openPopup(L.popup().setLatLng(d.center).setContent(`<b>${x[1]}</b><br>${x[4]}`));});
- map.setView(d.center,d.zoom);
+  const d=days[day];
+  $("summary").innerHTML=`<div style="font-size:13px;color:#8a8278">福岡 2 DAY QUICK TRIP</div><h2 style="margin:4px 0 8px">${d.summary}</h2>`;
+  $("mapTitle").textContent=d.title;
+
+  $("timeline").innerHTML=d.items.map((x,i)=>`
+    <div class="item" data-i="${i}">
+      <div class="time">${x[0]}</div>
+      <div class="title">${x[1]}</div>
+      <div class="note">${x[2]}</div>
+      <span class="badge">${x[3]}</span>
+      <div class="actions">
+        <a target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(x[4])}">Google Maps</a>
+      </div>
+    </div>
+  `).join("");
 }
-document.querySelectorAll(".tab").forEach(b=>b.onclick=()=>{day=b.dataset.day;document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));b.classList.add("active");renderDay();});
-$("addPin").onclick=()=>{
- const name=prompt("這個 Pin 叫什麼？"); if(!name)return;
- const c=map.getCenter(); addMarker(name,c.lat,c.lng,"✦",true);
- const saved=JSON.parse(localStorage.getItem("fukuoka-custom-pins")||"[]");
- saved.push({day,name,lat:c.lat,lng:c.lng}); localStorage.setItem("fukuoka-custom-pins",JSON.stringify(saved));
-};
-initMap();
+
+document.querySelectorAll(".tab").forEach(b=>b.onclick=()=>{
+  day=b.dataset.day;
+  document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));
+  b.classList.add("active");
+  renderDay();
+});
+
+renderDay();
 </script>
 </body></html>
