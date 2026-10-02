@@ -1,382 +1,130 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<!doctype html>
+<html lang="zh-Hant">
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-  <title>Stark 整復</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
-
-  <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
-  <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
-
-  <!-- 字體 -->
-  <link rel="stylesheet" href="/Public/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/Public/img/main.css">
-
-  <!-- JQuery -->
-  <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="crossorigin="anonymous"></script>
-
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FUKUOKA 2D — 福岡兩日 Trip Site</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>
+:root{--bg:#f5f2ec;--card:#fff;--ink:#1f2523;--muted:#747873;--accent:#d95f43;--line:#e8e2d8;--dark:#202622}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,"Noto Sans TC",system-ui,sans-serif}
+header{padding:28px 22px 18px;max-width:1180px;margin:auto}h1{margin:0;font-size:32px;letter-spacing:-1px}.sub{color:var(--muted);margin-top:6px}
+.tabs{display:flex;gap:8px;margin-top:20px}.tab{border:1px solid var(--line);background:#fff;border-radius:999px;padding:10px 18px;cursor:pointer;font-weight:700}.tab.active{background:var(--dark);color:#fff}
+.wrap{max-width:1180px;margin:auto;padding:0 22px 32px;display:grid;grid-template-columns:390px 1fr;gap:18px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px;box-shadow:0 8px 30px #00000008}
+.timeline{display:grid;gap:12px}.item{padding:14px;border:1px solid var(--line);border-radius:15px;cursor:pointer}.item:hover{border-color:#c9bfb0}.time{font-size:12px;color:var(--accent);font-weight:800}.title{font-size:17px;font-weight:800;margin:4px 0}.note{font-size:13px;color:var(--muted);line-height:1.55}
+.badge{display:inline-block;font-size:11px;background:#f0ece5;padding:4px 8px;border-radius:999px;margin-top:6px}.transport{background:#edf3ef}.dinner{background:#fff0ec}
+#map{height:660px;border-radius:16px;overflow:hidden}.maptop{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}.maptop b{font-size:18px}
+.btn{border:0;border-radius:10px;padding:9px 12px;background:var(--dark);color:#fff;cursor:pointer}.btn.secondary{background:#eee9e0;color:var(--ink)}
+.actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}.actions a{font-size:12px;text-decoration:none;color:var(--ink);background:#f1ede6;padding:7px 9px;border-radius:9px}
+.info{margin-top:14px;padding:12px;background:#f8f5ef;border-radius:12px;font-size:12px;line-height:1.55}
+.legend{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}.legend span{font-size:11px;padding:5px 8px;border-radius:999px;background:#f0ece5}
+@media(max-width:850px){.wrap{grid-template-columns:1fr}.panel.mapPanel{order:-1}#map{height:430px}header{padding-top:20px}}
+</style>
 </head>
-
 <body>
+<header>
+  <h1>FUKUOKA 2D</h1>
+  <div class="sub">兩天一夜？不是。這次是「兩天快閃」：吃、逛、地鐵、機場。</div>
+  <div class="tabs">
+    <button class="tab active" data-day="d1">DAY 01 · 天神</button>
+    <button class="tab" data-day="d2">DAY 02 · 博多</button>
+  </div>
+</header>
 
-  <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top">
-    <div class="container-fluid d-flex justify-content-between align-items-center">
+<main class="wrap">
+<section class="panel">
+  <div id="summary"></div>
+  <div class="timeline" id="timeline"></div>
+  <div class="info"><b>🚇 交通規則</b><br>本行程只排福岡市地下鐵／步行，不安排公車。Suica 不作為必要條件；現場可依你的實際票卡／購票方式搭乘。出發前再確認當日票價與營運資訊。</div>
+  <div class="info"><b>📍 自訂 Pin</b><br>點地圖上的「＋ Pin」，輸入名稱即可加入個人想去的地方；資料會存在瀏覽器 LocalStorage。</div>
+</section>
 
-      <h1 class="logo me-auto me-lg-0"><a href="index.html">Stark整復推拿</a></h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+<section class="panel mapPanel">
+  <div class="maptop"><b id="mapTitle">DAY 01 · 天神</b><button class="btn" id="addPin">＋ Pin</button></div>
+  <div class="legend"><span>🍴 餐廳</span><span>🏨 飯店</span><span>🚇 地鐵</span><span>🛍️ 逛街</span><span>✦ 自訂</span></div>
+  <div id="map"></div>
+</section>
+</main>
 
-      <nav id="navbar" class="navbar order-last order-lg-0">
-        <ul>
-          <li><a class="active" href="index.html">Home</a></li>
-          <!--<li><a href="about.html">About</a></li>-->
-          <li><a href="resume.html">Resume</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="portfolio.html">Portfolio</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+const days={
+ d1:{
+  title:"DAY 01 · 天神",
+  summary:"DACOMECCA 午餐 → 天神散步／購物 → 20:00 一藤",
+  center:[33.5898,130.3977], zoom:15,
+  items:[
+   ["11:30","🍞 DACOMECCA","午餐／博多站附近","餐廳","〒812-0011 福岡県福岡市博多区博多駅前4丁目14"],
+   ["13:00","🚇 博多 → 天神","福岡市地下鐵・空港線方向","交通","地鐵移動；不排公車"],
+   ["13:30","🛍️ 天神散步","天神地下街・西通り・大名一帶","逛街","可依體力自由調整"],
+   ["17:30","☕ 天神 Cafe Time","大名／今泉一帶","休息","晚餐前休息"],
+   ["20:00","🍲 もつ鍋 一藤 天神西通り店","晚餐・已指定 20:00","晚餐","福岡市中央区大名2-6-4 プラスゲート天神ビル2F/3F"]
+  ],
+  pins:[
+   ["DACOMECCA",33.5857,130.4164,"🍞"],
+   ["天神地下街",33.5909,130.3986,"🛍️"],
+   ["福岡PARCO",33.5902,130.3974,"🛍️"],
+   ["大名",33.5882,130.3947,"🛍️"],
+   ["一藤 天神西通り店",33.5905,130.3940,"🍲"]
+  ]
+ },
+ d2:{
+  title:"DAY 02 · 博多",
+  summary:"飯店 → 極味や 博多駅地下街店 → Hakata Station Area → 17:00 前往機場",
+  center:[33.5890,130.4207], zoom:16,
+  items:[
+   ["09:00","🏨 飯店早餐／整理行李","退房後寄放行李","飯店","行李安排依飯店規定"],
+   ["11:30","🍖 極味や 博多駅地下街店","午餐・你指定的分店","餐廳","福岡市博多区博多駅中央街1-1 博多駅地下街 C20号"],
+   ["13:00","🛍️ JR Hakata City","博多站周邊逛街","逛街","AMU PLAZA／Hakata Hankyu 等"],
+   ["14:30","🛍️ KITTE Hakata / Yodobashi","購物／休息","逛街","都集中在博多站周邊"],
+   ["16:15","🎒 回博多站取行李","準備去機場","交通","建議不要把最後時間壓太緊"],
+   ["17:00","🚇 博多 → 福岡空港","福岡市地下鐵・空港線","交通","直接搭地下鐵前往福岡空港"]
+  ],
+  pins:[
+   ["極味や 博多駅地下街店",33.5890,130.4200,"🍖"],
+   ["JR Hakata City",33.5899,130.4205,"🛍️"],
+   ["AMU PLAZA Hakata",33.5897,130.4207,"🛍️"],
+   ["Hakata Hankyu",33.5897,130.4217,"🛍️"],
+   ["KITTE Hakata",33.5892,130.4200,"🛍️"],
+   ["Yodobashi Hakata",33.5890,130.4257,"🛍️"]
+  ]
+ }
+};
 
-      <div class="header-social-links">
-        <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
-      </div>
+let day="d1", map, markers=[], routeLayer;
+const $=id=>document.getElementById(id);
 
-    </div>
-
-  </header><!-- End Header -->
-
-  <!-- ======= Hero Section ======= -->
-  <section id="hero" class="d-flex align-items-center">
-    <div class="container d-flex flex-column align-items-center" data-aos="zoom-in" data-aos-delay="100">
-      <h1 id="mainDes">Stark 整復推拿</h1>
-      <h2 id="subDes">南勢角專業整復師 , 師傳葉問 ! </h2>
-      <a href="#main" class="btn-about">About Me</a>
-    </div>
-  </section><!-- End Hero -->
-
-  <main id="main">
-
-    <!-- ======= About Section ======= -->
-    <section id="about" class="about">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <br/>
-          <h2>關於我們(?)</h2>
-          <p>特別前往佛山學拳,就為了給大家最好的整脊</p>
-        </div>
-
-        <div class="row">
-          <div class="col-lg-4">
-            <img src="assets/img/about.jpg" class="img-fluid" alt="">
-          </div>
-          <div class="col-lg-8 pt-4 pt-lg-0 content">
-            <h3>整脊 &amp; 按摩 專業師傅</h3>
-            <p class="fst-italic">
-              學齡X年, 因為熱愛運動, 有時會受傷, 朋友也有相關困擾, 因此從興趣出發, 拜師學藝, 為了各個朋友提供服務。
-              協助大家有更好的體態與健康狀況。
-            </p>
-            <div class="row">
-              <div class="col-lg-6">
-                <ul>
-                  <li><i class="bi bi-rounded-right"></i> <strong>Birthday:</strong> 1992</li>
-                  <li><i class="bi bi-rounded-right"></i> <strong>Phone:</strong> +886 987-987-987</li>
-                  <li><i class="bi bi-rounded-right"></i> <strong>City:</strong> City : New Taipei City, ROC</li>
-                </ul>
-              </div>
-              <div class="col-lg-6">
-                <ul>
-                  <li><i class="bi bi-rounded-right"></i> <strong>Age:</strong> 30</li>
-                  <li><i class="bi bi-rounded-right"></i> <strong>Degree:</strong> Master</li>
-                  <li><i class="bi bi-rounded-right"></i> <strong>PhEmailone:</strong> email@example.com</li>
-                </ul>
-              </div>
-            </div>
-            <p>
-              巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉
-              巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉
-              巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉
-            </p>
-          </div>
-        </div>
-
-      </div>
-    </section><!-- End About Section -->
-
-    <!-- ======= Skills Section ======= -->
-    <section id="skills" class="skills">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>Skills</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
-        </div>
-
-        <div class="row skills-content">
-
-          <div class="col-lg-6">
-
-            <div class="progress">
-              <span class="skill">還妳漂漂拳 <i class="val">100%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">脊髓打直腳 <i class="val">90%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">通體舒暢棍 <i class="val">75%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-          </div>
-
-          <div class="col-lg-6">
-
-            <div class="progress">
-              <span class="skill">PHP <i class="val">80%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">WordPress/CMS <i class="val">90%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">Photoshop <i class="val">55%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Skills Section -->
-
-    <!-- ======= Facts Section ======= -->
-    <section id="facts" class="facts">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>成效與案例</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
-        </div>
-
-        <div class="row counters">
-
-          <div class="col-lg-3 col-6 text-center">
-            <span data-purecounter-start="0" data-purecounter-end="952" data-purecounter-duration="1" class="purecounter"></span>
-            <p>服務客人</p>
-          </div>
-
-          <div class="col-lg-3 col-6 text-center">
-            <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
-            <p>整脊好評</p>
-          </div>
-
-          <div class="col-lg-3 col-6 text-center">
-            <span data-purecounter-start="0" data-purecounter-end="431" data-purecounter-duration="1" class="purecounter"></span>
-            <p>按摩好評</p>
-          </div>
-
-          <div class="col-lg-3 col-6 text-center">
-            <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1" class="purecounter"></span>
-            <p>鄉村回饋</p>
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Facts Section -->
-
-    <!-- ======= Testimonials Section ======= -->
-    <section id="testimonials" class="testimonials">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>我們的團隊</h2>
-          <p>來自不同專業的整復師，提供各式各樣的專業能力 !</p>
-        </div>
-
-        <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
-          <div class="swiper-wrapper">
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
-                <h3>Saul Goodman</h3>
-                <h4>Ceo &amp; Founder</h4>
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
-                <h3>Sara Wilsson</h3>
-                <h4>Designer</h4>
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
-                <h3>Jena Karlis</h3>
-                <h4>Store Owner</h4>
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
-                <h3>Matt Brandon</h3>
-                <h4>Freelancer</h4>
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
-                <h3>John Larson</h3>
-                <h4>Entrepreneur</h4>
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-              </div>
-            </div><!-- End testimonial item -->
-
-          </div>
-          <div class="swiper-pagination"></div>
-        </div>
-
-      </div>
-    </section><!-- End Testimonials Section -->
-
-  </main><!-- End #main -->
-
-  <!-- ======= Footer ======= -->
-  <footer id="footer">
-    <div class="container">
-      <div class="copyright">
-        Contant us <strong><span>4J</span></strong>. All Rights Reserved
-      </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/kelly-free-bootstrap-cv-resume-html-template/ -->
-        Designed by <a href="https://bootstrapmade.com/">4J</a>
-      </div>
-    </div>
-  </footer><!-- End  Footer -->
-
-  <div id="preloader"></div>
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-
-  <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
-
-</body>
-
-</html>
-
-<!-- 
-先拿掉 , 加速開發
-<script >
-
-$.ajax(
-  {
-    type: 'get',
-    url: 'https://script.google.com/macros/s/AKfycbxO6GS0oIhWQ3fl3OtRtBh3dvrCtMS9q2v-f0BRKNoca2VkZoR5oEkDYeWLKyAWJvoQ0A/exec?PageTag=Index',
-    dataType: 'json',
-    timeout: 30000,
-    async: false,
-    success: function (data) {
-          document.getElementById("mainDes").innerHTML = data['MainDes'] ;
-          document.getElementById("subDes").innerHTML = data['SubDes'] ;
-      },
-    error: 
-      function()
-      {
-        console.log(arguments);
-      }
-  }).done(
-    function () 
-    {
-      
-    }
-  ); 
-
+function initMap(){
+ map=L.map("map").setView(days[day].center,days[day].zoom);
+ L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:19,attribution:"© OpenStreetMap"}).addTo(map);
+ renderDay();
+}
+function clearMap(){markers.forEach(m=>map.removeLayer(m));markers=[]; if(routeLayer){map.removeLayer(routeLayer);routeLayer=null;}}
+function addMarker(name,lat,lng,emoji,custom=false){
+ const m=L.marker([lat,lng]).addTo(map);
+ m.bindPopup(`<b>${emoji} ${name}</b><br><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=${lat},${lng}">Google Maps</a>`);
+ markers.push(m);
+}
+function renderDay(){
+ clearMap(); const d=days[day];
+ $("summary").innerHTML=`<div style="font-size:13px;color:#8a8278">福岡 2 DAY QUICK TRIP</div><h2 style="margin:4px 0 8px">${d.summary}</h2>`;
+ $("mapTitle").textContent=d.title;
+ $("timeline").innerHTML=d.items.map((x,i)=>`<div class="item" data-i="${i}"><div class="time">${x[0]}</div><div class="title">${x[1]}</div><div class="note">${x[2]}</div><span class="badge">${x[3]}</span><div class="actions"><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(x[4])}">Google Maps</a></div></div>`).join("");
+ d.pins.forEach(p=>addMarker(p[0],p[1],p[2],p[3]));
+ // approximate walking/subway visualization only between key area pins
+ if(day==="d1") routeLayer=L.polyline([[33.5857,130.4164],[33.5909,130.3986],[33.5905,130.3940]],{dashArray:"7 8"}).addTo(map);
+ if(day==="d2") routeLayer=L.polyline([[33.5890,130.4200],[33.5899,130.4205],[33.5890,130.4257]],{dashArray:"7 8"}).addTo(map);
+ document.querySelectorAll(".item").forEach(el=>el.onclick=()=>{let i=+el.dataset.i;let x=d.items[i];map.openPopup(L.popup().setLatLng(d.center).setContent(`<b>${x[1]}</b><br>${x[4]}`));});
+ map.setView(d.center,d.zoom);
+}
+document.querySelectorAll(".tab").forEach(b=>b.onclick=()=>{day=b.dataset.day;document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));b.classList.add("active");renderDay();});
+$("addPin").onclick=()=>{
+ const name=prompt("這個 Pin 叫什麼？"); if(!name)return;
+ const c=map.getCenter(); addMarker(name,c.lat,c.lng,"✦",true);
+ const saved=JSON.parse(localStorage.getItem("fukuoka-custom-pins")||"[]");
+ saved.push({day,name,lat:c.lat,lng:c.lng}); localStorage.setItem("fukuoka-custom-pins",JSON.stringify(saved));
+};
+initMap();
 </script>
--->
+</body></html>
